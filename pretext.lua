@@ -36,6 +36,7 @@ local image_mime_type = ({
   or error("unsupported image format `" .. img_format .. "`")
 
 -- Character escaping
+-- (might want to remove the quotes, double check pretext)
 local function escape(s, in_attribute)
   return s:gsub("[<>&\"']",
     function(x)
@@ -114,16 +115,17 @@ function SoftBreak()
   return "\n"
 end
 
-function LineBreak()
-  return "<br/>"
-end
+-- function LineBreak()
+--  return "<br/>"
+-- end
 
 function Emph(s)
   return "<em>" .. s .. "</em>"
 end
 
+-- Not sure what to do here.  Term will probably have to be manually addressed.
 function Strong(s)
-  return "<strong>" .. s .. "</strong>"
+  return "<alert>" .. s .. "</alert>"
 end
 
 function Subscript(s)
@@ -134,12 +136,14 @@ function Superscript(s)
   return "<sup>" .. s .. "</sup>"
 end
 
+-- Not sure if this is right.
 function SmallCaps(s)
-  return '<span style="font-variant: small-caps;">' .. s .. '</span>'
+  return '<alert>' .. s .. '<alert>'
 end
 
+-- could also be "gone"
 function Strikeout(s)
-  return '<del>' .. s .. '</del>'
+  return '<delete>' .. s .. '</delete>'
 end
 
 function Link(s, src, tit, attr)
@@ -157,19 +161,19 @@ function Code(s, attr)
 end
 
 function InlineMath(s)
-  return "\\(" .. escape(s) .. "\\)"
+  return "<m>" .. escape(s) .. "</m>"
 end
 
 function DisplayMath(s)
-  return "\\[" .. escape(s) .. "\\]"
+  return "<me>" .. escape(s) .. "</me>"
 end
 
 function SingleQuoted(s)
-  return "&lsquo;" .. s .. "&rsquo;"
+  return "<sq>" .. s .. "</sq>"
 end
 
 function DoubleQuoted(s)
-  return "&ldquo;" .. s .. "&rdquo;"
+  return "<q>" .. s .. "</q>"
 end
 
 function Note(s)
@@ -210,7 +214,7 @@ function Plain(s)
 end
 
 function Para(s)
-  return "<p>" .. s .. "</p>"
+  return "<p>\n\t" .. s .. "\n</p>"
 end
 
 -- lev is an integer, the header level.
@@ -222,8 +226,10 @@ function BlockQuote(s)
   return "<blockquote>\n" .. s .. "\n</blockquote>"
 end
 
+-- Remove:
 function HorizontalRule()
-  return "<hr/>"
+--  return "<hr/>"
+  return ""
 end
 
 function LineBlock(ls)
