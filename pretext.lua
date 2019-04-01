@@ -147,17 +147,15 @@ function Strikeout(s)
 end
 
 function Link(s, src, tit, attr)
-  return "<a href='" .. escape(src,true) .. "' title='" ..
-         escape(tit,true) .. "'>" .. s .. "</a>"
+  return "<url href='" .. escape(src,true) .. "'>" .. s .. "</url>"
 end
 
 function Image(s, src, tit, attr)
-  return "<img src='" .. escape(src,true) .. "' title='" ..
-         escape(tit,true) .. "'/>"
+  return "<image source='" .. escape(src,true) .. "'/>"
 end
 
 function Code(s, attr)
-  return "<code" .. attributes(attr) .. ">" .. escape(s) .. "</code>"
+  return "<c" .. attributes(attr) .. ">" .. escape(s) .. "</c>"
 end
 
 function InlineMath(s)
@@ -245,8 +243,8 @@ function CodeBlock(s, attr)
     return '<img src="data:' .. image_mime_type .. ';base64,' .. img .. '"/>'
   -- otherwise treat as code (one could pipe through a highlighter)
   else
-    return "<pre><code" .. attributes(attr) .. ">" .. escape(s) ..
-           "</code></pre>"
+    return "<pre>" .. escape(s) ..
+           "</pre>"
   end
 end
 
@@ -291,9 +289,9 @@ function html_align(align)
 end
 
 function CaptionedImage(src, tit, caption, attr)
-   return '<div class="figure">\n<img src="' .. escape(src,true) ..
-      '" title="' .. escape(tit,true) .. '"/>\n' ..
-      '<p class="caption">' .. caption .. '</p>\n</div>'
+   return '<figure>\n<image source="' .. escape(src,true) ..
+      '"/>\n' ..
+      '<caption>' .. caption .. '</caption>\n</figure>'
 end
 
 -- Caption is a string, aligns is an array of strings,
