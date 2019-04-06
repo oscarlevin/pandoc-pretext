@@ -1,0 +1,80 @@
+<section xml:id="maestro-dardis-cubic">
+	<title><image source='media/image1.png'/><image source='media/image2.png'/>Maestro Dardi’s Cubic</title>
+
+	<p>
+		In 1344, Maestro Dardi of Pisa, one of the Italian abacists, extended the Islamic list of six equations to 198 types of equations of degree up to four.
+	</p>
+
+	<p>
+		One of the cubic equations Dardi solved was <m>x^{3} + 60x^{2} + 1200x = 4000</m>. Here is his solution:
+	</p>
+
+	<p>
+		Divide 1200 by 60, cube the result, add 4000, take the cube root,
+	</p>
+
+	<p>
+		and finally subtract the quotient of 1200 by 60.
+	</p>
+
+	<ol>
+		<li><p>
+		Does this give the (or a) correct solution to the equation?
+	</p></li>
+<li><p>
+		Generalize the procedure described above to give a formula for the solution to
+	</p>
+
+	<p>
+		<m>x^{3} + bx^{2} + cx = d</m>.
+	</p>
+
+	<p>
+		Is your formula correct? Try it for a few examples.
+	</p></li>
+<li><p>
+		Here is a practical problem Dardi describes:
+	</p>
+
+	<p>
+		A man lent 100 <em>lire</em> to another and after 3 years received back a total of 150 <em>lire</em> in principal and interest, where the interest was compounded annually. What was the interest rate?
+	</p>
+
+	<p>
+		We will let <m>x</m> be the rate in <em>denarii</em> for 1 <em>lire</em> for 1 month. Since 1 <em>lire</em> is worth 240 <em>dinarii</em>, the annual interest rate on 1 <em>lira</em> is <m>\frac{x}{20}</m>. Write an equation that describes the problem in terms of <em>x</em> and multiply it out.
+	</p></li>
+<li><p>
+		Use the fact that <m>\left( x + r \right)^{3} = x^{3} + 3rx^{2} + 3r^{2}x + r^{2}</m> to explain Dardi’s solution to his cubic, and explain why this will not work in general.
+	</p></li>
+	</ol>
+
+	<section xml:id="problems-of-the-renaissance">
+	<title><image source='media/image2.png'/><image source='media/image1.png'/>Problems of the Renaissance</title>
+
+	<p>
+		Here are a few other problems posed during the Renaissance.
+	</p>
+
+	<ol>
+		<li><blockquote>
+		<p>
+		From the Treviso Arithmetic, the first printed arithmetic text, dated 1478: The Holy Father sent a courier from Rome to Venice, commanding him that he should reach Venice in 7 days. And the most illustrious Signoria of Venice also sent another courier to Rome, who should reach Rome in 9 days. And from Rome to Venice is 250 miles. It happened that by order of these lords the couriers started their journey at the same time. It is required to find in how many days they will meet, and how many miles each will have traveled.
+	</p>
+	</blockquote></li>
+<li><blockquote>
+		<p>
+		From the work of Piero della Francesca: Three men enter into a partnership. The first puts in 58 ducats, the second 87; we do not know how much the third puts in. Their profit is 368, of which the first gets 86. What shares of profit do the second and third receive and how much did the third invest?
+	</p>
+	</blockquote></li>
+<li><blockquote>
+		<p>
+		From Rudolff’s <em>Coss</em>: I am owed 3240 <em>florins</em>. The debtor pays me 1 <em>florin</em> the first day, 2 the second day, 3 the third day, and so on. How many days does it take to pay off the debt?
+	</p>
+	</blockquote></li>
+<li><blockquote>
+		<p>
+		From Stifel’s <em>Arithmetica integra</em>: In the sequence of odd numbers, the first odd number equals <m>1^{5}</m>. After skipping one number, the sum of the next four numbers <m>(5 + 7 + 9 + 11)</m> equals <m>2^{5}</m>. After skilling the nest three numbers, the sum of the following nine numbers <m>(23 + 25 + 27 + 29 + 31 + 33 + 35)</m> equals <m>3^{5}</m>. At each successive stage, one skips the next triangular number of odd integers. Formulate this power rule of fifth powers in modern notation and prove it by induction.
+	</p>
+	</blockquote></li>
+	</ol>
+

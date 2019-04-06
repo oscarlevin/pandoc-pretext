@@ -1,18 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE article>
-<article
-  xmlns="http://docbook.org/ns/docbook" version="5.0"
-  xmlns:xlink="http://www.w3.org/1999/xlink" >
-  <info>
-    <title>Pandoc User’s Guide</title>
-    <authorgroup>
-      <author>
-        <firstname>John</firstname>
-        <surname>MacFarlane</surname>
-      </author>
-    </authorgroup>
-    <date>March 12, 2019</date>
-  </info>
 <section xml:id="synopsis">
   <title>Synopsis</title>
   <para>
@@ -9573,4 +9558,3 @@ pandoc --print-default-data-file sample.lua
     code.
   </para>
 </section>
-</article>

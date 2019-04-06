@@ -5,11 +5,11 @@
 -- output using 'data:' URLs. The image format can be controlled
 -- via the `image_format` metadata field.
 --
--- Invoke with: pandoc -t sample.lua
+-- Invoke with: pandoc -t pretext.lua
 --
 -- Note:  you need not have lua installed on your system to use this
 -- custom writer.  However, if you do have lua installed, you can
--- use it to test changes to the script.  'lua sample.lua' will
+-- use it to test changes to the script.  'lua pretext.lua' will
 -- produce informative error messages if your code contains
 -- syntax errors.
 
@@ -34,6 +34,14 @@ local image_mime_type = ({
     svg = "image/svg+xml",
   })[image_format]
   or error("unsupported image format `" .. img_format .. "`")
+  
+  local blocks = {
+    pandoc.Header(2, pandoc.Str 'first'),
+    pandoc.Header(2, pandoc.Str 'second'),
+  }
+  local elements = pandoc.utils.hierarchicalize(blocks)
+  print(table.concat(elements[1].numbering, '.')) -- 0.1
+  print(table.concat(elements[2].numbering, '.')) -- 0.2
 
 -- Character escaping
 -- (might want to remove the quotes, double check pretext)
@@ -62,7 +70,7 @@ local function attributes(attr)
   local attr_table = {}
   for x,y in pairs(attr) do
     if y and y ~= "" then
-      table.insert(attr_table, ' ' .. x .. '="' .. escape(y,true) .. '"')
+      table.insert(attr_table, ' xml:' .. x .. '="' .. escape(y,true) .. '"')
     end
   end
   return table.concat(attr_table)
@@ -73,7 +81,7 @@ local notes = {}
 
 -- Blocksep is used to separate block elements.
 function Blocksep()
-  return "\n\n"
+  return "\n\n\t"
 end
 
 -- This function is called once for the whole document. Parameters:
@@ -112,7 +120,7 @@ function Space()
 end
 
 function SoftBreak()
-  return "\n"
+  return " "
 end
 
 -- function LineBreak()
@@ -147,7 +155,7 @@ function Strikeout(s)
 end
 
 function Link(s, src, tit, attr)
-  return "<url href='" .. escape(src,true) .. "'>" .. s .. "</url>"
+  return '<url href="' .. escape(src,true) .. '">' .. s .. '</url>'
 end
 
 function Image(s, src, tit, attr)
@@ -180,14 +188,15 @@ function Note(s)
   s = string.gsub(s,
           '(.*)</', '%1 <a href="#fnref' .. num ..  '">&#8617;</a></')
   -- add a list item with the note to the note table.
-  table.insert(notes, '<li id="fn' .. num .. '">' .. s .. '</li>')
+  table.insert(notes, '<li xml:id="fn' .. num .. '">' .. s .. '</li>')
   -- return the footnote reference, linked to the note.
-  return '<a id="fnref' .. num .. '" href="#fn' .. num ..
+  return '<a xml:id="fnref' .. num .. '" href="#fn' .. num ..
             '"><sup>' .. num .. '</sup></a>'
 end
 
 function Span(s, attr)
-  return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
+  return s
+--  return "<span" .. attributes(attr) .. ">" .. s .. "</span>"
 end
 
 function RawInline(format, str)
@@ -212,22 +221,27 @@ function Plain(s)
 end
 
 function Para(s)
-  return "<p>\n\t" .. s .. "\n</p>"
+  return "<p>\n\t\t" .. s .. "\n\t</p>"
 end
 
 -- lev is an integer, the header level.
 function Header(lev, s, attr)
-  return "<h" .. lev .. attributes(attr) ..  ">" .. s .. "</h" .. lev .. ">"
+  if lev == 1 then
+    return "<section" .. attributes(attr) .. ">\n\t<title>" .. s .. "</title>"
+  else
+    return "<subsection" .. attributes(attr) .. ">\n\t<title>" .. s .. "</title>"
+  end
+--  return "<h" .. lev .. attributes(attr) ..  ">" .. s .. "</h" .. lev .. ">"
 end
 
 function BlockQuote(s)
-  return "<blockquote>\n" .. s .. "\n</blockquote>"
+  return "<blockquote>\n\t\t" .. s .. "\n\t</blockquote>"
 end
 
 -- Remove:
 function HorizontalRule()
 --  return "<hr/>"
-  return ""
+  return "\n\n"
 end
 
 function LineBlock(ls)
@@ -253,7 +267,7 @@ function BulletList(items)
   for _, item in pairs(items) do
     table.insert(buffer, "<li>" .. item .. "</li>")
   end
-  return "<ul>\n" .. table.concat(buffer, "\n") .. "\n</ul>"
+  return "<ul>\n\t\t" .. table.concat(buffer, "\n\t") .. "\n\t</ul>"
 end
 
 function OrderedList(items)
@@ -261,7 +275,7 @@ function OrderedList(items)
   for _, item in pairs(items) do
     table.insert(buffer, "<li>" .. item .. "</li>")
   end
-  return "<ol>\n" .. table.concat(buffer, "\n") .. "\n</ol>"
+  return "<ol>\n\t\t" .. table.concat(buffer, "\n") .. "\n\t</ol>"
 end
 
 function DefinitionList(items)
@@ -271,7 +285,7 @@ function DefinitionList(items)
     table.insert(buffer, "<dt>" .. k .. "</dt>\n<dd>" ..
                    table.concat(v, "</dd>\n<dd>") .. "</dd>")
   end
-  return "<dl>\n" .. table.concat(buffer, "\n") .. "\n</dl>"
+  return "<dl>\n\t\t" .. table.concat(buffer, "\n") .. "\n\t</dl>"
 end
 
 -- Convert pandoc alignment to something HTML can use.
@@ -341,15 +355,17 @@ function Table(caption, aligns, widths, headers, rows)
 end
 
 function RawBlock(format, str)
-  if format == "html" then
-    return str
-  else
-    return ''
-  end
+  return "<cd>\n\t\t" .. str .. "\n\t</cd>"
 end
 
 function Div(s, attr)
-  return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
+  return s .. "\n"
+--  return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
+end
+
+-- Doesn't work:
+function Sec(lev, num, attr, label, s)
+  return "<section test " .. lev .. num .. attributes(attr) .. label .. ">" .. s .. "</section test>" 
 end
 
 -- The following code will produce runtime warnings when you haven't defined
