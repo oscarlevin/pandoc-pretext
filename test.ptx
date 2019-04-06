@@ -1,0 +1,211 @@
+<body>
+<sec id="sec-1">
+<title/>
+<p>The scientific impact of a particular piece of research is reflected inhow this work is taken up by the scientific community. The firstsystematic approach that was used to assess impact, based on thetechnology available at the time, was to track citations and aggregatethem by journal. This strategy is not only no longer necessary — since nowwe can easily track citations for individual articles — but also, and moreimportantly, journal-based metrics are now considered a poor performancemeasure for individual articles [@Campbell2008; @Glanzel2013]. One majorproblem with journal-based metrics is the variation in citations perarticle, which means that a small percentage of articles can skew, andare responsible for, the majority of the journal-based citation impactfactor, as shown by Campbell [-@Campbell2008] for the 2004<italic>Nature</italic> Journal Impact Factor. <bold>Figure 1</bold> furtherillustrates this point, showing the wide distribution of citation countsbetween <italic>PLOS Biology</italic> research articles published in 2010. <italic>PLOSBiology</italic> research articles published in 2010 have been cited a median 19times to date in Scopus, but 10% of them have been cited 50 or moretimes, and two articles [@Narendra:2010fw; @Dickson:2010ix] more than300 times. <italic>PLOS Biology</italic> metrics are used as examples throughout thisessay, and the dataset is available in the supporting information (<bold>DataS1</bold>). Similar data are available for an increasingnumber of other publications and organizations.</p>
+<pre><code class="r"># code for figure 1: density plots for citation counts for PLOS Biology
+# articles published in 2010
+
+# load May 20, 2013 ALM report
+alm &lt;- read.csv(&quot;../data/alm_report_plos_biology_2013-05-20.csv&quot;, stringsAsFactors = FALSE)
+
+# only look at research articles
+alm &lt;- subset(alm, alm$article_type == &quot;Research Article&quot;)
+
+# only look at papers published in 2010
+alm$publication_date &lt;- as.Date(alm$publication_date)
+alm &lt;- subset(alm, alm$publication_date &gt; &quot;2010-01-01&quot; &amp; alm$publication_date &lt;=
+    &quot;2010-12-31&quot;)
+
+# labels
+colnames &lt;- dimnames(alm)[[2]]
+plos.color &lt;- &quot;#1ebd21&quot;
+plos.source &lt;- &quot;scopus&quot;
+
+plos.xlab &lt;- &quot;Scopus Citations&quot;
+plos.ylab &lt;- &quot;Probability&quot;
+
+quantile &lt;- quantile(alm[, plos.source], c(0.1, 0.5, 0.9), na.rm = TRUE)
+
+# plot the chart
+opar &lt;- par(mai = c(0.5, 0.75, 0.5, 0.5), omi = c(0.25, 0.1, 0.25, 0.1), mgp = c(3,
+    0.5, 0.5), fg = &quot;black&quot;, cex.main = 2, cex.lab = 1.5, col = plos.color,
+    col.main = plos.color, col.lab = plos.color, xaxs = &quot;i&quot;, yaxs = &quot;i&quot;)
+
+d &lt;- density(alm[, plos.source], from = 0, to = 100)
+d$x &lt;- append(d$x, 0)
+d$y &lt;- append(d$y, 0)
+plot(d, type = &quot;n&quot;, main = NA, xlab = NA, ylab = NA, xlim = c(0, 100), frame.plot = FALSE)
+polygon(d, col = plos.color, border = NA)
+mtext(plos.xlab, side = 1, col = plos.color, cex = 1.25, outer = TRUE, adj = 1,
+    at = 1)
+mtext(plos.ylab, side = 2, col = plos.color, cex = 1.25, outer = TRUE, adj = 0,
+    at = 1, las = 1)
+
+par(opar)</code></pre>
+<fig id="g001"><caption>/images/2013-12-11_figure_1.svg</caption><graphic mimetype="image" xlink:href="fig:" xlink:title="&amp;lt;bold&amp;gt;Figure 1. Citation counts for PLOS Biology articles published in 2010.&amp;lt;/bold&amp;gt; Scopus citation counts plotted as a probability distribution for all 197 &amp;lt;italic&amp;gt;PLOS Biology&amp;lt;/italic&amp;gt; research articles published in 2010. Data collected May 20, 2013. Median 19 citations; 10% of papers have at least 50 citations." xlink:type="simple"/></fig>
+<p>Scientific impact is a multi-dimensional construct that can not beadequately measured by any single indicator[@Glanzel2013; @bollenEtal2009; @Schekman2013].To this end, PLOS has collected and displayed a variety of metrics forall its articles since 2009. The array of different categorisedarticle-level metrics (ALMs) used and provided by PLOS as of August 2013are shown in <bold>Figure 2</bold>. In addition to citationsand usage statistics, i.e., how often an article has been viewed anddownloaded, PLOS also collects metrics about: how often an article hasbeen saved in online reference managers, such as Mendeley; how often anarticle has been discussed in its comments section online, and also inscience blogs or in social media; and how often an article has beenrecommended by other scientists. These additional metrics providevaluable information that we would miss if we only consider citations.Two important shortcomings of citation-based metrics are that (1) theytake years to accumulate and (2) citation analysis is not always thebest indicator of impact in more practical fields, such as clinicalmedicine [@VanEck2013]. Usage statistics often betterreflect the impact of work in more practical fields, and they alsosometimes better highlight articles of general interest (for example,the 2006 <italic>PLOS Biology</italic> article on the citation advantage of Open Accessarticles [@Eysenbach2006], one of the 10 most-viewedarticles published in <italic>PLOS Biology</italic>).</p>
+<fig id="g002"><caption>/images/2013-12-11_figure_2.png</caption><graphic mimetype="image" xlink:href="fig:" xlink:title="&amp;lt;bold&amp;gt;Figure 2. Article-level metrics used by PLOS in August 2013 and theircategories.&amp;lt;/bold&amp;gt; Taken from [@Lin2013] with permission by the authors." xlink:type="simple"/></fig>
+<p>A bubble chart showing all 2010 <italic>PLOS Biology</italic> articles (<bold>Figure3</bold>) gives a good overview of the year’s views andcitations, plus it shows the influence that the article type (asindicated by dot color) has on an article’s performance as measured bythese metrics. The weekly <italic>PLOS Biology</italic> publication schedule isreflected in this figure, with articles published on the same daypresent in a vertical line. <bold>Figure 3</bold> also showsthat the two most highly cited 2010 <italic>PLOS Biology</italic> research articles arealso among the most viewed (indicated by the red arrows), but overallthere isn’t a strong correlation between citations and views. Themost-viewed article published in 2010 in <italic>PLOS Biology</italic> is an essay onDarwinian selection in robots [@Floreano2010]. Detailedusage statistics also allow speculatulation about the different waysthat readers access and make use of published literature; some articlesare browsed or read online due to general interest while others that aredownloaded (and perhaps also printed) may reflect the reader’s intentionto look at the data and results in detail and to return to the articlemore than once.</p>
+<pre><code class="r"># code for figure 3: Bubblechart views vs. citations for PLOS Biology
+# articles published in 2010.
+
+# Load required libraries
+library(plyr)
+
+# load May 20, 2013 ALM report
+alm &lt;- read.csv(&quot;../data/alm_report_plos_biology_2013-05-20.csv&quot;, stringsAsFactors = FALSE,
+    na.strings = c(&quot;0&quot;))
+
+# only look at papers published in 2010
+alm$publication_date &lt;- as.Date(alm$publication_date)
+alm &lt;- subset(alm, alm$publication_date &gt; &quot;2010-01-01&quot; &amp; alm$publication_date &lt;=
+    &quot;2010-12-31&quot;)
+
+# make sure counter values are numbers
+alm$counter_html &lt;- as.numeric(alm$counter_html)
+
+# lump all papers together that are not research articles
+reassignType &lt;- function(x) if (x == &quot;Research Article&quot;) 1 else 0
+alm$article_group &lt;- aaply(alm$article_type, 1, reassignType)
+
+# calculate article age in months
+alm$age_in_months &lt;- (Sys.Date() - alm$publication_date)/365.25 * 12
+start_age_in_months &lt;- floor(as.numeric(Sys.Date() - as.Date(strptime(&quot;2010-12-31&quot;,
+    format = &quot;%Y-%m-%d&quot;)))/365.25 * 12)
+
+# chart variables
+x &lt;- alm$age_in_months
+y &lt;- alm$counter
+z &lt;- alm$scopus
+
+xlab &lt;- &quot;Age in Months&quot;
+ylab &lt;- &quot;Total Views&quot;
+
+labels &lt;- alm$article_group
+col.main &lt;- &quot;#1ebd21&quot;
+col &lt;- &quot;#666358&quot;
+
+# calculate bubble diameter
+z &lt;- sqrt(z/pi)
+
+# calculate bubble color
+getColor &lt;- function(x) c(&quot;#c9c9c7&quot;, &quot;#1ebd21&quot;)[x + 1]
+colors &lt;- aaply(labels, 1, getColor)
+
+# plot the chart
+opar &lt;- par(mai = c(0.5, 0.75, 0.5, 0.5), omi = c(0.25, 0.1, 0.25, 0.1), mgp = c(3,
+    0.5, 0.5), fg = &quot;black&quot;, cex = 1, cex.main = 2, cex.lab = 1.5, col = &quot;white&quot;,
+    col.main = col.main, col.lab = col)
+
+plot(x, y, type = &quot;n&quot;, xlim = c(start_age_in_months, start_age_in_months + 13),
+    ylim = c(0, 60000), xlab = NA, ylab = NA, las = 1)
+symbols(x, y, circles = z, inches = exp(1.3)/15, bg = colors, xlim = c(start_age_in_months,
+    start_age_in_months + 13), ylim = c(0, ymax), xlab = NA, ylab = NA, las = 1,
+    add = TRUE)
+mtext(xlab, side = 1, col = col.main, cex = 1.25, outer = TRUE, adj = 1, at = 1)
+mtext(ylab, side = 2, col = col.main, cex = 1.25, outer = TRUE, adj = 0, at = 1,
+    las = 1)
+
+par(opar)</code></pre>
+<fig id="g003"><caption>/images/2013-12-11_figure_3.svg</caption><graphic mimetype="image" xlink:href="fig:" xlink:title="&amp;lt;bold&amp;gt;Figure 3. Views vs. citations for PLOS Biology articles published in 2010.&amp;lt;/bold&amp;gt; All 304 &amp;lt;italic&amp;gt;PLOS Biology&amp;lt;/italic&amp;gt; articles published in 2010. Bubble size correlates with number of Scopus citations. Research articles are labeled green; all other articles are grey. Red arrows indicate the two most highly cited papers. Data collected May 20, 2013." xlink:type="simple"/></fig>
+<p>When readers first see an interesting article, their response is oftento view or download it. By contrast, a citation may be one of the lastoutcomes of their interest, occuring only about 1 in 300 times a PLOSpaper is viewed online. A lot of things happen in between thesepotential responses, ranging from discussions in comments, social media,and blogs, to bookmarking, to linking from websites. These activitiesare usually subsumed under the term "altmetrics," and their variety canbe overwhelming. Therefore, it helps to group them together intocategories, and several organizations, including PLOS, are using thecategory labels of Viewed, Cited, Saved, Discussed, and Recommended(<bold>Figures 2 and 4</bold>, see also [@Lin2013]).</p>
+<pre><code class="r"># code for figure 4: bar plot for Article-level metrics for PLOS Biology
+
+# Load required libraries
+library(reshape2)
+
+# load May 20, 2013 ALM report
+alm &lt;- read.csv(&quot;../data/alm_report_plos_biology_2013-05-20.csv&quot;, stringsAsFactors = FALSE,
+    na.strings = c(0, &quot;0&quot;))
+
+# only look at research articles
+alm &lt;- subset(alm, alm$article_type == &quot;Research Article&quot;)
+
+# make sure columns are in the right format
+alm$counter_html &lt;- as.numeric(alm$counter_html)
+alm$mendeley &lt;- as.numeric(alm$mendeley)
+
+# options
+plos.color &lt;- &quot;#1ebd21&quot;
+plos.colors &lt;- c(&quot;#a17f78&quot;, &quot;#ad9a27&quot;, &quot;#ad9a27&quot;, &quot;#ad9a27&quot;, &quot;#ad9a27&quot;, &quot;#ad9a27&quot;,
+    &quot;#dcebdd&quot;, &quot;#dcebdd&quot;, &quot;#789aa1&quot;, &quot;#789aa1&quot;, &quot;#789aa1&quot;, &quot;#304345&quot;, &quot;#304345&quot;)
+
+# use subset of columns
+alm &lt;- subset(alm, select = c(&quot;f1000&quot;, &quot;wikipedia&quot;, &quot;researchblogging&quot;, &quot;comments&quot;,
+    &quot;facebook&quot;, &quot;twitter&quot;, &quot;citeulike&quot;, &quot;mendeley&quot;, &quot;pubmed&quot;, &quot;crossref&quot;, &quot;scopus&quot;,
+    &quot;pmc_html&quot;, &quot;counter_html&quot;))
+
+# calculate percentage of values that are not missing (i.e. have a count of
+# at least 1)
+colSums &lt;- colSums(!is.na(alm)) * 100/length(alm$counter_html)
+exactSums &lt;- sum(as.numeric(alm$pmc_html), na.rm = TRUE)
+
+# plot the chart
+opar &lt;- par(mar = c(0.1, 7.25, 0.1, 0.1) + 0.1, omi = c(0.1, 0.25, 0.1, 0.1),
+    col.main = plos.color)
+
+plos.names &lt;- c(&quot;F1000Prime&quot;, &quot;Wikipedia&quot;, &quot;Research Blogging&quot;, &quot;PLOS Comments&quot;,
+    &quot;Facebook&quot;, &quot;Twitter&quot;, &quot;CiteULike&quot;, &quot;Mendeley&quot;, &quot;PubMed Citations&quot;, &quot;CrossRef&quot;,
+    &quot;Scopus&quot;, &quot;PMC HTML Views&quot;, &quot;PLOS HTML Views&quot;)
+y &lt;- barplot(colSums, horiz = TRUE, col = plos.colors, border = NA, xlab = plos.names,
+    xlim = c(0, 120), axes = FALSE, names.arg = plos.names, las = 1, adj = 0)
+text(colSums + 6, y, labels = sprintf(&quot;%1.0f%%&quot;, colSums))
+
+par(opar)</code></pre>
+<fig id="g004"><caption>/images/2013-12-11_figure_4.svg</caption><graphic mimetype="image" xlink:href="fig:" xlink:title="&amp;lt;bold&amp;gt;Figure 4. Article-level metrics for PLOS Biology.&amp;lt;/bold&amp;gt; Proportion of all 1,706 &amp;lt;italic&amp;gt;PLOS Biology&amp;lt;/italic&amp;gt; research articles published up to May 20, 2013 mentioned by particular article-level metrics source. Colors indicate categories (Viewed, Cited, Saved, Discussed, Recommended), as used on the PLOS website." xlink:type="simple"/></fig>
+<p>All <italic>PLOS Biology</italic> articles are viewed and downloaded, and almost all ofthem (all research articles and nearly all front matter) will be citedsooner or later. Almost all of them will also be bookmarked in onlinereference managers, such as Mendeley, but the percentage of articlesthat are discussed online is much smaller. Some of these percentages aretime dependent; the use of social media discussion platforms, such asTwitter and Facebook for example, has increased in recent years (93% of<italic>PLOS Biology</italic> research articles published since June 2012 have beendiscussed on Twitter, and 63% mentioned on Facebook). These are thelocations where most of the online discussion around published articlescurrently seems to take place; the percentage of papers with comments onthe PLOS website or that have science blog posts written about them ismuch smaller. Not all of this online discussion is about researcharticles, and perhaps, not surprisingly, the most-tweeted PLOS articleoverall (with more than 1,100 tweets) is a <italic>PLOS Biology</italic> perspective onthe use of social media for scientists [@Bik2013].</p>
+<p>Some metrics are not so much indicators of a broad online discussion,but rather focus on highlighting articles of particular interest. Forexample, science blogs allow a more detailed discussion of an article ascompared to comments or tweets, and journals themselves sometimes chooseto highlight a paper on their own blogs, allowing for a more digestibleexplanation of the science for the non-expert reader[@Fausto2012]. Coverage by other bloggers also servesthe same purpose; a good example of this is one recent post on theOpenHelix Blog [@Video2012] that contains video footageof the second author of a 2010 <italic>PLOS Biology</italic> article[@Dalloul2010] discussing the turkey genome.</p>
+<p>F1000Prime, a commercial service of recommendations by expertscientists, was added to the PLOS Article-Level Metrics in August 2013.We now highlight on the PLOS website when any articles have received atleast one recommendation within F1000Prime. We also monitor when anarticle has been cited within the widely used modern-day onlineencyclopedia, Wikipedia. A good example of the latter is the Tasmaniandevil Wikipedia page [@Tasmanian2013] that links to a<italic>PLOS Biology</italic> research article published in 2010[@Nilsson2010]. While a F1000Prime recommendation is astrong endorsement from peer(s) in the scientific community, beingincluded in a Wikipedia page is akin to making it into a textbook aboutthe subject area and being read by a much wider audience that goesbeyond the scientific community.</p>
+<p><italic>PLOS Biology</italic> is the PLOS journal with the highest percentage ofarticles recommended in F1000Prime and mentioned in Wikipedia, but thereis only partial overlap between the two groups of articles because theyfocus on different audiences (<bold>Figure 5</bold>). Theserecommendations and mentions in turn show correlations with othermetrics, but not simple ones; you can’t assume, for example, that highlycited articles are more likely to be recommended by F1000Prime, so itwill be interesting to monitor these trends now that we include thisinformation.</p>
+<pre><code class="r"># code for figure 5: Venn diagram F1000 vs. Wikipedia for PLOS Biology
+# articles
+
+# load required libraries
+library(&quot;plyr&quot;)
+library(&quot;VennDiagram&quot;)
+
+# load May 20, 2013 ALM report
+alm &lt;- read.csv(&quot;../data/alm_report_plos_biology_2013-05-20.csv&quot;, stringsAsFactors = FALSE)
+
+# only look at research articles
+alm &lt;- subset(alm, alm$article_type == &quot;Research Article&quot;)
+
+# group articles based on values in Wikipedia and F1000
+reassignWikipedia &lt;- function(x) if (x &gt; 0) 1 else 0
+alm$wikipedia_bin &lt;- aaply(alm$wikipedia, 1, reassignWikipedia)
+reassignF1000 &lt;- function(x) if (x &gt; 0) 2 else 0
+alm$f1000_bin &lt;- aaply(alm$f1000, 1, reassignF1000)
+alm$article_group = alm$wikipedia_bin + alm$f1000_bin
+reassignCombined &lt;- function(x) if (x == 3) 1 else 0
+alm$combined_bin &lt;- aaply(alm$article_group, 1, reassignCombined)
+reassignNo &lt;- function(x) if (x == 0) 1 else 0
+alm$no_bin &lt;- aaply(alm$article_group, 1, reassignNo)
+
+# remember to divide f1000_bin by 2, as this is the default value
+summary &lt;- colSums(subset(alm, select = c(&quot;wikipedia_bin&quot;, &quot;f1000_bin&quot;, &quot;combined_bin&quot;,
+    &quot;no_bin&quot;)), na.rm = TRUE)
+rows &lt;- nrow(alm)
+
+# options
+plos.colors &lt;- c(&quot;#c9c9c7&quot;, &quot;#0000ff&quot;, &quot;#ff0000&quot;)
+
+# plot the chart
+opar &lt;- par(mai = c(0.5, 0.75, 3.5, 0.5), omi = c(0.5, 0.5, 1.5, 0.5), mgp = c(3,
+    0.5, 0.5), fg = &quot;black&quot;, cex.main = 2, cex.lab = 1.5, col = plos.color,
+    col.main = plos.color, col.lab = plos.color, xaxs = &quot;i&quot;, yaxs = &quot;i&quot;)
+
+venn.plot &lt;- draw.triple.venn(area1 = rows, area2 = summary[1], area3 = summary[2]/2,
+    n12 = summary[1], n23 = summary[3], n13 = summary[2]/2, n123 = summary[3],
+    euler.d = TRUE, scaled = TRUE, fill = plos.colors, cex = 2, fontfamily = rep(&quot;sans&quot;,
+        7))
+
+par(opar)</code></pre>
+<fig id="g005"><caption>/images/2013-12-11_figure_5.svg</caption><graphic mimetype="image" xlink:href="fig:" xlink:title="&amp;lt;bold&amp;gt;Figure 5. PLOS Biology articles: sites of recommendation and discussion.&amp;lt;/bold&amp;gt; Number of &amp;lt;italic&amp;gt;PLOS Biology&amp;lt;/italic&amp;gt; research articles published up to May 20, 2013 that have been recommended by F1000Prime (red) or mentioned in Wikipedia (blue)." xlink:type="simple"/></fig>
+<p>With the increasing availability of ALM data, there comes a growing needto provide tools that will allow the community to interrogate them. Agood first step for researchers, research administrators, and othersinterested in looking at the metrics of a larger set of PLOS articles isthe recently launched ALM Reports tool [@ALM2013]. Thereare also a growing number of service providers, including Altmetric.com[@Altmetric2013], ImpactStory [@Impactstory2013], and Plum Analytics[@Plum2013] that provide similar services for articlesfrom other publishers.</p>
+<p>As article-level metrics become increasingly used by publishers,funders, universities, and researchers, one of the major challenges toovercome is ensuring that standards and best practices are widelyadopted and understood. The National Information Standards Organization(NISO) was recently awarded a grant by the Alfred P. Sloan Foundation towork on this [@NISO2013], and PLOS is actively involvedin this project. We look forward to further developing our article-levelmetrics and to having them adopted by other publishers, which hopefullywill pave the way to their wide incorporation into research andresearcher assessments.</p>
+</sec>
+<supplementary-material>
+<caption><title>Supporting Information</title>
+<p><bold><ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pbio.1001687.s001" xlink:type="simple">Data S1</ext-link>.Dataset of ALM for PLOS Biology articles used in the text, andR scripts that were used to produce figures.</bold> The data were collectedon May 20, 2013 and include all <italic>PLOS Biology</italic> articles published up tothat day. Data for F1000Prime were collected on August 15, 2013. Allcharts were produced with R version 3.0.0.</p></caption>
+</supplementary-material>
+</body>

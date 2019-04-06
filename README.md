@@ -1,6 +1,6 @@
 # Pandoc to PreTeXt
 
-A first stab at creating a Lua writer to convert anything pandoc reads to PreTeXt.
+A first stab at creating a Lua writer to convert anything pandoc reads to PreTeXt.  The writer will be based extensively on [pandoc-jats]{https://github.com/mfenner/pandoc-jats}.
 
 The goal is primarily to streamline the conversion of latex (or even word) files into PreTeXt.  If successful though, this might make for a reasonable workflow for PreTeXt newbies: write in pandoc's markdown or whatever they are used to, then convert to PreTeXt to include in a book.
 
