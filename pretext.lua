@@ -47,6 +47,8 @@ function Doc(body, metadata, variables)
     body = body .. '\n' .. xml('back', '\n' .. table.concat(back, '\n'))
   end
 
+  -- print(body)
+
   return body
 end
 
@@ -308,7 +310,7 @@ end
 
 -- Blocksep is used to separate block elements.
 function Blocksep()
-  return "\n"
+  return "\n\n"
 end
 
 -- The functions that follow render corresponding pandoc elements.
@@ -328,12 +330,12 @@ function Para(s)
 end
 
 function RawBlock(s)
-  return xml('preformat', s)
+  return xml('pre', s)
 end
 
 -- JATS restricts use to inside table cells (<td> and <th>)
 function HorizontalRule()
-  return '<hr/>'
+  return '<!-- hrule -->'
 end
 
 -- lev is an integer, the header level.
@@ -362,7 +364,7 @@ function CodeBlock(s, attr)
 end
 
 function BlockQuote(s)
-  xml('boxed-text', s)
+  xml('blockquote', s)
 end
 
 -- Caption is a string, aligns is an array of strings,
@@ -462,7 +464,7 @@ function Section(lev, s, title, attr)
   local h = last and last.h or {}
   h[lev] = (h[lev] or 0) + 1
   for i = lev + 1, #headers do
-    table.remove(h, i)
+    -- table.remove(h, i)
   end
 
   local header = { ['h'] = h,
@@ -474,7 +476,7 @@ function Section(lev, s, title, attr)
 
   attr = { ['id'] = header['id'], ['sec-type'] = header['sec-type'] }
   title = xml('title', title ~= '' and title or nil)
-  return xml('sec', '\n' .. title .. s, attr)
+  return xml('section', '\n' .. title .. s, attr)
 end
 
 function SupplementaryMaterial(s, title, attr)
@@ -486,7 +488,7 @@ end
 
 function Ack(s, title)
   title = title and '\n' .. xml('title', title) or ''
-  return xml('ack', title .. s)
+  return xml('acknowledgments', title .. s)
 end
 
 function Glossary(s, title, attr)
@@ -535,15 +537,15 @@ function SoftBreak()
 end
 
 function Emph(s)
-  return xml('italic', s)
+  return xml('em', s)
 end
 
 function Strong(s)
-  return xml('bold', s)
+  return xml('alert', s)
 end
 
 function Strikeout(s)
-  return xml('strike', s)
+  return xml('delete', s)
 end
 
 function Superscript(s)
@@ -555,15 +557,15 @@ function Subscript(s)
 end
 
 function SmallCaps(s)
-  return xml('sc', s)
+  return xml('alert', s)
 end
 
 function SingleQuoted(s)
-  return "'" .. s .. "'"
+  return xml('sq', s)
 end
 
 function DoubleQuoted(s)
-  return '"' .. s .. '"'
+  return xml('q', s)
 end
 
 -- format in-text citation
@@ -587,15 +589,15 @@ function Cite(s)
 end
 
 function Code(s, attr)
-  return xml('preformat', s, attr)
+  return xml('c', s, attr)
 end
 
 function DisplayMath(s)
-  return xml('disp-formula', s)
+  return xml('me', s)
 end
 
 function InlineMath(s)
-  return xml('inline-formula', s)
+  return xml('m', s)
 end
 
 function RawInline(s)
