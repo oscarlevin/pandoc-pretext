@@ -1,24 +1,42 @@
-<body>
-<sec id="sec-1">
-<title>Test markdown</title>
-<p>This is a simple file to test against. I can add different things here to see how they get converted</p>
-</sec>
-<sec id="sec-1.1">
-<title>This is the title of a subsection.</title>
-<p>Text of a subsection</p>
-</sec>
-<sec id="sec-1.2">
-<title>Another subsection</title>
-<p>Here we have a first paragraph.</p>
-<p>Here is another.</p>
-</sec>
-<sec id="sec-2.2">
-<title>A new main section.</title>
-<p>Here is a list:</p>
-<list list-type="bullet">
-<list-item>bullet one</list-item>
-<list-item>another one</list-item>
-<list-item>last one</list-item>
-</list>
-<p>The end.</p></sec>
-</body>
+<section xml:id="test-markdown">
+	<title>Test markdown</title>
+
+	<p>
+		This is a simple file to test against. I can add different things here to see how they get converted
+	</p>
+
+	<subsection xml:id="this-is-the-title-of-a-subsection.">
+	<title>This is the title of a subsection.</title>
+
+	<p>
+		Text of a subsection. This is <em>first emph text</em>
+	</p>
+
+	<subsection xml:id="another-subsection">
+	<title>Another subsection</title>
+
+	<p>
+		Here we have a first paragraph.
+	</p>
+
+	<p>
+		Here is another. <em>more emph</em>
+	</p>
+
+	<section xml:id="a-new-main-section.">
+	<title>A new main section.</title>
+
+	<p>
+		Here is a list:
+	</p>
+
+	<ul>
+		<li>bullet one</li>
+	<li>another one</li>
+	<li>last one</li>
+	</ul>
+
+	<p>
+		The end.
+	</p>
+

@@ -47,7 +47,7 @@ function Doc(body, metadata, variables)
     body = body .. '\n' .. xml('back', '\n' .. table.concat(back, '\n'))
   end
 
-  -- print(body)
+  -- print(variables)
 
   return body
 end
@@ -98,10 +98,17 @@ function pairsByKeys (t, f)
   return iter
 end
 
--- generic xml builder
-function xml(tag, s, attr)
+-- generic xml builder - inline
+function xmlInLine(tag, s, attr)
   attr = attr and attributes(attr) or ''
   s = s and '>' .. s .. '</' .. tag .. '>' or '/>'
+  return '<' .. tag .. attr .. s
+end
+
+-- generic xml builder - indented
+function xml(tag, s, attr)
+  attr = attr and attributes(attr) or ''
+  s = s and '>\n\t' .. s .. '\n</' .. tag .. '>' or '/>'
   return '<' .. tag .. attr .. s
 end
 
@@ -237,68 +244,68 @@ end
 -- Create table with year, month, day and iso8601-formatted date
 -- Input is iso8601-formatted date as string
 -- Return nil if input is not a valid date
-function date_helper(iso_date)
-  if not iso_date or string.len(iso_date) ~= 10 then return nil end
+-- function date_helper(iso_date)
+--   if not iso_date or string.len(iso_date) ~= 10 then return nil end
+-- 
+--   _,_,y,m,d = string.find(iso_date, '(%d+)-(%d+)-(%d+)')
+--   time = os.time({ year = y, month = m, day = d })
+--   date = os.date('*t', time)
+--   date.iso8601 = string.format('%04d-%02d-%02d', date.year, date.month, date.day)
+--   return date
+-- end
 
-  _,_,y,m,d = string.find(iso_date, '(%d+)-(%d+)-(%d+)')
-  time = os.time({ year = y, month = m, day = d })
-  date = os.date('*t', time)
-  date.iso8601 = string.format('%04d-%02d-%02d', date.year, date.month, date.day)
-  return date
-end
+-- -- Create affiliation table, linked to authors via aff-id
+-- function affiliation_helper(tbl)
+-- 
+--   set = {}
+--   i = 0
+--   for _,author in ipairs(tbl.author) do
+--     if author.affiliation then
+--       if not set[author.affiliation] then
+--         i = i + 1
+--         set[author.affiliation] = i
+--       end
+--       author['aff-id'] = set[author.affiliation]
+--     end
+--   end
+-- 
+--   tbl.aff = {}
+--   for k,v in pairs(set) do
+--     aff = { id = v, name = k }
+--     table.insert(tbl.aff, aff)
+--   end
+-- 
+--   return tbl
+-- end
 
--- Create affiliation table, linked to authors via aff-id
-function affiliation_helper(tbl)
+-- -- Create corresponding author table, linked to authors via cor-id
+-- function corresp_helper(tbl)
+-- 
+--   set = {}
+--   i = 0
+--   for _,author in ipairs(tbl.author) do
+--     if author.corresp and author.email then
+--       i = i + 1
+--       set[i] = author.email
+--       author['cor-id'] = i
+--     end
+--   end
+-- 
+--   tbl.corresp = {}
+--   for k,v in pairs(set) do
+--     corresp = { id = k, email = v }
+--     table.insert(tbl.corresp, corresp)
+--   end
+-- 
+--   return tbl
+-- end
 
-  set = {}
-  i = 0
-  for _,author in ipairs(tbl.author) do
-    if author.affiliation then
-      if not set[author.affiliation] then
-        i = i + 1
-        set[author.affiliation] = i
-      end
-      author['aff-id'] = set[author.affiliation]
-    end
-  end
-
-  tbl.aff = {}
-  for k,v in pairs(set) do
-    aff = { id = v, name = k }
-    table.insert(tbl.aff, aff)
-  end
-
-  return tbl
-end
-
--- Create corresponding author table, linked to authors via cor-id
-function corresp_helper(tbl)
-
-  set = {}
-  i = 0
-  for _,author in ipairs(tbl.author) do
-    if author.corresp and author.email then
-      i = i + 1
-      set[i] = author.email
-      author['cor-id'] = i
-    end
-  end
-
-  tbl.corresp = {}
-  for k,v in pairs(set) do
-    corresp = { id = k, email = v }
-    table.insert(tbl.corresp, corresp)
-  end
-
-  return tbl
-end
-
--- temporary fix
-function fix_citeproc(s)
-  s = s:gsub('</surname>, ', '</surname>')
-  s = s:gsub('</name></name><name>','</name>')
-  return s
-end
+-- -- temporary fix
+-- function fix_citeproc(s)
+--   s = s:gsub('</surname>, ', '</surname>')
+--   s = s:gsub('</name></name><name>','</name>')
+--   return s
+-- end
 
 -- Convert pandoc alignment to something HTML can use.
 -- align is AlignLeft, AlignRight, AlignCenter, or AlignDefault.
@@ -310,7 +317,7 @@ end
 
 -- Blocksep is used to separate block elements.
 function Blocksep()
-  return "\n\n"
+  return "\n"
 end
 
 -- The functions that follow render corresponding pandoc elements.
@@ -343,7 +350,7 @@ end
 function Header(lev, s, attr)
   attr = attr or {}
   attr['lev'] = '' .. lev
-  return '</sec>\n<sec' .. attributes(attr) .. '>\n' .. xml('title', s)
+  return '</section>\n<section' .. attributes(attr) .. '>\n' .. xml('title', s)
 end
 
 function Note(s)
@@ -475,13 +482,13 @@ function Section(lev, s, title, attr)
   table.insert(headers, header)
 
   attr = { ['id'] = header['id'], ['sec-type'] = header['sec-type'] }
-  title = xml('title', title ~= '' and title or nil)
+  title = xmlInLine('title', title ~= '' and title or nil)
   return xml('section', '\n' .. title .. s, attr)
 end
 
 function SupplementaryMaterial(s, title, attr)
   attr = {}
-  title = xml('title', title)
+  title = xmlInLine('title', title)
   local caption = xml('caption', title .. s)
   return xml('supplementary-material', '\n' .. caption .. '\n', attr)
 end
@@ -492,7 +499,7 @@ function Ack(s, title)
 end
 
 function Glossary(s, title, attr)
-  title = xml('title', title)
+  title = xmlInLine('title', title)
   return xml('glossary', title .. s, attr)
 end
 
@@ -510,7 +517,7 @@ function RefList(s, title)
   end
 
   if #references > 0 then
-    title = xml('title', title)
+    title = xmlInLine('title', title)
     return xml('ref-list', title .. table.concat(references, '\n'), attr)
   else
     return ''
@@ -537,35 +544,35 @@ function SoftBreak()
 end
 
 function Emph(s)
-  return xml('em', s)
+  return xmlInLine('em', s)
 end
 
 function Strong(s)
-  return xml('alert', s)
+  return xmlInLine('alert', s)
 end
 
 function Strikeout(s)
-  return xml('delete', s)
+  return xmlInLine('delete', s)
 end
 
 function Superscript(s)
-  return xml('sup', s)
+  return xmlInLine('sup', s)
 end
 
 function Subscript(s)
-  return xml('sub', s)
+  return xmlInLine('sub', s)
 end
 
 function SmallCaps(s)
-  return xml('alert', s)
+  return xmlInLine('alert', s)
 end
 
 function SingleQuoted(s)
-  return xml('sq', s)
+  return xmlInLine('sq', s)
 end
 
 function DoubleQuoted(s)
-  return xml('q', s)
+  return xmlInLine('q', s)
 end
 
 -- format in-text citation
@@ -589,7 +596,7 @@ function Cite(s)
 end
 
 function Code(s, attr)
-  return xml('c', s, attr)
+  return xmlInLine('c', s, attr)
 end
 
 function DisplayMath(s)
@@ -597,11 +604,11 @@ function DisplayMath(s)
 end
 
 function InlineMath(s)
-  return xml('m', s)
+  return xmlInLine('m', s)
 end
 
 function RawInline(s)
-  return xml('preformat', s)
+  return xmlInLine('c', s)
 end
 
 function LineBreak()

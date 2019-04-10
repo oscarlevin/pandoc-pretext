@@ -1,0 +1,14 @@
+<p>This is the first paragarph, not in a section.</p>
+
+<h1 id="section-1">Section 1</h1>
+
+<p>Here is a paragraph inside section 1. Here is some math \(\int_1^2 \sin(x)\, dx\).</p>
+
+<h2 id="a-subsection">A subsection</h2>
+
+<p>This subsection contains a theorem:</p>
+
+<p>Statement of theorem</p>
+
+<p>This is the proof. QED.</p>
+

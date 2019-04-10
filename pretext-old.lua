@@ -364,7 +364,7 @@ function Div(s, attr)
 end
 
 -- Doesn't work:
-function Sec(lev, num, attr, label, s)
+function Sections(lev, num, attr, label, s)
   return "<section test " .. lev .. num .. attributes(attr) .. label .. ">" .. s .. "</section test>" 
 end
 

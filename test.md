@@ -8,13 +8,13 @@ This is a simple file to test against.  I can add different things here to see h
 
 ## This is the title of a subsection.
 
-Text of a subsection
+Text of a subsection.  This is *first emph text*
 
 ## Another subsection
 
 Here we have a first paragraph.
 
-Here is another.
+Here is another.  *more emph*
 
 # A new main section.
 
