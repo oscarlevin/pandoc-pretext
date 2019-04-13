@@ -1,11 +1,13 @@
 \documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{url}
 
 \begin{document}
 \title{A test latex file}
 
 This is the first paragarph, not in a section.
 
-\section{Section 1}
+\section{Section 1}\label{sec-1}
 
 Here is a paragraph inside section 1.  Here is some math $\int_1^2 \sin(x)\, dx$.
 
@@ -20,5 +22,11 @@ Statement of theorem
 \begin{proof}
 This is the proof.  QED.
 \end{proof}
+
+\section*{A second, unnumbered section}\label{sec-2}
+
+This section is shorter than \ref{sec_1}.  But it is a lot longer than \cite{test-cite}.
+
+Here is a url: \url{https://github.com}.  What happens with that?
 
 \end{document}
