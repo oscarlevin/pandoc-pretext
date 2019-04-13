@@ -17,10 +17,90 @@ local pipe = pandoc.pipe
 local stringify = (require "pandoc.utils").stringify
 local utils = require 'pandoc.utils'
 
+-- Table to store sections:
+local sections = {}
+
 -- The global variable PANDOC_DOCUMENT contains the full AST of
 -- the document which is going to be written. It can be used to
 -- configure the writer.
 local meta = PANDOC_DOCUMENT.meta
+-- local blocks = PANDOC_DOCUMENT.blocks
+-- local h = utils.hierarchicalize(blocks)
+-- dumpit(h[1].contents[2].contents)
+-- print(hierarchy[2].level)
+-- dumpit(hierarchy[2].attr)
+-- dumpit(hierarchy[1].contents[1].contents)
+-- print(table.concat(hierarchy[1].numbering, '.'))
+-- dumpit(block)
+
+-- local h = pandoc.utils.hierarchicalize(pandoc.Pandoc)
+
+-- dumpit(h[1].contents)
+
+-- function Pandoc(doc)
+--   local elements = pandoc.utils.hierarchicalize(doc.blocks)
+--   print("it's working")
+--   for _,e in ipairs(elements) do
+--     print(e,t)
+--   end
+-- end
+
+
+-- This function is called once for the whole document. Parameters:
+-- body is a string, metadata is a table, variables is a table.
+-- This gives you a fragment.  You could use the metadata table to
+-- fill variables in a custom lua template.  Or, pass `--template=...`
+-- to pandoc, and pandoc will add do the template processing as
+-- usual.
+function Doc(body, metadata, variables)
+  -- add <h0> at end of document for loop purposes.
+  body = body .. '<h0>'
+  --Loop over every possible header and wrap content with sections
+  local sectionNames = {"section", "subsection", "subsubsection", "paragraphs", "paragraphs", "paragraphs"}
+  for i=6, 1, -1 do
+    local tag, closetag = "<h"..i..">", "</h"..i..">"
+    while string.find(body, tag) ~= nil do
+      for before, title, content, stop, after in string.gmatch(body, '(.-)'..tag..'(.-)'..closetag..'(.-)(<h%d>)(.*)') do
+        body = before .. "<"..sectionNames[i]..">\n\t<title>" .. title .. "</title>" .. content .. "</"..sectionNames[i]..">\n" .. stop .. after
+      end
+    end
+  end
+  -- remove temporary ending <h0>
+  body = string.sub(body,0,-5)
+
+  return body
+end
+
+
+-- -- A function to add sections to a table, for insertion into body in last step (above)
+-- function sectionBuilder(lev, s, title)
+--   if lev == 1 then
+--     secString = "<section>\n\t<title>" .. title .. "</title>\n" .. s .. "\n</section>"
+--   elseif lev == 2 then
+--     secString = "<subsection>\n\t<title>" .. title .. "</title>\n\n" .. s .. "\n</subsection>"
+--   elseif lev == 3 then
+--     secString = "<subsubsection>\n\t<title>" .. title .. "</title>\n\n" .. s .. "\n</subsubsection>"
+--   else
+--     secString = "<paragraphs>\n\t<title>" .. title .. "</title>\n\n" .. s .. "\n</paragraphs>"
+--   end
+--   table.insert(sections, secString)
+-- end
+
+
+-- We temporarily add <sec lev=> </sec> here, which will be cleaned up later
+-- lev is an integer, the header level.
+function Header(lev, s, attr)
+  -- return '</sec><sec lev="' .. lev .. '" title="' .. s .. '">'
+  -- if lev == 1 then
+  --   return "<section" .. attributes(attr) .. ">\n\t<title>" .. s .. "</title>"
+  -- else
+  --   return "<subsection" .. attributes(attr) .. ">\n\t<title>" .. s .. "</title>"
+  -- end
+ -- return "<h" .. lev .. attributes(attr) ..  ">" .. s .. "</h" .. lev .. ">"
+ return "<h" .. lev .. ">" .. s .. "</h" .. lev .. ">"
+ -- return "<title>" .. s .. "</title>"
+end
+
 
 -- Chose the image format based on the value of the
 -- `image_format` meta value.
@@ -61,6 +141,7 @@ end
 -- Helper function to convert an attributes table into
 -- a string that can be put into HTML tags.
 local function attributes(attr)
+  -- dumpit(attr)
   local attr_table = {}
   for x,y in pairs(attr) do
     if y and y ~= "" then
@@ -78,27 +159,7 @@ function Blocksep()
   return "\n\n\t"
 end
 
--- This function is called once for the whole document. Parameters:
--- body is a string, metadata is a table, variables is a table.
--- This gives you a fragment.  You could use the metadata table to
--- fill variables in a custom lua template.  Or, pass `--template=...`
--- to pandoc, and pandoc will add do the template processing as
--- usual.
-function Doc(body, metadata, variables)
-  local buffer = {}
-  local function add(s)
-    table.insert(buffer, s)
-  end
-  add(body)
-  if #notes > 0 then
-    add('<ol class="footnotes">')
-    for _,note in pairs(notes) do
-      add(note)
-    end
-    add('</ol>')
-  end
-  return table.concat(buffer,'\n') .. '\n'
-end
+
 
 -- The functions that follow render corresponding pandoc elements.
 -- s is always a string, attr is always a table of attributes, and
@@ -226,15 +287,6 @@ function Para(s)
   return "<p>\n\t\t" .. s .. "\n\t</p>"
 end
 
--- lev is an integer, the header level.
-function Header(lev, s, attr)
-  if lev == 1 then
-    return "<section" .. attributes(attr) .. ">\n\t<title>" .. s .. "</title>"
-  else
-    return "<subsection" .. attributes(attr) .. ">\n\t<title>" .. s .. "</title>"
-  end
---  return "<h" .. lev .. attributes(attr) ..  ">" .. s .. "</h" .. lev .. ">"
-end
 
 function BlockQuote(s)
   return "<blockquote>\n\t\t" .. s .. "\n\t</blockquote>"

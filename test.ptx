@@ -1,18 +1,19 @@
-<section xml:id="test-markdown">
+<section>
 	<title>Test markdown</title>
 
 	<p>
 		This is a simple file to test against. I can add different things here to see how they get converted
 	</p>
 
-	<subsection xml:id="this-is-the-title-of-a-subsection.">
+	<subsection>
 	<title>This is the title of a subsection.</title>
 
 	<p>
 		Text of a subsection. This is <em>first emph text</em>
 	</p>
 
-	<subsection xml:id="another-subsection">
+	</subsection>
+<subsection>
 	<title>Another subsection</title>
 
 	<p>
@@ -23,7 +24,29 @@
 		Here is another. <em>more emph</em>
 	</p>
 
-	<section xml:id="a-new-main-section.">
+	<subsubsection>
+	<title>Subsubsection 1</title>
+
+	<p>
+		Some level three text
+	</p>
+
+	</subsubsection>
+</subsection>
+<subsection>
+	<title>Subsection between subsubsection</title>
+
+	<subsubsection>
+	<title>Subsubsection 2</title>
+
+	<p>
+		Another level 3 text.
+	</p>
+
+	</subsubsection>
+</subsection>
+</section>
+<section>
 	<title>A new main section.</title>
 
 	<p>
@@ -36,7 +59,11 @@
 	<li>last one</li>
 	</ul>
 
+	</section>
+<section>
+	<title>A third main section</title>
+
 	<p>
 		The end.
-	</p>
+	</p></section>
 
