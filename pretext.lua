@@ -33,6 +33,8 @@ local meta = PANDOC_DOCUMENT.meta
 -- local h = pandoc.utils.hierarchicalize(pandoc.Pandoc)
 
 -- dumpit(h[1].contents)
+-- global variable to keep track of indent level:
+indents = 1
 
 -- function Pandoc(doc)
 --   local elements = pandoc.utils.hierarchicalize(doc.blocks)
@@ -150,7 +152,7 @@ function Space()
 end
 
 function SoftBreak()
-  return "\n"
+  return " "
 end
 
 -- function LineBreak()
@@ -185,11 +187,10 @@ function Strikeout(s)
 end
 
 function Link(s, src, tit, attr)
-  print(src[1])
-  dumpit(s)
-  dumpit(src)
-  dumpit(tit)
-  dumpit(attr)
+  -- dumpit(s)
+  -- dumpit(src)
+  -- dumpit(tit)
+  -- dumpit(attr)
   if string.sub(src, 1, 1) == "#" then
     return '<xref ref="'..escape(string.sub(src, 2))..'" />'
   else
@@ -252,12 +253,16 @@ function Plain(s)
 end
 
 function Para(s)
-  return "<p>\n" .. s .. "\n</p>"
+  local tabs = string.rep("\t", indents)
+  local tabsp = string.rep("\t", indents+1)
+  return tabs.."<p>\n" .. tabsp .. s .. "\n".. tabs.."</p>"
 end
 
 
 function BlockQuote(s)
-  return "<blockquote>\n" .. s .. "\n</blockquote>"
+  local tabs = string.rep("\t", indents)
+  local tabsp = string.rep("\t", indents+1)
+  return tabs.."<blockquote>\n" ..tabsp.. s .. "\n"..tabs.."</blockquote>"
 end
 
 -- Remove:
@@ -384,7 +389,9 @@ end
 -- lev is an integer, the header level.
 function Header(lev, s, attr)
  -- return "<h" .. lev .. ">" .. s .. "</h" .. lev .. ">"
- return "<h" .. lev .. attributes(attr) ..">" .. s .. "</h" .. lev .. ">"
+ local tabs = string.rep("\t", indents)
+ indents = lev+1
+ return tabs.."<h" .. lev .. attributes(attr) ..">" .. s .. "</h" .. lev .. ">"
  -- return "<title>" .. s .. "</title>"
 end
 
