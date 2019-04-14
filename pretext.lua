@@ -55,12 +55,16 @@ function Doc(body, metadata, variables)
   -- add <h0> at end of document for loop purposes.
   body = body .. '<h0>'
   --Loop over every possible header and wrap content with sections
+  --First we define the section names that correspond to the different levels.
   local sectionNames = {"section", "subsection", "subsubsection", "paragraphs", "paragraphs", "paragraphs"}
+  -- Loop over all <hi> for i from 6 down to 1.  
   for i=6, 1, -1 do
-    -- local tag, closetag = "<h"..i..">", "</h"..i..">"
+    --Keep going while there are still <hi> elements:
     while string.find(body, "<h"..i) ~= nil do
-      for before, id, title, content, stop, after in string.gmatch(body, '(.-)<h'..i..'(.-)>(.-)</h'..i..'>(.-)(<h%d.->)(.*)') do
-        body = before .. "<"..sectionNames[i]..id..">\n\t<title>" .. title .. "</title>" .. content .. "</"..sectionNames[i]..">\n\n" .. stop .. after
+      --We read the entire body, storing the string before the hi, the xml:id inside it, the content of the section (up to the next <hj>, where j cannot be larger than i because we loop from largest to smallets), we keep the "stop" <hj> (including its indents and xml:id), and store the remainder of body as "after".
+      for before, id, content, stop, after in string.gmatch(body, '(.-)<h'..i..'(.-)>(.-)(\t-<h%d.->)(.*)') do
+        -- Update body with the <hi> replaced by <sectiontype>, and add a closing <sectiontype> with correct indents (using string.rep()):
+        body = before .. "<"..sectionNames[i]..id..">" .. content .. string.rep("\t",i).."</"..sectionNames[i]..">\n\n" .. stop .. after
       end
     end
   end
@@ -277,6 +281,7 @@ function LineBlock(ls)
 end
 
 function CodeBlock(s, attr)
+  local tabs = string.rep("\t", indents)
   -- If code block has class 'dot', pipe the contents through dot
   -- and base64, and include the base64-encoded png as a data: URL.
   if attr.class and string.match(' ' .. attr.class .. ' ',' dot ') then
@@ -284,35 +289,42 @@ function CodeBlock(s, attr)
     return '<img src="data:' .. image_mime_type .. ';base64,' .. img .. '"/>'
   -- otherwise treat as code (one could pipe through a highlighter)
   else
-    return "<pre>" .. escape(s) ..
+    return tabs.."<pre>" .. escape(s) ..
            "</pre>"
   end
 end
 
 function BulletList(items)
+  local tabs = string.rep("\t", indents)
+  local tabsp = string.rep("\t", indents+1)
   local buffer = {}
   for _, item in pairs(items) do
-    table.insert(buffer, "<li>" .. item .. "</li>\n\t")
+    table.insert(buffer, tabsp.."<li>" .. item .. "</li>\n")
   end
-  return "<ul>\n\t" .. table.concat(buffer, "\n") .. "\n</ul>"
+  return tabs.."<ul>\n" .. table.concat(buffer, "\n") .. "\n"..tabs.."</ul>"
 end
 
 function OrderedList(items)
+  local tabs = string.rep("\t", indents)
+  local tabsp = string.rep("\t", indents+1)
   local buffer = {}
   for _, item in pairs(items) do
-    table.insert(buffer, "<li>" .. item .. "</li>\n\t")
+    table.insert(buffer, tabsp.."<li>" .. item .. "</li>\n")
   end
-  return "<ol>\n\t" .. table.concat(buffer, "\n") .. "\n</ol>"
+  return tabs.."<ol>\n"..table.concat(buffer, "\n").."\n"..tabs.."</ol>"
 end
 
 function DefinitionList(items)
+  local tabs = string.rep("\t", indents)
+  local tabsp = string.rep("\t", indents+1)
+  local tabspp = string.rep("\t", indents+2)
   local buffer = {}
   for _,item in pairs(items) do
     local k, v = next(item)
-    table.insert(buffer, "<dt>" .. k .. "</dt>\n<dd>" ..
+    table.insert(buffer, tabsp.."<dt>" .. k .. "</dt>\n"..tabspp.."<dd>" ..
                    table.concat(v, "</dd>\n<dd>") .. "</dd>")
   end
-  return "<dl>\n\t" .. table.concat(buffer, "\n") .. "\n</dl>"
+  return tabs.."<dl>\n" .. table.concat(buffer, "\n") .. "\n"..tabs.."</dl>"
 end
 
 -- Convert pandoc alignment to something HTML can use.
@@ -330,9 +342,11 @@ function html_align(align)
 end
 
 function CaptionedImage(src, tit, caption, attr)
-   return '<figure>\n<image source="' .. escape(src,true) ..
+  local tabs = string.rep("\t", indents)
+  local tabsp = string.rep("\t", indents+1)
+   return tabs..'<figure>\n\t<image source="' .. escape(src,true) ..
       '"/>\n' ..
-      '<caption>' .. caption .. '</caption>\n</figure>'
+      tabsp..'<caption>' .. caption .. '</caption>\n</figure>'
 end
 
 -- Caption is a string, aligns is an array of strings,
@@ -389,9 +403,10 @@ end
 -- lev is an integer, the header level.
 function Header(lev, s, attr)
  -- return "<h" .. lev .. ">" .. s .. "</h" .. lev .. ">"
- local tabs = string.rep("\t", indents)
  indents = lev+1
- return tabs.."<h" .. lev .. attributes(attr) ..">" .. s .. "</h" .. lev .. ">"
+ local tabs = string.rep("\t", indents-1)
+ local tabsp = string.rep("\t", indents)
+ return tabs.."<h"..lev..attributes(attr)..">\n"..tabsp.."<title>"..s.."</title>"
  -- return "<title>" .. s .. "</title>"
 end
 

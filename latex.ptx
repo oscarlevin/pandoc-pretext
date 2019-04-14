@@ -8,14 +8,14 @@
 	</p>
 
 	<section xml:id="sec-1">
-	<title>Section 1</title>
+		<title>Section 1</title>
 
 		<p>
 			Here is a paragraph inside section 1. Here is some math <m>\int_1^2 \sin(x)\, dx</m>.
 		</p>
 
 		<subsection xml:id="a-subsection">
-	<title>A subsection</title>
+			<title>A subsection</title>
 
 			<p>
 				This subsection contains a theorem:
@@ -34,7 +34,7 @@
 </section>
 
 <section xml:id="sec-2" xml:class="unnumbered">
-	<title>A second, unnumbered section</title>
+				<title>A second, unnumbered section</title>
 
 		<p>
 			This section is shorter than <xref ref="sec_1" />. But it is a lot longer than <span class="cite" data-citation-ids="test-cite"></span>.
