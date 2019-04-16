@@ -160,7 +160,7 @@
 	<section xml:id="options">
 		<title>Options</title>
 
-		<subsection xml:class="options" xml:id="general-options">
+		<subsection xml:id="general-options" class="options">
 			<title>General options</title>
 
 			<dl>
@@ -410,7 +410,7 @@
 
 		</subsection>
 
-		<subsection xml:class="options" xml:id="reader-options">
+		<subsection xml:id="reader-options" class="options">
 			<title>Reader options</title>
 
 			<dl>
@@ -546,7 +546,7 @@ return {{Str = expand_hello_world}}</pre>
 
 		</subsection>
 
-		<subsection xml:class="options" xml:id="general-writer-options">
+		<subsection xml:id="general-writer-options" class="options">
 			<title>General writer options</title>
 
 			<dl>
@@ -650,7 +650,7 @@ return {{Str = expand_hello_world}}</pre>
 
 		</subsection>
 
-		<subsection xml:class="options" xml:id="options-affecting-specific-writers">
+		<subsection xml:id="options-affecting-specific-writers" class="options">
 			<title>Options affecting specific writers</title>
 
 			<dl>
@@ -940,7 +940,7 @@ body { font-family: "DejaVuSans"; }</pre></dd>
 
 		</subsection>
 
-		<subsection xml:class="options" xml:id="citation-rendering">
+		<subsection xml:id="citation-rendering" class="options">
 			<title>Citation rendering</title>
 
 			<dl>
@@ -968,7 +968,7 @@ body { font-family: "DejaVuSans"; }</pre></dd>
 
 		</subsection>
 
-		<subsection xml:class="options" xml:id="math-rendering-in-html">
+		<subsection xml:id="math-rendering-in-html" class="options">
 			<title>Math rendering in HTML</title>
 
 			<p>
@@ -1004,7 +1004,7 @@ gladtex -d myfile-images myfile.htex
 
 		</subsection>
 
-		<subsection xml:class="options" xml:id="options-for-wrapper-scripts">
+		<subsection xml:id="options-for-wrapper-scripts" class="options">
 			<title>Options for wrapper scripts</title>
 
 			<dl>
@@ -1658,36 +1658,39 @@ $endfor$</pre>
 						Thus, for example,
 					</p>
 
-<table>
-<tr class="header">
-<th align="left">Header</th>
-<th align="left">Identifier</th>
-</tr>
-<tr class="odd">
-<td align="left"><c>Header identifiers in HTML</c></td>
-<td align="left"><c>header-identifiers-in-html</c></td>
-</tr>
-<tr class="even">
-<td align="left"><c>Maître d'hôtel</c></td>
-<td align="left"><c>maître-dhôtel</c></td>
-</tr>
-<tr class="odd">
-<td align="left"><c>*Dogs*?--in *my* house?</c></td>
-<td align="left"><c>dogs--in-my-house</c></td>
-</tr>
-<tr class="even">
-<td align="left"><c>[HTML], [S5], or [RTF]?</c></td>
-<td align="left"><c>html-s5-or-rtf</c></td>
-</tr>
-<tr class="odd">
-<td align="left"><c>3. Applications</c></td>
-<td align="left"><c>applications</c></td>
-</tr>
-<tr class="even">
-<td align="left"><c>33</c></td>
-<td align="left"><c>section</c></td>
-</tr>
-</table>
+					<table>
+						<caption></caption>
+						<tabular>
+						<row class="header">
+							<cell align="left">Header</cell>
+							<cell align="left">Identifier</cell>
+</row>
+						<row class="odd">
+							<cell align="left"><c>Header identifiers in HTML</c></cell>
+							<cell align="left"><c>header-identifiers-in-html</c></cell>
+						</row>
+						<row class="even">
+							<cell align="left"><c>Maître d'hôtel</c></cell>
+							<cell align="left"><c>maître-dhôtel</c></cell>
+						</row>
+						<row class="odd">
+							<cell align="left"><c>*Dogs*?--in *my* house?</c></cell>
+							<cell align="left"><c>dogs--in-my-house</c></cell>
+						</row>
+						<row class="even">
+							<cell align="left"><c>[HTML], [S5], or [RTF]?</c></cell>
+							<cell align="left"><c>html-s5-or-rtf</c></cell>
+						</row>
+						<row class="odd">
+							<cell align="left"><c>3. Applications</c></cell>
+							<cell align="left"><c>applications</c></cell>
+						</row>
+						<row class="even">
+							<cell align="left"><c>33</c></cell>
+							<cell align="left"><c>section</c></cell>
+						</row>
+						</tabular>
+					</table>
 
 					<p>
 						These rules should, in most cases, allow one to determine the identifier from the header text. The exception is when several headers have the same text; in this case, the first will get an identifier as described above; the second will get the same identifier with <c>-1</c> appended; the third with <c>-2</c>; and so on.
@@ -3966,56 +3969,59 @@ note.]</pre>
 						In order to use this feature, you will need to specify a bibliography file using the <c>bibliography</c> metadata field in a YAML metadata section, or <c>--bibliography</c> command line argument. You can supply multiple <c>--bibliography</c> arguments or set <c>bibliography</c> metadata field to YAML array, if you want to use multiple bibliography files. The bibliography may have any of these formats:
 					</p>
 
-<table>
-<tr class="header">
-<th align="left">Format</th>
-<th align="left">File extension</th>
-</tr>
-<tr class="odd">
-<td align="left">BibLaTeX</td>
-<td align="left">.bib</td>
-</tr>
-<tr class="even">
-<td align="left">BibTeX</td>
-<td align="left">.bibtex</td>
-</tr>
-<tr class="odd">
-<td align="left">Copac</td>
-<td align="left">.copac</td>
-</tr>
-<tr class="even">
-<td align="left">CSL JSON</td>
-<td align="left">.json</td>
-</tr>
-<tr class="odd">
-<td align="left">CSL YAML</td>
-<td align="left">.yaml</td>
-</tr>
-<tr class="even">
-<td align="left">EndNote</td>
-<td align="left">.enl</td>
-</tr>
-<tr class="odd">
-<td align="left">EndNote XML</td>
-<td align="left">.xml</td>
-</tr>
-<tr class="even">
-<td align="left">ISI</td>
-<td align="left">.wos</td>
-</tr>
-<tr class="odd">
-<td align="left">MEDLINE</td>
-<td align="left">.medline</td>
-</tr>
-<tr class="even">
-<td align="left">MODS</td>
-<td align="left">.mods</td>
-</tr>
-<tr class="odd">
-<td align="left">RIS</td>
-<td align="left">.ris</td>
-</tr>
-</table>
+					<table>
+						<caption></caption>
+						<tabular>
+						<row class="header">
+							<cell align="left">Format</cell>
+							<cell align="left">File extension</cell>
+</row>
+						<row class="odd">
+							<cell align="left">BibLaTeX</cell>
+							<cell align="left">.bib</cell>
+						</row>
+						<row class="even">
+							<cell align="left">BibTeX</cell>
+							<cell align="left">.bibtex</cell>
+						</row>
+						<row class="odd">
+							<cell align="left">Copac</cell>
+							<cell align="left">.copac</cell>
+						</row>
+						<row class="even">
+							<cell align="left">CSL JSON</cell>
+							<cell align="left">.json</cell>
+						</row>
+						<row class="odd">
+							<cell align="left">CSL YAML</cell>
+							<cell align="left">.yaml</cell>
+						</row>
+						<row class="even">
+							<cell align="left">EndNote</cell>
+							<cell align="left">.enl</cell>
+						</row>
+						<row class="odd">
+							<cell align="left">EndNote XML</cell>
+							<cell align="left">.xml</cell>
+						</row>
+						<row class="even">
+							<cell align="left">ISI</cell>
+							<cell align="left">.wos</cell>
+						</row>
+						<row class="odd">
+							<cell align="left">MEDLINE</cell>
+							<cell align="left">.medline</cell>
+						</row>
+						<row class="even">
+							<cell align="left">MODS</cell>
+							<cell align="left">.mods</cell>
+						</row>
+						<row class="odd">
+							<cell align="left">RIS</cell>
+							<cell align="left">.ris</cell>
+						</row>
+						</tabular>
+					</table>
 
 					<p>
 						Note that <c>.bib</c> can be used with both BibTeX and BibLaTeX files; use <c>.bibtex</c> to force BibTeX.
@@ -4866,76 +4872,79 @@ ibooks:
 				Pandoc will output <c>&lt;body epub:type="bodymatter"&gt;</c>, unless you use one of the following values, in which case either <c>frontmatter</c> or <c>backmatter</c> will be output.
 			</p>
 
-<table>
-<tr class="header">
-<th align="left"><c>epub:type</c> of first section</th>
-<th align="left"><c>epub:type</c> of body</th>
-</tr>
-<tr class="odd">
-<td align="left">prologue</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="even">
-<td align="left">abstract</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">acknowledgments</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="even">
-<td align="left">copyright-page</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">dedication</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="even">
-<td align="left">foreword</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">halftitle,</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="even">
-<td align="left">introduction</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">preface</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="even">
-<td align="left">seriespage</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">titlepage</td>
-<td align="left">frontmatter</td>
-</tr>
-<tr class="even">
-<td align="left">afterword</td>
-<td align="left">backmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">appendix</td>
-<td align="left">backmatter</td>
-</tr>
-<tr class="even">
-<td align="left">colophon</td>
-<td align="left">backmatter</td>
-</tr>
-<tr class="odd">
-<td align="left">conclusion</td>
-<td align="left">backmatter</td>
-</tr>
-<tr class="even">
-<td align="left">epigraph</td>
-<td align="left">backmatter</td>
-</tr>
-</table>
+			<table>
+				<caption></caption>
+				<tabular>
+				<row class="header">
+					<cell align="left"><c>epub:type</c> of first section</cell>
+					<cell align="left"><c>epub:type</c> of body</cell>
+</row>
+				<row class="odd">
+					<cell align="left">prologue</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">abstract</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">acknowledgments</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">copyright-page</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">dedication</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">foreword</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">halftitle,</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">introduction</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">preface</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">seriespage</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">titlepage</cell>
+					<cell align="left">frontmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">afterword</cell>
+					<cell align="left">backmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">appendix</cell>
+					<cell align="left">backmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">colophon</cell>
+					<cell align="left">backmatter</cell>
+				</row>
+				<row class="odd">
+					<cell align="left">conclusion</cell>
+					<cell align="left">backmatter</cell>
+				</row>
+				<row class="even">
+					<cell align="left">epigraph</cell>
+					<cell align="left">backmatter</cell>
+				</row>
+				</tabular>
+			</table>
 
 		</subsection>
 
