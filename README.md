@@ -7,13 +7,15 @@ The goal is primarily to streamline the conversion of latex (or even MS Word) fi
 I expect a fair amount of post-processing necessary, but we will see.
 
 ## Installation
-Just download the file `pretext.lua` and put it in a convenient location. Pandoc includes a lua interpreter, so lua need not be installed separately. You might need at least Pandoc version 1.13, released August 2014 (this release adds `--template` support for custom writers, which might be added soon).
+If you don't have it already, download and install [Pandoc]{https://pandoc.org/}.  Then just download the file `pretext.lua` and put it in a convenient location. 
+
+Pandoc includes a lua interpreter, so lua need not be installed separately. You might need at least Pandoc version 1.13, released August 2014 (this release adds `--template` support for custom writers, which might be added soon).
 
 ## Usage
 To convert the markdown file `manual.md` into the PreTeXt file `manual.ptx`, use the following command:
 
 ```
-pandoc examples/example1.md -t pretext.lua -o manual.ptx
+pandoc examples/manual.md -t pretext.lua -o manual.ptx
 ```
 
 Of course you can (might need to) specify a path to the `pretext.lua` file, depending on where it is located.
