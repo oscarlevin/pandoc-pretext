@@ -9,9 +9,9 @@
 -- produce informative error messages if your code contains
 -- syntax errors.
 
-local pipe = pandoc.pipe
+-- local pipe = pandoc.pipe
 local stringify = (require "pandoc.utils").stringify
-local utils = require 'pandoc.utils'
+-- local utils = require 'pandoc.utils'
 
 -- The global variable PANDOC_DOCUMENT contains the full AST of
 -- the document which is going to be written. It can be used to
@@ -246,16 +246,16 @@ end
 
 function CodeBlock(s, attr)
   local tabs = string.rep("\t", indents)
-  -- If code block has class 'dot', pipe the contents through dot
-  -- and base64, and include the base64-encoded png as a data: URL.
-  if attr.class and string.match(' ' .. attr.class .. ' ',' dot ') then
-    local img = pipe("base64", {}, pipe("dot", {"-T" .. image_format}, s))
-    return '<img src="data:' .. image_mime_type .. ';base64,' .. img .. '"/>'
-  -- otherwise treat as code (one could pipe through a highlighter)
-  else
+  -- -- If code block has class 'dot', pipe the contents through dot
+  -- -- and base64, and include the base64-encoded png as a data: URL.
+  -- if attr.class and string.match(' ' .. attr.class .. ' ',' dot ') then
+  --   local img = pipe("base64", {}, pipe("dot", {"-T" .. image_format}, s))
+  --   return '<img src="data:' .. image_mime_type .. ';base64,' .. img .. '"/>'
+  -- -- otherwise treat as code (one could pipe through a highlighter)
+  -- else
     return tabs.."<pre>" .. escape(s) ..
            "</pre>"
-  end
+  -- end
 end
 
 function BulletList(items)
