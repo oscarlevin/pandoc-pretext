@@ -9,14 +9,15 @@
 -- produce informative error messages if your code contains
 -- syntax errors.
 
+-- The following breaks older pandoc installs, and it doesn't seem to be necessary for what I want to do.
 -- local pipe = pandoc.pipe
-local stringify = (require "pandoc.utils").stringify
+-- local stringify = (require "pandoc.utils").stringify
 -- local utils = require 'pandoc.utils'
 
 -- The global variable PANDOC_DOCUMENT contains the full AST of
 -- the document which is going to be written. It can be used to
 -- configure the writer.
-local meta = PANDOC_DOCUMENT.meta
+-- local meta = PANDOC_DOCUMENT.meta
 
 -- global variable to keep track of indent level:
 indents = 1
@@ -56,17 +57,17 @@ end
 
 -- Chose the image format based on the value of the
 -- `image_format` meta value.
-local image_format = meta.image_format
-  and stringify(meta.image_format)
-  or "png"
-local image_mime_type = ({
-    jpeg = "image/jpeg",
-    jpg = "image/jpeg",
-    gif = "image/gif",
-    png = "image/png",
-    svg = "image/svg+xml",
-  })[image_format]
-  or error("unsupported image format `" .. img_format .. "`")
+-- local image_format = meta.image_format
+--   and stringify(meta.image_format)
+--   or "png"
+-- local image_mime_type = ({
+--     jpeg = "image/jpeg",
+--     jpg = "image/jpeg",
+--     gif = "image/gif",
+--     png = "image/png",
+--     svg = "image/svg+xml",
+--   })[image_format]
+--   or error("unsupported image format `" .. img_format .. "`")
   
 -- Character escaping
 -- (might want to remove the quotes, double check pretext)
@@ -239,6 +240,7 @@ function HorizontalRule()
   return "<!-- Horizontal Rule Not Implimented -->"
 end
 
+-- Not sure what this does, so leaving as divs for now, until I see it show up.
 function LineBlock(ls)
   return '<div style="white-space: pre-line;">' .. table.concat(ls, '\n') ..
          '</div>'
@@ -378,7 +380,8 @@ end
 
 -- This might never do anything; but if it does, I can use it!
 function Div(s, attr)
-  return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
+  -- return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
+  return '<!-- div attr='..attributes(attr).. '-->\n'..s..'<!--</div>-->'
 end
 
 
