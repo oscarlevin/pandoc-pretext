@@ -23,7 +23,7 @@
 indents = 1
 
 --We define the section names that correspond to the different levels.
-section_level = 1
+sectionLevel = 1
 sectionNames = {"section", "subsection", "subsubsection", "paragraphs", "paragraphs", "paragraphs"}
 
 -- This function is called once for the whole document. Parameters:
@@ -374,10 +374,16 @@ end
 -- We temporarily keep <h1> etc wrapping titles of sections.  These will be converted to a hierarchy of sections in the last step (Doc).
 -- lev is an integer, the header level.
 function Header(lev, s, attr)
+  local buffer = ""
+  while lev <= sectionLevel do
+    buffer = buffer .. "</"..sectionNames[sectionLevel]..">\n"
+    sectionLevel = sectionLevel-1
+  end
+  sectionLevel = lev
   indents = lev+1
   local tabs = string.rep("\t", indents-1)
   local tabsp = string.rep("\t", indents)
-  return tabs.."<h"..lev..attributes(attr)..">\n"..tabsp.."<title>"..s.."</title>"
+  return buffer.. tabs.. "<h"..lev..attributes(attr)..">\n".. tabsp.."<title>"..s.."</title>"
 end
 
 -- This might never do anything; but if it does, I can use it!

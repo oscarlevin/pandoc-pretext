@@ -3,6 +3,7 @@
 <pretext>
 
 
+</section>
 	<section xml:id="synopsis">
 		<title>Synopsis</title>
 
@@ -2032,7 +2033,7 @@ $endfor$</pre>
 					<title>Extension: <c>smart</c></title>
 
 					<p>
-						<span label="extension-smart" xml:id="extension-smart">[extension-smart]</span>
+						<span xml:id="extension-smart" label="extension-smart">[extension-smart]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2079,7 +2080,7 @@ $endfor$</pre>
 					<title>Extension: <c>auto_identifiers</c></title>
 
 					<p>
-						<span label="extension-auto_identifiers" xml:id="extension-auto_identifiers">[extension-auto_identifiers]</span>
+						<span xml:id="extension-auto_identifiers" label="extension-auto_identifiers">[extension-auto_identifiers]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2208,7 +2209,7 @@ $endfor$</pre>
 					<title>Extension: <c>ascii_identifiers</c></title>
 
 					<p>
-						<span label="extension-ascii_identifiers" xml:id="extension-ascii_identifiers">[extension-ascii_identifiers]</span>
+						<span xml:id="extension-ascii_identifiers" label="extension-ascii_identifiers">[extension-ascii_identifiers]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2222,7 +2223,7 @@ $endfor$</pre>
 					<title>Extension: <c>gfm_auto_identifiers</c></title>
 
 					<p>
-						<span label="extension-gfm_auto_identifiers" xml:id="extension-gfm_auto_identifiers">[extension-gfm_auto_identifiers]</span>
+						<span xml:id="extension-gfm_auto_identifiers" label="extension-gfm_auto_identifiers">[extension-gfm_auto_identifiers]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2260,7 +2261,7 @@ $endfor$</pre>
 					<title>Extension: <c>raw_html</c></title>
 
 					<p>
-						<span label="raw_html" xml:id="raw_html">[raw_html]</span>
+						<span xml:id="raw_html" label="raw_html">[raw_html]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2274,7 +2275,7 @@ $endfor$</pre>
 					<title>Extension: <c>raw_tex</c></title>
 
 					<p>
-						<span label="raw_tex" xml:id="raw_tex">[raw_tex]</span>
+						<span xml:id="raw_tex" label="raw_tex">[raw_tex]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2307,7 +2308,7 @@ $endfor$</pre>
 					<title>Extension: <c>native_divs</c></title>
 
 					<p>
-						<span label="native_divs" xml:id="native_divs">[native_divs]</span>
+						<span xml:id="native_divs" label="native_divs">[native_divs]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2327,7 +2328,7 @@ $endfor$</pre>
 					<title>Extension: <c>native_spans</c></title>
 
 					<p>
-						<span label="native_spans" xml:id="native_spans">[native_spans]</span>
+						<span xml:id="native_spans" label="native_spans">[native_spans]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2347,7 +2348,7 @@ $endfor$</pre>
 					<title>Extension: <c>literate_haskell</c></title>
 
 					<p>
-						<span label="extension-literate_haskell" xml:id="extension-literate_haskell">[extension-literate_haskell]</span>
+						<span xml:id="extension-literate_haskell" label="extension-literate_haskell">[extension-literate_haskell]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2437,7 +2438,7 @@ $endfor$</pre>
 					<title>Extension: <c>empty_paragraphs</c></title>
 
 					<p>
-						<span label="extension-empty_paragraphs" xml:id="extension-empty_paragraphs">[extension-empty_paragraphs]</span>
+						<span xml:id="extension-empty_paragraphs" label="extension-empty_paragraphs">[extension-empty_paragraphs]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2466,7 +2467,7 @@ $endfor$</pre>
 					<title>Extension: <c>styles</c></title>
 
 					<p>
-						<span label="ext-styles" xml:id="ext-styles">[ext-styles]</span>
+						<span xml:id="ext-styles" label="ext-styles">[ext-styles]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2487,7 +2488,7 @@ $endfor$</pre>
 					<title>Extension: <c>amuse</c></title>
 
 					<p>
-						<span label="extension-amuse" xml:id="extension-amuse">[extension-amuse]</span>
+						<span xml:id="extension-amuse" label="extension-amuse">[extension-amuse]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2501,7 +2502,7 @@ $endfor$</pre>
 					<title>Extension: <c>citations</c></title>
 
 					<p>
-						<span label="org-citations" xml:id="org-citations">[org-citations]</span>
+						<span xml:id="org-citations" label="org-citations">[org-citations]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2515,7 +2516,7 @@ $endfor$</pre>
 					<title>Extension: <c>ntb</c></title>
 
 					<p>
-						<span label="extension-ntb" xml:id="extension-ntb">[extension-ntb]</span>
+						<span xml:id="extension-ntb" label="extension-ntb">[extension-ntb]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2572,7 +2573,7 @@ $endfor$</pre>
 					<title>Extension: <c>escaped_line_breaks</c></title>
 
 					<p>
-						<span label="extension-escaped_line_breaks" xml:id="extension-escaped_line_breaks">[extension-escaped_line_breaks]</span>
+						<span xml:id="extension-escaped_line_breaks" label="extension-escaped_line_breaks">[extension-escaped_line_breaks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2634,7 +2635,7 @@ A level-two header
 					<title>Extension: <c>blank_before_header</c></title>
 
 					<p>
-						<span label="extension-blank_before_header" xml:id="extension-blank_before_header">[extension-blank_before_header]</span>
+						<span xml:id="extension-blank_before_header" label="extension-blank_before_header">[extension-blank_before_header]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2651,7 +2652,7 @@ A level-two header
 					<title>Extension: <c>space_in_atx_header</c></title>
 
 					<p>
-						<span label="extension-space_in_atx_header" xml:id="extension-space_in_atx_header">[extension-space_in_atx_header]</span>
+						<span xml:id="extension-space_in_atx_header" label="extension-space_in_atx_header">[extension-space_in_atx_header]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2675,7 +2676,7 @@ A level-two header
 					<title>Extension: <c>header_attributes</c></title>
 
 					<p>
-						<span label="extension-header_attributes" xml:id="extension-header_attributes">[extension-header_attributes]</span>
+						<span xml:id="extension-header_attributes" label="extension-header_attributes">[extension-header_attributes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2722,7 +2723,7 @@ My other header   {#foo}
 					<title>Extension: <c>implicit_header_references</c></title>
 
 					<p>
-						<span label="extension-implicit_header_references" xml:id="extension-implicit_header_references">[extension-implicit_header_references]</span>
+						<span xml:id="extension-implicit_header_references" label="extension-implicit_header_references">[extension-implicit_header_references]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2823,7 +2824,7 @@ paragraph has two lines.
 					<title>Extension: <c>blank_before_blockquote</c></title>
 
 					<p>
-						<span label="extension-blank_before_blockquote" xml:id="extension-blank_before_blockquote">[extension-blank_before_blockquote]</span>
+						<span xml:id="extension-blank_before_blockquote" label="extension-blank_before_blockquote">[extension-blank_before_blockquote]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2872,7 +2873,7 @@ paragraph has two lines.
 					<title>Extension: <c>fenced_code_blocks</c></title>
 
 					<p>
-						<span label="extension-fenced_code_blocks" xml:id="extension-fenced_code_blocks">[extension-fenced_code_blocks]</span>
+						<span xml:id="extension-fenced_code_blocks" label="extension-fenced_code_blocks">[extension-fenced_code_blocks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2906,7 +2907,7 @@ code including tildes
 					<title>Extension: <c>backtick_code_blocks</c></title>
 
 					<p>
-						<span label="extension-backtick_code_blocks" xml:id="extension-backtick_code_blocks">[extension-backtick_code_blocks]</span>
+						<span xml:id="extension-backtick_code_blocks" label="extension-backtick_code_blocks">[extension-backtick_code_blocks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2920,7 +2921,7 @@ code including tildes
 					<title>Extension: <c>fenced_code_attributes</c></title>
 
 					<p>
-						<span label="extension-fenced_code_attributes" xml:id="extension-fenced_code_attributes">[extension-fenced_code_attributes]</span>
+						<span xml:id="extension-fenced_code_attributes" label="extension-fenced_code_attributes">[extension-fenced_code_attributes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -2986,7 +2987,7 @@ qsort [] = []
 					<title>Extension: <c>line_blocks</c></title>
 
 					<p>
-						<span label="extension-line_blocks" xml:id="extension-line_blocks">[extension-line_blocks]</span>
+						<span xml:id="extension-line_blocks" label="extension-line_blocks">[extension-line_blocks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3150,7 +3151,7 @@ list item.</pre>
 					<title>Extension: <c>fancy_lists</c></title>
 
 					<p>
-						<span label="extension-fancy_lists" xml:id="extension-fancy_lists">[extension-fancy_lists]</span>
+						<span xml:id="extension-fancy_lists" label="extension-fancy_lists">[extension-fancy_lists]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3191,7 +3192,7 @@ list item.</pre>
 					<title>Extension: <c>startnum</c></title>
 
 					<p>
-						<span label="extension-startnum" xml:id="extension-startnum">[extension-startnum]</span>
+						<span xml:id="extension-startnum" label="extension-startnum">[extension-startnum]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3229,7 +3230,7 @@ list item.</pre>
 					<title>Extension: <c>task_lists</c></title>
 
 					<p>
-						<span label="extension-task_lists" xml:id="extension-task_lists">[extension-task_lists]</span>
+						<span xml:id="extension-task_lists" label="extension-task_lists">[extension-task_lists]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3252,7 +3253,7 @@ list item.</pre>
 					<title>Extension: <c>definition_lists</c></title>
 
 					<p>
-						<span label="extension-definition_lists" xml:id="extension-definition_lists">[extension-definition_lists]</span>
+						<span xml:id="extension-definition_lists" label="extension-definition_lists">[extension-definition_lists]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3316,7 +3317,7 @@ Term 2
 					<title>Extension: <c>example_lists</c></title>
 
 					<p>
-						<span label="extension-example_lists" xml:id="extension-example_lists">[extension-example_lists]</span>
+						<span xml:id="extension-example_lists" label="extension-example_lists">[extension-example_lists]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3445,7 +3446,7 @@ As (@good) illustrates, ...</pre>
 					<title>Extension: <c>table_captions</c></title>
 
 					<p>
-						<span label="extension-table_captions" xml:id="extension-table_captions">[extension-table_captions]</span>
+						<span xml:id="extension-table_captions" label="extension-table_captions">[extension-table_captions]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3459,7 +3460,7 @@ As (@good) illustrates, ...</pre>
 					<title>Extension: <c>simple_tables</c></title>
 
 					<p>
-						<span label="extension-simple_tables" xml:id="extension-simple_tables">[extension-simple_tables]</span>
+						<span xml:id="extension-simple_tables" label="extension-simple_tables">[extension-simple_tables]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3524,7 +3525,7 @@ Table:  Demonstration of simple table syntax.</pre>
 					<title>Extension: <c>multiline_tables</c></title>
 
 					<p>
-						<span label="extension-multiline_tables" xml:id="extension-multiline_tables">[extension-multiline_tables]</span>
+						<span xml:id="extension-multiline_tables" label="extension-multiline_tables">[extension-multiline_tables]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3595,7 +3596,7 @@ multiple lines.</pre>
 					<title>Extension: <c>grid_tables</c></title>
 
 					<p>
-						<span label="extension-grid_tables" xml:id="extension-grid_tables">[extension-grid_tables]</span>
+						<span xml:id="extension-grid_tables" label="extension-grid_tables">[extension-grid_tables]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3641,7 +3642,7 @@ multiple lines.</pre>
 						<title>Grid Table Limitations</title>
 
 						<p>
-							<span label="grid-table-limitations" xml:id="grid-table-limitations">[grid-table-limitations]</span>
+							<span xml:id="grid-table-limitations" label="grid-table-limitations">[grid-table-limitations]</span>
 						</p><!--</div>-->
 
 						<p>
@@ -3657,7 +3658,7 @@ multiple lines.</pre>
 					<title>Extension: <c>pipe_tables</c></title>
 
 					<p>
-						<span label="extension-pipe_tables" xml:id="extension-pipe_tables">[extension-pipe_tables]</span>
+						<span xml:id="extension-pipe_tables" label="extension-pipe_tables">[extension-pipe_tables]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3716,7 +3717,7 @@ orange|3.09</pre>
 					<title>Extension: <c>pandoc_title_block</c></title>
 
 					<p>
-						<span label="extension-pandoc_title_block" xml:id="extension-pandoc_title_block">[extension-pandoc_title_block]</span>
+						<span xml:id="extension-pandoc_title_block" label="extension-pandoc_title_block">[extension-pandoc_title_block]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3798,7 +3799,7 @@ orange|3.09</pre>
 					<title>Extension: <c>yaml_metadata_block</c></title>
 
 					<p>
-						<span label="extension-yaml_metadata_block" xml:id="extension-yaml_metadata_block">[extension-yaml_metadata_block]</span>
+						<span xml:id="extension-yaml_metadata_block" label="extension-yaml_metadata_block">[extension-yaml_metadata_block]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3895,7 +3896,7 @@ $endfor$</pre>
 					<title>Extension: <c>all_symbols_escapable</c></title>
 
 					<p>
-						<span label="extension-all_symbols_escapable" xml:id="extension-all_symbols_escapable">[extension-all_symbols_escapable]</span>
+						<span xml:id="extension-all_symbols_escapable" label="extension-all_symbols_escapable">[extension-all_symbols_escapable]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3974,7 +3975,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>intraword_underscores</c></title>
 
 					<p>
-						<span label="extension-intraword_underscores" xml:id="extension-intraword_underscores">[extension-intraword_underscores]</span>
+						<span xml:id="extension-intraword_underscores" label="extension-intraword_underscores">[extension-intraword_underscores]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -3996,7 +3997,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>strikeout</c></title>
 
 					<p>
-						<span label="extension-strikeout" xml:id="extension-strikeout">[extension-strikeout]</span>
+						<span xml:id="extension-strikeout" label="extension-strikeout">[extension-strikeout]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4018,7 +4019,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>superscript</c>, <c>subscript</c></title>
 
 					<p>
-						<span label="extension-superscript-subscript" xml:id="extension-superscript-subscript">[extension-superscript-subscript]</span>
+						<span xml:id="extension-superscript-subscript" label="extension-superscript-subscript">[extension-superscript-subscript]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4070,7 +4071,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>inline_code_attributes</c></title>
 
 					<p>
-						<span label="extension-inline_code_attributes" xml:id="extension-inline_code_attributes">[extension-inline_code_attributes]</span>
+						<span xml:id="extension-inline_code_attributes" label="extension-inline_code_attributes">[extension-inline_code_attributes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4122,7 +4123,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>tex_math_dollars</c></title>
 
 					<p>
-						<span label="extension-tex_math_dollars" xml:id="extension-tex_math_dollars">[extension-tex_math_dollars]</span>
+						<span xml:id="extension-tex_math_dollars" label="extension-tex_math_dollars">[extension-tex_math_dollars]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4205,7 +4206,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>raw_html</c></title>
 
 					<p>
-						<span label="extension-raw_html" xml:id="extension-raw_html">[extension-raw_html]</span>
+						<span xml:id="extension-raw_html" label="extension-raw_html">[extension-raw_html]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4231,7 +4232,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>markdown_in_html_blocks</c></title>
 
 					<p>
-						<span label="extension-markdown_in_html_blocks" xml:id="extension-markdown_in_html_blocks">[extension-markdown_in_html_blocks]</span>
+						<span xml:id="extension-markdown_in_html_blocks" label="extension-markdown_in_html_blocks">[extension-markdown_in_html_blocks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4279,7 +4280,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>native_divs</c></title>
 
 					<p>
-						<span label="extension-native_divs" xml:id="extension-native_divs">[extension-native_divs]</span>
+						<span xml:id="extension-native_divs" label="extension-native_divs">[extension-native_divs]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4293,7 +4294,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>native_spans</c></title>
 
 					<p>
-						<span label="extension-native_spans" xml:id="extension-native_spans">[extension-native_spans]</span>
+						<span xml:id="extension-native_spans" label="extension-native_spans">[extension-native_spans]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4307,7 +4308,7 @@ is *emphasized with asterisks*.</pre>
 					<title>Extension: <c>raw_tex</c></title>
 
 					<p>
-						<span label="extension-raw_tex" xml:id="extension-raw_tex">[extension-raw_tex]</span>
+						<span xml:id="extension-raw_tex" label="extension-raw_tex">[extension-raw_tex]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4350,7 +4351,7 @@ Age &amp; Frequency \\ \hline
 					<title>Extension: <c>raw_attribute</c></title>
 
 					<p>
-						<span label="extension-raw_attribute" xml:id="extension-raw_attribute">[extension-raw_attribute]</span>
+						<span xml:id="extension-raw_attribute" label="extension-raw_attribute">[extension-raw_attribute]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4407,7 +4408,7 @@ blah blah
 					<title>Extension: <c>latex_macros</c></title>
 
 					<p>
-						<span label="extension-latex_macros" xml:id="extension-latex_macros">[extension-latex_macros]</span>
+						<span xml:id="extension-latex_macros" label="extension-latex_macros">[extension-latex_macros]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4541,7 +4542,7 @@ a title](http://fsf.org "click here for a good time!").</pre>
 					<title>Extension: <c>shortcut_reference_links</c></title>
 
 					<p>
-						<span label="extension-shortcut_reference_links" xml:id="extension-shortcut_reference_links">[extension-shortcut_reference_links]</span>
+						<span xml:id="extension-shortcut_reference_links" label="extension-shortcut_reference_links">[extension-shortcut_reference_links]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4601,7 +4602,7 @@ a title](http://fsf.org "click here for a good time!").</pre>
 					<title>Extension: <c>implicit_figures</c></title>
 
 					<p>
-						<span label="extension-implicit_figures" xml:id="extension-implicit_figures">[extension-implicit_figures]</span>
+						<span xml:id="extension-implicit_figures" label="extension-implicit_figures">[extension-implicit_figures]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4631,7 +4632,7 @@ a title](http://fsf.org "click here for a good time!").</pre>
 					<title>Extension: <c>link_attributes</c></title>
 
 					<p>
-						<span label="extension-link_attributes" xml:id="extension-link_attributes">[extension-link_attributes]</span>
+						<span xml:id="extension-link_attributes" label="extension-link_attributes">[extension-link_attributes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4708,7 +4709,7 @@ and a reference ![image][ref] with attributes.
 					<title>Extension: <c>fenced_divs</c></title>
 
 					<p>
-						<span label="extension-fenced_divs" xml:id="extension-fenced_divs">[extension-fenced_divs]</span>
+						<span xml:id="extension-fenced_divs" label="extension-fenced_divs">[extension-fenced_divs]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4748,7 +4749,7 @@ This is a warning within a warning.
 					<title>Extension: <c>bracketed_spans</c></title>
 
 					<p>
-						<span label="extension-bracketed_spans" xml:id="extension-bracketed_spans">[extension-bracketed_spans]</span>
+						<span xml:id="extension-bracketed_spans" label="extension-bracketed_spans">[extension-bracketed_spans]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4770,7 +4771,7 @@ This is a warning within a warning.
 					<title>Extension: <c>footnotes</c></title>
 
 					<p>
-						<span label="extension-footnotes" xml:id="extension-footnotes">[extension-footnotes]</span>
+						<span xml:id="extension-footnotes" label="extension-footnotes">[extension-footnotes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4810,7 +4811,7 @@ isn't indented.</pre>
 					<title>Extension: <c>inline_notes</c></title>
 
 					<p>
-						<span label="extension-inline_notes" xml:id="extension-inline_notes">[extension-inline_notes]</span>
+						<span xml:id="extension-inline_notes" label="extension-inline_notes">[extension-inline_notes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -4838,7 +4839,7 @@ note.]</pre>
 					<title>Extension: <c>citations</c></title>
 
 					<p>
-						<span label="extension-citations" xml:id="extension-citations">[extension-citations]</span>
+						<span xml:id="extension-citations" label="extension-citations">[extension-citations]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5097,7 +5098,7 @@ nocite: |
 					<title>Extension: <c>old_dashes</c></title>
 
 					<p>
-						<span label="extension-old_dashes" xml:id="extension-old_dashes">[extension-old_dashes]</span>
+						<span xml:id="extension-old_dashes" label="extension-old_dashes">[extension-old_dashes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5111,7 +5112,7 @@ nocite: |
 					<title>Extension: <c>angle_brackets_escapable</c></title>
 
 					<p>
-						<span label="extension-angle_brackets_escapable" xml:id="extension-angle_brackets_escapable">[extension-angle_brackets_escapable]</span>
+						<span xml:id="extension-angle_brackets_escapable" label="extension-angle_brackets_escapable">[extension-angle_brackets_escapable]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5125,7 +5126,7 @@ nocite: |
 					<title>Extension: <c>lists_without_preceding_blankline</c></title>
 
 					<p>
-						<span label="extension-lists_without_preceding_blankline" xml:id="extension-lists_without_preceding_blankline">[extension-lists_without_preceding_blankline]</span>
+						<span xml:id="extension-lists_without_preceding_blankline" label="extension-lists_without_preceding_blankline">[extension-lists_without_preceding_blankline]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5139,7 +5140,7 @@ nocite: |
 					<title>Extension: <c>four_space_rule</c></title>
 
 					<p>
-						<span label="extension-four_space_rule" xml:id="extension-four_space_rule">[extension-four_space_rule]</span>
+						<span xml:id="extension-four_space_rule" label="extension-four_space_rule">[extension-four_space_rule]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5153,7 +5154,7 @@ nocite: |
 					<title>Extension: <c>spaced_reference_links</c></title>
 
 					<p>
-						<span label="extension-spaced_reference_links" xml:id="extension-spaced_reference_links">[extension-spaced_reference_links]</span>
+						<span xml:id="extension-spaced_reference_links" label="extension-spaced_reference_links">[extension-spaced_reference_links]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5169,7 +5170,7 @@ nocite: |
 					<title>Extension: <c>hard_line_breaks</c></title>
 
 					<p>
-						<span label="extension-hard_line_breaks" xml:id="extension-hard_line_breaks">[extension-hard_line_breaks]</span>
+						<span xml:id="extension-hard_line_breaks" label="extension-hard_line_breaks">[extension-hard_line_breaks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5183,7 +5184,7 @@ nocite: |
 					<title>Extension: <c>ignore_line_breaks</c></title>
 
 					<p>
-						<span label="extension-ignore_line_breaks" xml:id="extension-ignore_line_breaks">[extension-ignore_line_breaks]</span>
+						<span xml:id="extension-ignore_line_breaks" label="extension-ignore_line_breaks">[extension-ignore_line_breaks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5197,7 +5198,7 @@ nocite: |
 					<title>Extension: <c>east_asian_line_breaks</c></title>
 
 					<p>
-						<span label="extension-east_asian_line_breaks" xml:id="extension-east_asian_line_breaks">[extension-east_asian_line_breaks]</span>
+						<span xml:id="extension-east_asian_line_breaks" label="extension-east_asian_line_breaks">[extension-east_asian_line_breaks]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5211,7 +5212,7 @@ nocite: |
 					<title>Extension: <c>emoji</c></title>
 
 					<p>
-						<span label="extension-emoji" xml:id="extension-emoji">[extension-emoji]</span>
+						<span xml:id="extension-emoji" label="extension-emoji">[extension-emoji]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5225,7 +5226,7 @@ nocite: |
 					<title>Extension: <c>tex_math_single_backslash</c></title>
 
 					<p>
-						<span label="extension-tex_math_single_backslash" xml:id="extension-tex_math_single_backslash">[extension-tex_math_single_backslash]</span>
+						<span xml:id="extension-tex_math_single_backslash" label="extension-tex_math_single_backslash">[extension-tex_math_single_backslash]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5239,7 +5240,7 @@ nocite: |
 					<title>Extension: <c>tex_math_double_backslash</c></title>
 
 					<p>
-						<span label="extension-tex_math_double_backslash" xml:id="extension-tex_math_double_backslash">[extension-tex_math_double_backslash]</span>
+						<span xml:id="extension-tex_math_double_backslash" label="extension-tex_math_double_backslash">[extension-tex_math_double_backslash]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5253,7 +5254,7 @@ nocite: |
 					<title>Extension: <c>markdown_attribute</c></title>
 
 					<p>
-						<span label="extension-markdown_attribute" xml:id="extension-markdown_attribute">[extension-markdown_attribute]</span>
+						<span xml:id="extension-markdown_attribute" label="extension-markdown_attribute">[extension-markdown_attribute]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5267,7 +5268,7 @@ nocite: |
 					<title>Extension: <c>mmd_title_block</c></title>
 
 					<p>
-						<span label="extension-mmd_title_block" xml:id="extension-mmd_title_block">[extension-mmd_title_block]</span>
+						<span xml:id="extension-mmd_title_block" label="extension-mmd_title_block">[extension-mmd_title_block]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5291,7 +5292,7 @@ Comment: This is a sample mmd title block, with
 					<title>Extension: <c>abbreviations</c></title>
 
 					<p>
-						<span label="extension-abbreviations" xml:id="extension-abbreviations">[extension-abbreviations]</span>
+						<span xml:id="extension-abbreviations" label="extension-abbreviations">[extension-abbreviations]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5311,7 +5312,7 @@ Comment: This is a sample mmd title block, with
 					<title>Extension: <c>autolink_bare_uris</c></title>
 
 					<p>
-						<span label="extension-autolink_bare_uris" xml:id="extension-autolink_bare_uris">[extension-autolink_bare_uris]</span>
+						<span xml:id="extension-autolink_bare_uris" label="extension-autolink_bare_uris">[extension-autolink_bare_uris]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5325,7 +5326,7 @@ Comment: This is a sample mmd title block, with
 					<title>Extension: <c>mmd_link_attributes</c></title>
 
 					<p>
-						<span label="extension-mmd_link_attributes" xml:id="extension-mmd_link_attributes">[extension-mmd_link_attributes]</span>
+						<span xml:id="extension-mmd_link_attributes" label="extension-mmd_link_attributes">[extension-mmd_link_attributes]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5344,7 +5345,7 @@ Comment: This is a sample mmd title block, with
 					<title>Extension: <c>mmd_header_identifiers</c></title>
 
 					<p>
-						<span label="extension-mmd_header_identifiers" xml:id="extension-mmd_header_identifiers">[extension-mmd_header_identifiers]</span>
+						<span xml:id="extension-mmd_header_identifiers" label="extension-mmd_header_identifiers">[extension-mmd_header_identifiers]</span>
 					</p><!--</div>-->
 
 					<p>
@@ -5358,7 +5359,7 @@ Comment: This is a sample mmd title block, with
 					<title>Extension: <c>compact_definition_lists</c></title>
 
 					<p>
-						<span label="extension-compact_definition_lists" xml:id="extension-compact_definition_lists">[extension-compact_definition_lists]</span>
+						<span xml:id="extension-compact_definition_lists" label="extension-compact_definition_lists">[extension-compact_definition_lists]</span>
 					</p><!--</div>-->
 
 					<p>
