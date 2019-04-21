@@ -22,6 +22,10 @@
 -- global variable to keep track of indent level:
 indents = 1
 
+--We define the section names that correspond to the different levels.
+section_level = 1
+sectionNames = {"section", "subsection", "subsubsection", "paragraphs", "paragraphs", "paragraphs"}
+
 -- This function is called once for the whole document. Parameters:
 -- body is a string, metadata is a table, variables is a table.
 -- This gives you a fragment.  You could use the metadata table to
@@ -32,8 +36,6 @@ function Doc(body, metadata, variables)
   -- add <h0> at end of document for loop purposes.
   body = body .. '<h0>'
   --Loop over every possible header and wrap content with sections
-  --First we define the section names that correspond to the different levels.
-  local sectionNames = {"section", "subsection", "subsubsection", "paragraphs", "paragraphs", "paragraphs"}
   -- Loop over all <hi> for i from 6 down to 1.  
   for i=6, 1, -1 do
     --Keep going while there are still <hi> elements:
@@ -128,9 +130,9 @@ function SoftBreak()
   return " "
 end
 
--- function LineBreak()
---  return "<br/>"
--- end
+function LineBreak()
+ return "<!-- linebreak -->"
+end
 
 function Emph(s)
   return "<em>" .. s .. "</em>"
