@@ -3,7 +3,7 @@
 <pretext>
 
 
-</section>
+
 	<section xml:id="synopsis">
 		<title>Synopsis</title>
 
@@ -37,6 +37,7 @@
 		</p>
 
 <!-- div attr= xml:id="using-pandoc"-->
+
 		<subsection xml:id="using-pandoc">
 			<title>Using pandoc</title><!--</div>-->
 
@@ -160,13 +161,13 @@
   http://www.fsf.org</pre>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="options">
 		<title>Options</title>
 
 <!-- div attr= xml:id="general-options"-->
+
 		<subsection xml:id="general-options">
 			<title>General options</title><!--</div>-->
 
@@ -1278,7 +1279,6 @@ gladtex -d myfile-images myfile.htex
 			</dl>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="templates">
@@ -1314,6 +1314,7 @@ gladtex -d myfile-images myfile.htex
 		</p>
 
 <!-- div attr= xml:id="metadata-variables"-->
+
 		<subsection xml:id="metadata-variables">
 			<title>Metadata variables</title><!--</div>-->
 
@@ -1509,6 +1510,7 @@ More text in English. ['Zitat auf Deutsch.']{lang=de}</pre></dd>
 			</p>
 
 <!-- div attr= xml:id="layout"-->
+
 			<subsubsection xml:id="layout">
 				<title>Layout</title><!--</div>-->
 
@@ -1687,7 +1689,6 @@ mainfontoptions:
 
 <!-- div attr= xml:id="variables-for-context"-->
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="variables-for-context">
@@ -2002,7 +2003,6 @@ $endfor$</pre>
 			</p>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="extensions">
@@ -2025,10 +2025,12 @@ $endfor$</pre>
 		</p>
 
 <!-- div attr= xml:id="typography"-->
+
 		<subsection xml:id="typography">
 			<title>Typography</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-smart"-->
+
 				<paragraphs xml:id="extension-smart">
 					<title>Extension: <c>smart</c></title>
 
@@ -2068,14 +2070,14 @@ $endfor$</pre>
 					</p>
 
 <!-- div attr= xml:id="headers-and-sections"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="headers-and-sections">
 			<title>Headers and sections</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-auto_identifiers"-->
+
 				<paragraphs xml:id="extension-auto_identifiers">
 					<title>Extension: <c>auto_identifiers</c></title>
 
@@ -2203,7 +2205,6 @@ $endfor$</pre>
 					</p>
 
 <!-- div attr= xml:id="extension-ascii_identifiers"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-ascii_identifiers">
 					<title>Extension: <c>ascii_identifiers</c></title>
@@ -2232,7 +2233,7 @@ $endfor$</pre>
 
 <!-- div attr= xml:id="math-input"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="math-input">
@@ -2257,6 +2258,7 @@ $endfor$</pre>
 			</p>
 
 <!-- div attr= xml:id="raw_html"-->
+
 				<paragraphs xml:id="extension-raw_html">
 					<title>Extension: <c>raw_html</c></title>
 
@@ -2269,7 +2271,6 @@ $endfor$</pre>
 					</p>
 
 <!-- div attr= xml:id="raw_tex"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-raw_tex">
 					<title>Extension: <c>raw_tex</c></title>
@@ -2337,13 +2338,14 @@ $endfor$</pre>
 
 <!-- div attr= xml:id="literate-haskell-support"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="literate-haskell-support">
 			<title>Literate Haskell support</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-literate_haskell"-->
+
 				<paragraphs xml:id="extension-literate_haskell">
 					<title>Extension: <c>literate_haskell</c></title>
 
@@ -2426,14 +2428,14 @@ $endfor$</pre>
 					</p>
 
 <!-- div attr= xml:id="other-extensions"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="other-extensions">
 			<title>Other extensions</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-empty_paragraphs"-->
+
 				<paragraphs xml:id="extension-empty_paragraphs">
 					<title>Extension: <c>empty_paragraphs</c></title>
 
@@ -2461,7 +2463,6 @@ $endfor$</pre>
 					</dl>
 
 <!-- div attr= xml:id="ext-styles"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-styles">
 					<title>Extension: <c>styles</c></title>
@@ -2524,9 +2525,8 @@ $endfor$</pre>
 					</p>
 
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
-
 	</section>
 
 	<section xml:id="pandocs-markdown">
@@ -2537,6 +2537,7 @@ $endfor$</pre>
 		</p>
 
 <!-- div attr= xml:id="philosophy"-->
+
 		<subsection xml:id="philosophy">
 			<title>Philosophy</title><!--</div>-->
 
@@ -2569,6 +2570,7 @@ $endfor$</pre>
 			</p>
 
 <!-- div attr= xml:id="extension-escaped_line_breaks"-->
+
 				<paragraphs xml:id="extension-escaped_line_breaks">
 					<title>Extension: <c>escaped_line_breaks</c></title>
 
@@ -2581,8 +2583,7 @@ $endfor$</pre>
 					</p>
 
 <!-- div attr= xml:id="headers"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="headers">
@@ -2593,6 +2594,7 @@ $endfor$</pre>
 			</p>
 
 <!-- div attr= xml:id="setext-style-headers"-->
+
 			<subsubsection xml:id="setext-style-headers">
 				<title>Setext-style headers</title><!--</div>-->
 
@@ -2631,6 +2633,7 @@ A level-two header
 				<pre># A level-one header with a [link](/url) and *emphasis*</pre>
 
 <!-- div attr= xml:id="extension-blank_before_header"-->
+
 				<paragraphs xml:id="extension-blank_before_header">
 					<title>Extension: <c>blank_before_header</c></title>
 
@@ -2661,7 +2664,6 @@ A level-two header
 
 <!-- div attr= xml:id="header-identifiers"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="header-identifiers">
@@ -2672,6 +2674,7 @@ A level-two header
 				</p>
 
 <!-- div attr= xml:id="extension-header_attributes"-->
+
 				<paragraphs xml:id="extension-header_attributes">
 					<title>Extension: <c>header_attributes</c></title>
 
@@ -2777,9 +2780,7 @@ See [foo]</pre>
 
 <!-- div attr= xml:id="block-quotations"-->
 				</paragraphs>
-
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="block-quotations">
@@ -2820,6 +2821,7 @@ paragraph has two lines.
 			<pre>&gt;     code</pre>
 
 <!-- div attr= xml:id="extension-blank_before_blockquote"-->
+
 				<paragraphs xml:id="extension-blank_before_blockquote">
 					<title>Extension: <c>blank_before_blockquote</c></title>
 
@@ -2835,14 +2837,14 @@ paragraph has two lines.
 &gt;&gt; Nested.</pre>
 
 <!-- div attr= xml:id="verbatim-code-blocks"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="verbatim-code-blocks">
 			<title>Verbatim (code) blocks</title><!--</div>-->
 
 <!-- div attr= xml:id="indented-code-blocks"-->
+
 			<subsubsection xml:id="indented-code-blocks">
 				<title>Indented code blocks</title><!--</div>-->
 
@@ -2869,6 +2871,7 @@ paragraph has two lines.
 				<title>Fenced code blocks</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-fenced_code_blocks"-->
+
 				<paragraphs xml:id="extension-fenced_code_blocks">
 					<title>Extension: <c>fenced_code_blocks</c></title>
 
@@ -2974,15 +2977,14 @@ qsort [] = []
 
 <!-- div attr= xml:id="line-blocks"-->
 				</paragraphs>
-
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="line-blocks">
 			<title>Line blocks</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-line_blocks"-->
+
 				<paragraphs xml:id="extension-line_blocks">
 					<title>Extension: <c>line_blocks</c></title>
 
@@ -3017,14 +3019,14 @@ qsort [] = []
 					</p>
 
 <!-- div attr= xml:id="lists"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="lists">
 			<title>Lists</title><!--</div>-->
 
 <!-- div attr= xml:id="bullet-lists"-->
+
 			<subsubsection xml:id="bullet-lists">
 				<title>Bullet lists</title><!--</div>-->
 
@@ -3147,6 +3149,7 @@ list item.</pre>
 1.  three</pre>
 
 <!-- div attr= xml:id="extension-fancy_lists"-->
+
 				<paragraphs xml:id="extension-fancy_lists">
 					<title>Extension: <c>fancy_lists</c></title>
 
@@ -3242,13 +3245,13 @@ list item.</pre>
 
 <!-- div attr= xml:id="definition-lists"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="definition-lists">
 				<title>Definition lists</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-definition_lists"-->
+
 				<paragraphs xml:id="extension-definition_lists">
 					<title>Extension: <c>definition_lists</c></title>
 
@@ -3306,13 +3309,13 @@ Term 2
 
 <!-- div attr= xml:id="numbered-example-lists"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="numbered-example-lists">
 				<title>Numbered example lists</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-example_lists"-->
+
 				<paragraphs xml:id="extension-example_lists">
 					<title>Extension: <c>example_lists</c></title>
 
@@ -3349,7 +3352,6 @@ As (@good) illustrates, ...</pre>
 
 <!-- div attr= xml:id="compact-and-loose-lists"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="compact-and-loose-lists">
@@ -3417,7 +3419,6 @@ As (@good) illustrates, ...</pre>
 
 <!-- div attr= xml:id="horizontal-rules"-->
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="horizontal-rules">
@@ -3442,6 +3443,7 @@ As (@good) illustrates, ...</pre>
 			</p>
 
 <!-- div attr= xml:id="extension-table_captions"-->
+
 				<paragraphs xml:id="extension-table_captions">
 					<title>Extension: <c>table_captions</c></title>
 
@@ -3454,7 +3456,6 @@ As (@good) illustrates, ...</pre>
 					</p>
 
 <!-- div attr= xml:id="extension-simple_tables"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-simple_tables">
 					<title>Extension: <c>simple_tables</c></title>
@@ -3638,6 +3639,7 @@ multiple lines.</pre>
 +---------------+---------------+--------------------+</pre>
 
 <!-- div attr= xml:id="grid-table-limitations"-->
+
 					<paragraphs xml:id="grid-table-limitations">
 						<title>Grid Table Limitations</title>
 
@@ -3651,7 +3653,6 @@ multiple lines.</pre>
 
 <!-- div attr= xml:id="extension-pipe_tables"-->
 					</paragraphs>
-
 				</paragraphs>
 
 				<paragraphs xml:id="extension-pipe_tables">
@@ -3706,13 +3707,14 @@ orange|3.09</pre>
 
 <!-- div attr= xml:id="metadata-blocks"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="metadata-blocks">
 			<title>Metadata blocks</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-pandoc_title_block"-->
+
 				<paragraphs xml:id="extension-pandoc_title_block">
 					<title>Extension: <c>pandoc_title_block</c></title>
 
@@ -3793,7 +3795,6 @@ orange|3.09</pre>
 					</p>
 
 <!-- div attr= xml:id="extension-yaml_metadata_block"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-yaml_metadata_block">
 					<title>Extension: <c>yaml_metadata_block</c></title>
@@ -3885,13 +3886,14 @@ $endfor$</pre>
 
 <!-- div attr= xml:id="backslash-escapes"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="backslash-escapes">
 			<title>Backslash escapes</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-all_symbols_escapable"-->
+
 				<paragraphs xml:id="extension-all_symbols_escapable">
 					<title>Extension: <c>all_symbols_escapable</c></title>
 
@@ -3940,14 +3942,14 @@ $endfor$</pre>
 					</p>
 
 <!-- div attr= xml:id="inline-formatting"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="inline-formatting">
 			<title>Inline formatting</title><!--</div>-->
 
 <!-- div attr= xml:id="emphasis"-->
+
 			<subsubsection xml:id="emphasis">
 				<title>Emphasis</title><!--</div>-->
 
@@ -3971,6 +3973,7 @@ is *emphasized with asterisks*.</pre>
 				<pre>This is * not emphasized *, and \*neither is this\*.</pre>
 
 <!-- div attr= xml:id="extension-intraword_underscores"-->
+
 				<paragraphs xml:id="extension-intraword_underscores">
 					<title>Extension: <c>intraword_underscores</c></title>
 
@@ -3986,13 +3989,13 @@ is *emphasized with asterisks*.</pre>
 
 <!-- div attr= xml:id="strikeout"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="strikeout">
 				<title>Strikeout</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-strikeout"-->
+
 				<paragraphs xml:id="extension-strikeout">
 					<title>Extension: <c>strikeout</c></title>
 
@@ -4008,13 +4011,13 @@ is *emphasized with asterisks*.</pre>
 
 <!-- div attr= xml:id="superscripts-and-subscripts"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="superscripts-and-subscripts">
 				<title>Superscripts and subscripts</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-superscript-subscript"-->
+
 				<paragraphs xml:id="extension-superscript-subscript">
 					<title>Extension: <c>superscript</c>, <c>subscript</c></title>
 
@@ -4034,7 +4037,6 @@ is *emphasized with asterisks*.</pre>
 
 <!-- div attr= xml:id="verbatim"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="verbatim">
@@ -4067,6 +4069,7 @@ is *emphasized with asterisks*.</pre>
 				<pre>This is a backslash followed by an asterisk: `\*`.</pre>
 
 <!-- div attr= xml:id="extension-inline_code_attributes"-->
+
 				<paragraphs xml:id="extension-inline_code_attributes">
 					<title>Extension: <c>inline_code_attributes</c></title>
 
@@ -4082,7 +4085,6 @@ is *emphasized with asterisks*.</pre>
 
 <!-- div attr= xml:id="small-caps"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="small-caps">
@@ -4112,13 +4114,13 @@ is *emphasized with asterisks*.</pre>
 
 <!-- div attr= xml:id="math"-->
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="math">
 			<title>Math</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-tex_math_dollars"-->
+
 				<paragraphs xml:id="extension-tex_math_dollars">
 					<title>Extension: <c>tex_math_dollars</c></title>
 
@@ -4194,14 +4196,14 @@ is *emphasized with asterisks*.</pre>
 					</dl>
 
 <!-- div attr= xml:id="raw-html"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="raw-html">
 			<title>Raw HTML</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-raw_html"-->
+
 				<paragraphs xml:id="extension-raw_html-1">
 					<title>Extension: <c>raw_html</c></title>
 
@@ -4226,7 +4228,6 @@ is *emphasized with asterisks*.</pre>
 					</p>
 
 <!-- div attr= xml:id="extension-markdown_in_html_blocks"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-markdown_in_html_blocks">
 					<title>Extension: <c>markdown_in_html_blocks</c></title>
@@ -4342,11 +4343,13 @@ Age &amp; Frequency \\ \hline
 
 <!-- div attr= xml:id="generic-raw-attribute"-->
 				</paragraphs>
+			</paragraphs>
 
 			<subsubsection xml:id="generic-raw-attribute">
 				<title>Generic raw attribute</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-raw_attribute"-->
+
 				<paragraphs xml:id="extension-raw_attribute">
 					<title>Extension: <c>raw_attribute</c></title>
 
@@ -4395,15 +4398,14 @@ blah blah
 
 <!-- div attr= xml:id="latex-macros"-->
 				</paragraphs>
-
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="latex-macros">
 			<title>LaTeX macros</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-latex_macros"-->
+
 				<paragraphs xml:id="extension-latex_macros">
 					<title>Extension: <c>latex_macros</c></title>
 
@@ -4432,8 +4434,7 @@ $\tuple{a, b, c}$</pre>
 					</p>
 
 <!-- div attr= xml:id="links-1"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="links-1">
@@ -4444,6 +4445,7 @@ $\tuple{a, b, c}$</pre>
 			</p>
 
 <!-- div attr= xml:id="automatic-links"-->
+
 			<subsubsection xml:id="automatic-links">
 				<title>Automatic links</title><!--</div>-->
 
@@ -4538,6 +4540,7 @@ a title](http://fsf.org "click here for a good time!").</pre>
 &gt; [quote]: /foo</pre>
 
 <!-- div attr= xml:id="extension-shortcut_reference_links"-->
+
 				<paragraphs xml:id="extension-shortcut_reference_links">
 					<title>Extension: <c>shortcut_reference_links</c></title>
 
@@ -4555,7 +4558,6 @@ a title](http://fsf.org "click here for a good time!").</pre>
 
 <!-- div attr= xml:id="internal-links"-->
 				</paragraphs>
-
 			</subsubsection>
 
 			<subsubsection xml:id="internal-links">
@@ -4581,7 +4583,6 @@ a title](http://fsf.org "click here for a good time!").</pre>
 
 <!-- div attr= xml:id="images"-->
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="images">
@@ -4598,6 +4599,7 @@ a title](http://fsf.org "click here for a good time!").</pre>
 [movie reel]: movie.gif</pre>
 
 <!-- div attr= xml:id="extension-implicit_figures"-->
+
 				<paragraphs xml:id="extension-implicit_figures">
 					<title>Extension: <c>implicit_figures</c></title>
 
@@ -4626,7 +4628,6 @@ a title](http://fsf.org "click here for a good time!").</pre>
 					</p>
 
 <!-- div attr= xml:id="extension-link_attributes"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-link_attributes">
 					<title>Extension: <c>link_attributes</c></title>
@@ -4694,7 +4695,7 @@ and a reference ![image][ref] with attributes.
 
 <!-- div attr= xml:id="divs-and-spans"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="divs-and-spans">
@@ -4705,6 +4706,7 @@ and a reference ![image][ref] with attributes.
 			</p>
 
 <!-- div attr= xml:id="extension-fenced_divs"-->
+
 				<paragraphs xml:id="extension-fenced_divs">
 					<title>Extension: <c>fenced_divs</c></title>
 
@@ -4743,7 +4745,6 @@ This is a warning within a warning.
 					</p>
 
 <!-- div attr= xml:id="extension-bracketed_spans"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-bracketed_spans">
 					<title>Extension: <c>bracketed_spans</c></title>
@@ -4760,13 +4761,14 @@ This is a warning within a warning.
 
 <!-- div attr= xml:id="footnotes"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="footnotes">
 			<title>Footnotes</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-footnotes"-->
+
 				<paragraphs xml:id="extension-footnotes">
 					<title>Extension: <c>footnotes</c></title>
 
@@ -4805,7 +4807,6 @@ isn't indented.</pre>
 					</p>
 
 <!-- div attr= xml:id="extension-inline_notes"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-inline_notes">
 					<title>Extension: <c>inline_notes</c></title>
@@ -4828,13 +4829,14 @@ note.]</pre>
 
 <!-- div attr= xml:id="citations"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="citations">
 			<title>Citations</title><!--</div>-->
 
 <!-- div attr= xml:id="extension-citations"-->
+
 				<paragraphs xml:id="extension-citations-1">
 					<title>Extension: <c>citations</c></title>
 
@@ -5082,8 +5084,7 @@ nocite: |
 					</p>
 
 <!-- div attr= xml:id="non-pandoc-extensions"-->
-				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="non-pandoc-extensions">
@@ -5094,6 +5095,7 @@ nocite: |
 			</p>
 
 <!-- div attr= xml:id="extension-old_dashes"-->
+
 				<paragraphs xml:id="extension-old_dashes">
 					<title>Extension: <c>old_dashes</c></title>
 
@@ -5106,7 +5108,6 @@ nocite: |
 					</p>
 
 <!-- div attr= xml:id="extension-angle_brackets_escapable"-->
-				</paragraphs>
 
 				<paragraphs xml:id="extension-angle_brackets_escapable">
 					<title>Extension: <c>angle_brackets_escapable</c></title>
@@ -5394,7 +5395,7 @@ foo
 
 <!-- div attr= xml:id="markdown-variants"-->
 				</paragraphs>
-
+			</paragraphs>
 		</subsection>
 
 		<subsection xml:id="markdown-variants">
@@ -5439,7 +5440,6 @@ foo
 			</dl>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="producing-slide-shows-with-pandoc">
@@ -5520,6 +5520,7 @@ foo
 		<pre>pandoc habits.txt -o habits.pptx</pre>
 
 <!-- div attr= xml:id="structuring-the-slide-show"-->
+
 		<subsection xml:id="structuring-the-slide-show">
 			<title>Structuring the slide show</title><!--</div>-->
 
@@ -5769,13 +5770,13 @@ Slide 1 has background_image.png as its background.
 Slide 2 has a special image for its background, even though the header has no content.</pre>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="creating-epubs-with-pandoc">
 		<title>Creating EPUBs with pandoc</title>
 
 <!-- div attr= xml:id="epub-metadata"-->
+
 		<subsection xml:id="epub-metadata">
 			<title>EPUB Metadata</title><!--</div>-->
 
@@ -6020,7 +6021,6 @@ ibooks:
 &lt;/audio&gt;</pre>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="creating-jupyter-notebooks-with-pandoc">
@@ -6169,6 +6169,7 @@ hello
 		</p>
 
 <!-- div attr= xml:id="output"-->
+
 		<subsection xml:id="output">
 			<title>Output</title><!--</div>-->
 
@@ -6264,7 +6265,6 @@ text style.
 			</p>
 
 		</subsection>
-
 	</section>
 
 	<section xml:id="custom-writers">
@@ -6321,9 +6321,7 @@ text style.
 
 		<p>
 			Copyright 2006–2019 John MacFarlane (jgm@berkeley.edu). Released under the <url href="http://www.gnu.org/copyleft/gpl.html">GPL</url>, version 2 or greater. This software carries no warranty of any kind. (See COPYRIGHT for full copyright and warranty notices.) For a full list of contributors, see the file AUTHORS.md in the pandoc source code.
-		</p>	</section>
-
-
+		</p>
 
 
 </pretext>

@@ -3,23 +3,19 @@
 <pretext>
 
 
-</section>
+
 	<section xml:id="test-markdown">
 		<title>Test markdown</title>
 
-						<paragraphs xml:id="a-very-much-nested-paragraph.">
-							<title>A very much nested paragraph.</title>
 
-							<p>
-								This is a simple file to test against. I can add different things here to see how they get converted
-							</p>
+		<paragraphs xml:id="a-very-much-nested-paragraph.">
+			<title>A very much nested paragraph.</title>
 
-</paragraphs>
-</paragraphs>
-</paragraphs>
-</subsubsection>
-</subsection>
-						</paragraphs>
+			<p>
+				This is a simple file to test against. I can add different things here to see how they get converted
+			</p>
+
+		</paragraphs>
 
 		<subsection xml:id="this-is-the-title-of-a-subsection.">
 			<title>This is the title of a subsection.</title>
@@ -28,7 +24,6 @@
 				Text of a subsection. This is <em>first emph text</em>
 			</p>
 
-</subsection>
 		</subsection>
 
 		<subsection xml:id="another-subsection">
@@ -42,6 +37,7 @@
 				Here is another. <em>more emph</em>
 			</p>
 
+
 			<subsubsection xml:id="subsubsection-1">
 				<title>Subsubsection 1</title>
 
@@ -49,14 +45,12 @@
 					Some level three text
 				</p>
 
-</subsubsection>
-</subsection>
 			</subsubsection>
-
 		</subsection>
 
 		<subsection xml:id="subsection-between-subsubsection">
 			<title>Subsection between subsubsection</title>
+
 
 			<subsubsection xml:id="subsubsection-2">
 				<title>Subsubsection 2</title>
@@ -65,13 +59,8 @@
 					Another level 3 text.
 				</p>
 
-</subsubsection>
-</subsection>
-</section>
 			</subsubsection>
-
 		</subsection>
-
 	</section>
 
 	<section xml:id="a-new-main-section.">
@@ -90,7 +79,6 @@
 
 		</ul>
 
-</section>
 	</section>
 
 	<section xml:id="a-third-main-section">
@@ -98,8 +86,8 @@
 
 		<p>
 			The end.
-		</p>	</section>
-
+		</p>
+	</section>
 
 
 
