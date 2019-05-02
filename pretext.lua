@@ -34,23 +34,7 @@ sectionBuffer = {}
 -- to pandoc, and pandoc will add do the template processing as
 -- usual.
 function Doc(body, metadata, variables)
-  -- -- add <h0> at end of document for loop purposes.
-  -- body = body .. '<h0>'
-  -- --Loop over every possible header and wrap content with sections
-  -- -- Loop over all <hi> for i from 6 down to 1.  
-  -- for i=6, 1, -1 do
-  --   --Keep going while there are still <hi> elements:
-  --   while string.find(body, "<h"..i) ~= nil do
-  --     --We read the entire body, storing the string before the hi, the xml:id inside it, the content of the section (up to the next <hj>, where j cannot be larger than i because we loop from largest to smallets), we keep the "stop" <hj> (including its indents and xml:id), and store the remainder of body as "after".
-  --     for before, id, content, stop, after in string.gmatch(body, '(.-)<h'..i..'(.-)>(.-)(\t-<h%d.->)(.*)') do
-  --       -- Update body with the <hi> replaced by <sectiontype>, and add a closing <sectiontype> with correct indents (using string.rep()):
-  --       body = before .. "<"..sectionNames[i]..id..">" .. content .. string.rep("\t",i).."</"..sectionNames[i]..">\n\n" .. stop .. after
-  --     end
-  --   end
-  -- end
-  -- -- remove temporary ending <h0>
-  -- body = string.sub(body,0,-5)
-  
+
   -- close any open sections:
   while 1 <= #sectionBuffer do
     body = body .. "\n" .. string.rep("\t",#sectionBuffer) .. "</".. sectionBuffer[1]..">\n"
@@ -136,6 +120,7 @@ function SoftBreak()
   return " "
 end
 
+--No PreTeXt equivalent to linebreak.  Comment inserted for manual post-processing.
 function LineBreak()
  return "<!-- linebreak -->"
 end
@@ -144,9 +129,9 @@ function Emph(s)
   return "<em>" .. s .. "</em>"
 end
 
--- Not sure what to do here.  Term will probably have to be manually addressed.
+-- No <bold> tag in PreTeXt, but <term> gives bold look.  Assume bold in source document denotes a term, otherwise author could search for <term> and fix case-by-case. 
 function Strong(s)
-  return "<alert>" .. s .. "</alert>"
+  return "<term>" .. s .. "</term>"
 end
 
 function Subscript(s)
@@ -157,7 +142,7 @@ function Superscript(s)
   return "<sup>" .. s .. "</sup>"
 end
 
--- Not sure if this is right.
+-- No <smallcaps> in PreTeXt.  <alert> can be searched for and changed case-by-case.
 function SmallCaps(s)
   return '<alert>' .. s .. '<alert>'
 end
@@ -175,6 +160,7 @@ function Link(s, src, tit, attr)
   end
 end
 
+-- Should this be enclosed in something like a stand-alone side-by-side?
 function Image(s, src, tit, attr)
   return "<image source='" .. escape(src,true) .. "'/>"
 end
@@ -216,6 +202,7 @@ end
 --   end
 -- end
 
+-- FIXME: this is wrong.
 function Cite(s, cs)
   local ids = {}
   for _,cit in ipairs(cs) do
@@ -230,6 +217,7 @@ function Plain(s)
 end
 
 function Para(s)
+  -- here and below: tabs and tabsp(lus) are strings that add enough tab characters to make the output indented nicely.  Since "indents" changes each time these functions are called, these local variables need to be redefined each time.
   local tabs = string.rep("\t", indents)
   local tabsp = string.rep("\t", indents+1)
   return tabs.."<p>\n" .. tabsp .. s .. "\n".. tabs.."</p>"
@@ -242,7 +230,7 @@ function BlockQuote(s)
   return tabs.."<blockquote>\n" ..tabsp.. s .. "\n"..tabs.."</blockquote>"
 end
 
--- Remove:
+-- No <hrule> in PreTeXt.  Leave comment to be searched for.
 function HorizontalRule()
 --  return "<hr/>"
   return "<!-- Horizontal Rule Not Implimented -->"
@@ -301,6 +289,7 @@ function DefinitionList(items)
   return tabs.."<dl>\n" .. table.concat(buffer, "\n") .. "\n"..tabs.."</dl>"
 end
 
+-- PreTeXt does not have anything like this, but leaving it in to avoid errors.  Author can search and address case-by-case.
 -- Convert pandoc alignment to something HTML can use.
 -- align is AlignLeft, AlignRight, AlignCenter, or AlignDefault.
 function html_align(align)
@@ -377,7 +366,8 @@ function RawBlock(format, str)
   return "<cd>\n" .. str .. "\n</cd>"
 end
 
--- We temporarily keep <h1> etc wrapping titles of sections.  These will be converted to a hierarchy of sections in the last step (Doc).
+-- We use "sectionBuffer" to keep track of open division names, and close them when headers of not-higher levels are reached.  
+-- Note this puts the close division tags after <divs>, if those were implimented.
 -- lev is an integer, the header level.
 function Header(lev, s, attr)
   -- buffer holds closing tags.
@@ -397,10 +387,10 @@ function Header(lev, s, attr)
   return buffer .. "\n" .. tabs .. "<"..sectionNames[lev]..attributes(attr)..">\n" .. tabsp.."<title>"..s.."</title>"
 end
 
--- This might never do anything; but if it does, I can use it!
+-- Divs only seem to show up with specific markdown (or maybe converting from HTML).  The issue is that opening div's show up before new headers, so the close division tags and open div tags are in the wrong order.  Eventually, this could be switched in post processing (Doc function).
 function Div(s, attr)
   -- return "<div" .. attributes(attr) .. ">\n" .. s .. "</div>"
-  return '<!-- div attr='..attributes(attr).. '-->\n'..s..'<!--</div>-->'
+  return '<!-- div attr='..attributes(attr).. '-->\n'..s..'<!--</div attr='.. attributes(attr)..'>-->'
 end
 
 
