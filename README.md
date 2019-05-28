@@ -1,13 +1,13 @@
 # Pandoc to PreTeXt
 
-A first stab at creating a Lua writer to convert anything [Pandoc]{https://pandoc.org/} reads to PreTeXt.  The writer will be based loosely on [pandoc-jats]{https://github.com/mfenner/pandoc-jats}.
+A first stab at creating a Lua writer to convert anything [Pandoc](https://pandoc.org/) reads to PreTeXt.  The writer will be based loosely on [pandoc-jats](https://github.com/mfenner/pandoc-jats).
 
 The goal is primarily to streamline the conversion of latex (or even MS Word) files into PreTeXt.  If successful though, this might make for a reasonable workflow for PreTeXt newcomers: write in Pandoc's markdown, or whatever they are used to, then convert to PreTeXt to include in a book.
 
 The conversion works fairly well for simple documents (expository text with math, but without example/theorem/project blocks).  Main division (sections), tables, images (but not tikz), and code all work.  See limitations section below.
 
 ## Installation
-If you don't have it already, download and install [Pandoc]{https://pandoc.org/}.  Then just download the file `pretext.lua` and put it in a convenient location. 
+If you don't have it already, download and install [Pandoc](https://pandoc.org/).  Then just download the file `pretext.lua` and put it in a convenient location. 
 
 Pandoc includes a lua interpreter, so lua need not be installed separately. You might need to update to a more recent version of Pandoc if you get issues, although pains have been taken to get this to work with earlier versions where possible.
 
