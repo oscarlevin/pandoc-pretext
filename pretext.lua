@@ -263,6 +263,7 @@ function BulletList(items)
   local tabsp = string.rep("\t", indents+1)
   local buffer = {}
   for _, item in pairs(items) do
+    item = string.gsub(item, "\n", "\n"..tabsp)
     table.insert(buffer, tabsp.."<li>\n"..tabsp .. item .. "\n"..tabsp.."</li>\n")
   end
   return tabs.."<p><ul>\n" .. table.concat(buffer, "\n") .. "\n"..tabs.."</ul></p>"
@@ -273,6 +274,7 @@ function OrderedList(items)
   local tabsp = string.rep("\t", indents+1)
   local buffer = {}
   for _, item in pairs(items) do
+    item = string.gsub(item, "\n", "\n"..tabsp)
     table.insert(buffer, tabsp.."<li>\n" .. tabsp  .. item .. "\n".. tabsp.."</li>\n")
   end
   return tabs.."<p><ol>\n"..table.concat(buffer, "\n").."\n"..tabs.."</ol></p>"
