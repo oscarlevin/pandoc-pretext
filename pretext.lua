@@ -327,7 +327,7 @@ function Table(caption, aligns, widths, headers, rows)
   end
   add(tabs.."<table>")
   -- if caption ~= "" then -- tabules need captions always
-    add(tabsp.."<caption>" .. caption .. "</caption>")
+    add(tabsp.."<title>" .. caption .. "</title>")
   -- end
   if widths and widths[1] ~= 0 then
     for _, w in pairs(widths) do
