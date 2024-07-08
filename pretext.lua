@@ -144,7 +144,7 @@ end
 
 -- No <smallcaps> in PreTeXt.  <alert> can be searched for and changed case-by-case.
 function SmallCaps(s)
-  return '<alert>' .. s .. '<alert>'
+  return '<alert>' .. s .. '</alert>'
 end
 
 -- could also be "gone"
