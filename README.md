@@ -1,44 +1,79 @@
 # Pandoc to PreTeXt
 
-A first stab at creating a Lua writer to convert anything [Pandoc](https://pandoc.org/) reads to PreTeXt.  The writer will be based loosely on [pandoc-jats](https://github.com/mfenner/pandoc-jats).
+A custom [Pandoc](https://pandoc.org/) writer that converts anything Pandoc can read (Markdown, LaTeX, MS Word, ...) into [PreTeXt](https://pretextbook.org).
 
-The goal is primarily to streamline the conversion of latex (or even MS Word) files into PreTeXt.  If successful though, this might make for a reasonable workflow for PreTeXt newcomers: write in Pandoc's markdown, or whatever they are used to, then convert to PreTeXt to include in a book.
+The goal is primarily to streamline the conversion of LaTeX (or even MS Word) files into PreTeXt.  It also makes a reasonable workflow for PreTeXt newcomers: write in Pandoc's markdown, or whatever you are used to, then convert to PreTeXt to include in a book.
 
-The conversion works fairly well for simple documents (expository text with math, but without example/theorem/project blocks).  Main division (sections), tables, images (but not tikz), and code all work.  See limitations section below.
+The writer uses Pandoc's ["new style" custom writer API](https://pandoc.org/custom-writers.html) and the document-layout engine, so output is properly indented, divisions nest correctly, and the result validates against the PreTeXt RELAX-NG schema for typical documents.
 
-## Installation
-If you don't have it already, download and install [Pandoc](https://pandoc.org/).  Then just download the file `pretext.lua` and put it in a convenient location. 
+## Requirements
 
-Pandoc includes a lua interpreter, so lua need not be installed separately. You might need to update to a more recent version of Pandoc if you get issues, although pains have been taken to get this to work with earlier versions where possible.
+[Pandoc](https://pandoc.org/) **3.0 or later** (the writer checks and will tell you if your version is too old).  Pandoc ships with its own Lua interpreter, so Lua does not need to be installed separately.
 
 ## Usage
-To convert the markdown file `manual.md` into the PreTeXt file `manual.ptx`, use the following command:
+
+Download `pretext.lua` and put it in a convenient location.  (Tip: if you place it in the `custom` subdirectory of your pandoc user data directory — see `pandoc --version` for the path — then `pandoc -t pretext.lua` works from any directory.)  To convert `manual.md` into the PreTeXt file `manual.ptx`:
 
 ```
-pandoc examples/manual.md -t pretext.lua -o manual.ptx
+pandoc manual.md -t pretext.lua -o manual.ptx
 ```
 
-Of course you can (might need to) specify a path to the `pretext.lua` file, depending on where it is located.
+By default the output is a *fragment* of PreTeXt — a sequence of sections and paragraphs suitable for pasting into a larger PreTeXt document.  Add `-s`/`--standalone` to wrap the output in a complete `<pretext><article>` document (with `<title>` taken from the document metadata):
+
+```
+pandoc manual.md -t pretext.lua -s -o manual.ptx
+```
+
+When converting LaTeX that contains TikZ pictures, enable raw passthrough so they arrive as `<image><latex-image>`:
+
+```
+pandoc notes.tex -f latex+raw_tex -t pretext.lua -s -o notes.ptx
+```
+
+## What is supported
+
+* **Divisions.** Headers become properly nested `<section>`, `<subsection>`, `<subsubsection>`, and `<paragraphs>`.  Content that precedes a division's first subdivision is wrapped in `<introduction>` (and trailing content in `<conclusion>`).  Documents that skip header levels still produce a valid strict hierarchy, since division names come from nesting depth.
+* **Theorems and friends.** Fenced divs (`::: {.theorem #thm-x title="Main Result"}`) and amsthm environments read from LaTeX become the corresponding PreTeXt blocks: `<theorem>`, `<lemma>`, `<definition>` (with `<statement>`), `<example>`, `<remark>`, `<proof>`, and many more.  The run-in "**Theorem 1 (Name).**" header that Pandoc's LaTeX reader produces is stripped, with the parenthetical name recovered as the block's `<title>`; the QED tombstone at the end of proofs is removed.  See the `environments` table at the top of `pretext.lua` to add your own `\newtheorem` shorthands.
+* **Math.** Inline math becomes `<m>`; display math becomes `<md>`, except that a wrapping `align`/`gather`/`aligned`/... environment is unwrapped into `<md>` with one `<mrow>` per line.
+* **Tables.** Full support for the Pandoc table model: `<tabular>` with header rows, per-column alignment and widths via `<col>`, and `colspan`.  A captioned table becomes `<table><title>...<tabular>`.
+* **Figures and images.** Captioned images become `<figure><caption>...<image>`; alt text is preserved as `<shortdescription>`.  Paragraphs containing only images become block-level `<image>` elements (PreTeXt has no inline images).
+* **Code.** Fenced code blocks with a language become `<program language="..."><code>`; plain code blocks become `<pre>`.  Inline code becomes `<c>`.
+* **Lists.** `<ul>`, `<ol>` (with `marker` derived from the list style, e.g. `(a)`), and definition lists as PreTeXt `<dl>` with `<li><title>`.  Lists are wrapped in `<p>` as PreTeXt requires.
+* **Everything inline.** `<em>`, `<term>` (see below), `<alert>`, `<delete>`, `<q>`/`<sq>`, `<fn>` footnotes, `<url>`, and `<xref>` for internal links.  Sub/superscripts (which PreTeXt lacks) become math when the content is simple text.
+
+Raw `pretext`/`xml` blocks and inlines pass through verbatim, so you can embed literal PreTeXt in a markdown source:
+
+````markdown
+```{=pretext}
+<sage><input>factor(2026)</input></sage>
+```
+````
+
+## Conversion choices you may want to adjust
+
+The top of `pretext.lua` has a short configuration section:
+
+* **Bold text becomes `<term>`.**  Both `<term>` and `<alert>` render bold; we assume bold in the source marks terminology.  Set `strong_element = 'alert'` if that assumption is wrong for your documents.
+* **The `environments` table** maps div classes (and amsthm environment names) to PreTeXt blocks.  Add entries for your own theorem shorthands (`thm`, `lem`, `cor`, ... are included).
+* `division_names` controls which divisions header levels map to.
 
 ## Limitations
 
-Currently, there are the following known issues with the output:
+1. Citations become bare `<xref>` elements pointing at the citation keys; you must create `<biblio>` entries with matching `xml:id`s yourself.
+1. Features with no PreTeXt equivalent (line breaks, horizontal rules, unrecognized divs, non-PreTeXt raw blocks) are preserved as searchable XML comments (`<!-- linebreak -->`, `<!-- div ... -->`, etc.) for manual post-processing.
+1. An image appearing inline mid-sentence is emitted where it stands, which is not valid PreTeXt; move it or delete it by hand (a paragraph containing only images is handled automatically).
+1. Multi-paragraph footnotes are flattened to a single `<fn>`.
 
-1. Sections work as expected, but the `<introduction>` is missing around blocks where it should be present.
-1. No support for theorems/definitions/examples/etc.  This might be impossible, although there is a amsthm "filter" available.  I don't think that reads anything by custom YAML that an author would specifically put in a markdown file though.
-1. Text that Pandoc reads as "strong" is converted to `<term>`s, which gives the same look but could be semantically incorrect.  For now, we assume that source document has bold text only for terms, in which case this is teh correct conversion.  Otherwise, the author will need to search for these and fix on a case-by-case basis.
-1. A number of things you can do in markdown (line breaks, horizontal rules, divs, etc) have no comparable feature in PreTeXt.  These are converted to comments for manual post-processing.
-1. Images work if they call an external file.  tikz might be possible by passing raw text, but this is not implemented currently.
-1. Citations have not been implented (todo)
+Validating the output against the [PreTeXt schema](https://pretextbook.org/doc/guide/html/schema.html) will point out anything that needs manual attention, e.g.:
+
+```
+jing pretext.rng manual.ptx
+```
 
 Please report any issues.
 
 ## Future work
 
-Some of the limitations above could be addressed if there was a need.
+Perhaps with templates, or with secondary lua files, specific sorts of documents (e.g., worksheets, exercise sets) could be implemented.
 
-Currently, the output is raw PreTeXt, intended for copying into a larger PreTeXt document.  Perhaps with templates, or with secondary lua files, specific sorts of documents (e.g., worksheets, exercise sets) could be implimented.
-
-Need to test this now, but how good is pandoc and converting PreTeXt generated LaTeX?  Perhaps a simplified xsl sheet could produce nicer LaTeX for pandoc, which could then be converted to other formats (like for slides).  
-
-Another option: convince the pandoc folks to add PreTeXt as a reader.  This is not strictly necessary, but it would allow new users of PreTeXt to see the results of their work without as many compilation steps (Atom, for instance, has a pandoc extension that can convert easily).
+Another option: convince the pandoc folks to add PreTeXt as an official output format (and eventually a reader).  This writer serves as the working prototype for that conversation.
