@@ -4,7 +4,7 @@
   <article xml:id="pandoc-article">
     <title></title>
 <section xml:id="maestro-dardis-cubic">
-  <title>Maestro Dardi’s Cubic</title>
+  <title>Maestro Dardi's Cubic</title>
 
   <image source="media/image1.png"/>
 
@@ -83,7 +83,7 @@
         <p>
           Use the fact that
           <m>(x + r)^{3} = x^{3} + 3rx^{2} + 3r^{2}x + r^{2}</m> to
-          explain Dardi’s solution to his cubic, and explain why this
+          explain Dardi's solution to his cubic, and explain why this
           will not work in general.
         </p>
       </li>
@@ -128,7 +128,7 @@
       </li>
       <li>
         <p>
-          From Rudolff’s <em>Coss</em>: I am owed 3240 <em>florins</em>.
+          From Rudolff's <em>Coss</em>: I am owed 3240 <em>florins</em>.
           The debtor pays me 1 <em>florin</em> the first day, 2 the
           second day, 3 the third day, and so on. How many days does it
           take to pay off the debt?
@@ -136,7 +136,7 @@
       </li>
       <li>
         <p>
-          From Stifel’s <em>Arithmetica integra</em>: In the sequence of
+          From Stifel's <em>Arithmetica integra</em>: In the sequence of
           odd numbers, the first odd number equals <m>1^{5}</m>. After
           skipping one number, the sum of the next four numbers
           <m>(5 + 7 + 9 + 11)</m> equals <m>2^{5}</m>. After skilling

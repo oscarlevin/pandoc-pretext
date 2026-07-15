@@ -93,6 +93,47 @@ local function escape_attr (s)
   return (s:gsub('[<>&"]', attr_escapes))
 end
 
+-- Pandoc's readers bake "smart typography" (curly quotes, dashes, ellipses,
+-- non-breaking spaces from `\ ` etc.) directly into Str text as literal
+-- UTF-8 characters rather than separate AST nodes.  Left alone these show
+-- up as raw non-ASCII bytes in the output.  PreTeXt has its own semantic
+-- elements for the unambiguous ones (nbsp/mdash/ndash/ellipsis); none of
+-- their UTF-8 byte sequences contain '<', '>', or '&', so this can safely
+-- run after escape().  Quote-mark elements (<lq/>/<rq/>/<lsq/>/<rsq/>) are
+-- documented as "a last resort" for stray marks that cross XML boundaries,
+-- not a general substitute for typed apostrophes/quotes, so those fold
+-- back down to plain ASCII instead.
+local typographic_entities = {
+  ['\194\160']     = '<nbsp/>',      -- U+00A0 NO-BREAK SPACE
+  ['\226\128\147'] = '<ndash/>',     -- U+2013 EN DASH
+  ['\226\128\148'] = '<mdash/>',     -- U+2014 EM DASH
+  ['\226\128\166'] = '<ellipsis/>',  -- U+2026 HORIZONTAL ELLIPSIS
+  ['\226\128\152'] = "'",            -- U+2018 LEFT SINGLE QUOTATION MARK
+  ['\226\128\153'] = "'",            -- U+2019 RIGHT SINGLE QUOTATION MARK
+  ['\226\128\156'] = '<q>',            -- U+201C LEFT DOUBLE QUOTATION MARK
+  ['\226\128\157'] = '</q>',            -- U+201D RIGHT DOUBLE QUOTATION MARK
+}
+
+-- Same characters, folded to plain ASCII throughout.  Used in text-only
+-- contexts (e.g. <shortdescription>) where no child elements are allowed.
+local typographic_ascii = {
+  ['\194\160']     = ' ',
+  ['\226\128\147'] = '--',
+  ['\226\128\148'] = '---',
+  ['\226\128\166'] = '...',
+  ['\226\128\152'] = "'",
+  ['\226\128\153'] = "'",
+  ['\226\128\156'] = '"',
+  ['\226\128\157'] = '"',
+}
+
+local function apply_typography (s, table_)
+  for pattern, repl in pairs(table_) do
+    s = s:gsub(pattern, repl)
+  end
+  return s
+end
+
 -- attrs is a list of {key, value} pairs; empty/nil values are skipped.
 local function attr_string (attrs)
   local parts = {}
@@ -172,7 +213,7 @@ end
 ------------------------------------------------------------------------------
 
 Writer.Inline.Str = function (el)
-  return escape(el.text)
+  return apply_typography(escape(el.text), typographic_entities)
 end
 
 Writer.Inline.Space = function () return space end
@@ -218,7 +259,11 @@ Writer.Inline.Superscript = function (el) return script(el, '^', 'superscript') 
 Writer.Inline.Subscript = function (el) return script(el, '_', 'subscript') end
 
 Writer.Inline.Code = function (el)
-  return inline_el('c', escape(el.text))
+  -- <c> is text-only; also, pandoc's reader inserts U+00A0 after a command
+  -- name before a flag (e.g. "pandoc --foo") to avoid an ugly line break,
+  -- which would silently break a copy-pasted command if left as a raw NBSP
+  local text = apply_typography(escape(el.text), typographic_ascii)
+  return inline_el('c', text)
 end
 
 Writer.Inline.Quoted = function (el)
@@ -294,7 +339,9 @@ local function image_el (img)
   end
   local alt = stringify(img.caption)
   if alt ~= '' then
-    return block_el('image', inline_el('shortdescription', escape(alt)), attrs)
+    -- <shortdescription> is text-only (no child elements permitted)
+    local text = apply_typography(escape(alt), typographic_ascii)
+    return block_el('image', inline_el('shortdescription', text), attrs)
   end
   return empty_el('image', attrs)
 end
@@ -391,7 +438,7 @@ end
 Writer.Block.CodeBlock = function (el)
   local lang = el.classes[1]
   -- flush: code must not inherit the surrounding XML indentation
-  local code = flush(literal(escape(el.text)))
+  local code = flush(literal(apply_typography(escape(el.text), typographic_ascii)))
   if lang then
     local attrs = id_attr(el)
     table.insert(attrs, {'language', lang})

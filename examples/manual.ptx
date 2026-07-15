@@ -7,7 +7,7 @@
   <title>Synopsis</title>
 
   <p>
-    <c>pandoc</c> [<em>options</em>] [<em>input-file</em>]…
+    <c>pandoc</c> [<em>options</em>] [<em>input-file</em>]<ellipsis/>
   </p>
 </section>
 
@@ -36,7 +36,7 @@
     </p>
 
     <p>
-      Pandoc’s enhanced version of Markdown includes syntax for
+      Pandoc's enhanced version of Markdown includes syntax for
       <xref ref="tables"/>, <xref ref="definition-lists"/>,
       <xref ref="metadata-blocks"/>, <xref ref="footnotes"/>,
       <xref ref="citations"/>, <xref ref="math"/>, and much more. See
@@ -55,15 +55,15 @@
     </p>
 
     <p>
-      Because pandoc’s intermediate representation of a document is less
+      Because pandoc's intermediate representation of a document is less
       expressive than many of the formats it converts between, one
       should not expect perfect conversions between every format and
       every other. Pandoc attempts to preserve the structural elements
       of a document, but not formatting details such as margin size. And
       some document elements, such as complex tables, may not fit into
-      pandoc’s simple document model. While conversions from pandoc’s
+      pandoc's simple document model. While conversions from pandoc's
       Markdown to all formats aspire to be perfect, conversions from
-      formats more expressive than pandoc’s Markdown can be expected to
+      formats more expressive than pandoc's Markdown can be expected to
       be lossy.
     </p>
   </introduction>
@@ -116,7 +116,7 @@ pandoc -o output.html input.txt
 
     <p>
       By default, pandoc produces a document fragment. To produce a
-      standalone document (e.g. a valid HTML file including
+      standalone document (e.g.<nbsp/>a valid HTML file including
       <c>&lt;head&gt;</c> and <c>&lt;body&gt;</c>), use the <c>-s</c> or
       <c>--standalone</c> flag:
     </p>
@@ -160,8 +160,8 @@ pandoc -f html -t markdown hello.html
       Supported input and output formats are listed below under
       <xref ref="options"/> (see <c>-f</c> for input formats and
       <c>-t</c> for output formats). You can also use
-      <c>pandoc --list-input-formats</c> and
-      <c>pandoc --list-output-formats</c> to print lists of supported
+      <c>pandoc --list-input-formats</c> and
+      <c>pandoc --list-output-formats</c> to print lists of supported
       formats.
     </p>
 
@@ -178,9 +178,9 @@ pandoc -o hello.tex hello.txt
     <p>
       will convert <c>hello.txt</c> from Markdown to LaTeX. If no output
       file is specified (so that output goes to <em>stdout</em>), or if
-      the output file’s extension is unknown, the output format will
+      the output file's extension is unknown, the output format will
       default to HTML. If no input file is specified (so that input
-      comes from <em>stdin</em>), or if the input files’ extensions are
+      comes from <em>stdin</em>), or if the input files' extensions are
       unknown, the input format will be assumed to be Markdown.
     </p>
 
@@ -227,8 +227,8 @@ pandoc test.txt -o test.pdf
       <url href="https://www.princexml.com/"><c>prince</c></url>. To do
       this, specify an output file with a <c>.pdf</c> extension, as
       before, but add the <c>--pdf-engine</c> option or
-      <c>-t context</c>, <c>-t html</c>, or <c>-t ms</c> to the command
-      line (<c>-t html</c> defaults to <c>--pdf-engine=wkhtmltopdf</c>).
+      <c>-t context</c>, <c>-t html</c>, or <c>-t ms</c> to the command
+      line (<c>-t html</c> defaults to <c>--pdf-engine=wkhtmltopdf</c>).
     </p>
 
     <p>
@@ -240,9 +240,9 @@ pandoc test.txt -o test.pdf
 
     <p>
       To debug the PDF creation, it can be useful to look at the
-      intermediate representation: instead of <c>-o test.pdf</c>, use
-      for example <c>-s -o test.tex</c> to output the generated LaTeX.
-      You can then test it with <c>pdflatex test.tex</c>.
+      intermediate representation: instead of <c>-o test.pdf</c>, use
+      for example <c>-s -o test.tex</c> to output the generated LaTeX.
+      You can then test it with <c>pdflatex test.tex</c>.
     </p>
 
     <p>
@@ -723,7 +723,7 @@ pandoc -f html -t markdown --request-header User-Agent:"Mozilla/5.0" \
                 <p>
                   <c>html</c> or <c>html5</c>
                   (<url href="http://www.w3.org/html/">HTML</url>,
-                  i.e. <url href="http://www.w3.org/TR/html5/">HTML5</url>/XHTML
+                  i.e.<nbsp/><url href="http://www.w3.org/TR/html5/">HTML5</url>/XHTML
                   <url href="https://www.w3.org/TR/html-polyglot/">polyglot
                   markup</url>)
                 </p>
@@ -946,7 +946,7 @@ pandoc -f html -t markdown --request-header User-Agent:"Mozilla/5.0" \
           <p>
             Note that <c>odt</c>, <c>docx</c>, and <c>epub</c> output
             will not be directed to <em>stdout</em> unless forced with
-            <c>-o -</c>.
+            <c>-o -</c>.
           </p>
 
           <p>
@@ -982,11 +982,11 @@ pandoc -f html -t markdown --request-header User-Agent:"Mozilla/5.0" \
             compatibility). In Windows the default user data directory
             is <c>C:\Users\USERNAME\AppData\Roaming\pandoc</c>. You can
             find the default user data directory on your system by
-            looking at the output of <c>pandoc --version</c>. A
+            looking at the output of <c>pandoc --version</c>. A
             <c>reference.odt</c>, <c>reference.docx</c>,
             <c>epub.css</c>, <c>templates</c>, <c>slidy</c>,
             <c>slideous</c>, or <c>s5</c> directory placed in this
-            directory will override pandoc’s normal defaults.
+            directory will override pandoc's normal defaults.
           </p>
         </li>
         <li>
@@ -1046,7 +1046,7 @@ eval "$(pandoc --bash-completion)"
             List supported extensions, one per line, preceded by a
             <c>+</c> or <c>-</c> indicating whether it is enabled by
             default in <em>FORMAT</em>. If <em>FORMAT</em> is not
-            specified, defaults for pandoc’s Markdown are given.
+            specified, defaults for pandoc's Markdown are given.
           </p>
         </li>
         <li>
@@ -1099,9 +1099,9 @@ eval "$(pandoc --bash-completion)"
         <li>
           <title><c>--indented-code-classes=</c><em>CLASSES</em></title>
           <p>
-            Specify classes to use for indented code blocks–for example,
-            <c>perl,numberLines</c> or <c>haskell</c>. Multiple classes
-            may be separated by spaces or commas.
+            Specify classes to use for indented code blocks<ndash/>for
+            example, <c>perl,numberLines</c> or <c>haskell</c>. Multiple
+            classes may be separated by spaces or commas.
           </p>
         </li>
         <li>
@@ -1132,7 +1132,7 @@ eval "$(pandoc --bash-completion)"
             the pandoc AST after the input is parsed and before the
             output is written. The executable should read JSON from
             stdin and write JSON to stdout. The JSON must be formatted
-            like pandoc’s own JSON input and output. The name of the
+            like pandoc's own JSON input and output. The name of the
             output format will be passed to the filter as the first
             argument. Hence,
           </p>
@@ -1203,7 +1203,7 @@ pandoc -t json | ./caps.py latex | pandoc -f json -t latex
           <title><c>--lua-filter=</c><em>SCRIPT</em></title>
           <p>
             Transform the document in a similar fashion as JSON filters
-            (see <c>--filter</c>), but use pandoc’s build-in lua
+            (see <c>--filter</c>), but use pandoc's build-in lua
             filtering system. The given lua script is expected to return
             a list of lua filters which will be applied in order. Each
             lua filter must contain element-transforming functions
@@ -1213,7 +1213,7 @@ pandoc -t json | ./caps.py latex | pandoc -f json -t latex
 
           <p>
             The <c>pandoc</c> lua module provides helper functions for
-            element creation. It is always loaded into the script’s lua
+            element creation. It is always loaded into the script's lua
             environment.
           </p>
 
@@ -1343,7 +1343,7 @@ return {{Str = expand_hello_world}}
             read the data file <c>abbreviations</c> from the user data
             directory or fall back on a system default. To see the
             system default, use
-            <c>pandoc --print-default-data-file=abbreviations</c>. The
+            <c>pandoc --print-default-data-file=abbreviations</c>. The
             only use pandoc makes of this list is in the Markdown
             reader. Strings ending in a period that are found in this
             list will be followed by a nonbreaking space, so that the
@@ -1359,13 +1359,13 @@ return {{Str = expand_hello_world}}
         <li>
           <title><c>-s</c>, <c>--standalone</c></title>
           <p>
-            Produce output with an appropriate header and footer (e.g. a
-            standalone HTML, LaTeX, TEI, or RTF file, not a fragment).
-            This option is set automatically for <c>pdf</c>,
-            <c>epub</c>, <c>epub3</c>, <c>fb2</c>, <c>docx</c>, and
-            <c>odt</c> output. For <c>native</c> output, this option
-            causes metadata to be included; otherwise, metadata is
-            suppressed.
+            Produce output with an appropriate header and footer
+            (e.g.<nbsp/>a standalone HTML, LaTeX, TEI, or RTF file, not
+            a fragment). This option is set automatically for
+            <c>pdf</c>, <c>epub</c>, <c>epub3</c>, <c>fb2</c>,
+            <c>docx</c>, and <c>odt</c> output. For <c>native</c>
+            output, this option causes metadata to be included;
+            otherwise, metadata is suppressed.
           </p>
         </li>
         <li>
@@ -1564,7 +1564,7 @@ return {{Str = expand_hello_world}}
           <c>--include-before-body=</c><em>FILEURL</em></title>
           <p>
             Include contents of <em>FILE</em>, verbatim, at the
-            beginning of the document body (e.g. after the
+            beginning of the document body (e.g.<nbsp/>after the
             <c>&lt;body&gt;</c> tag in HTML, or the
             <c>\begin{document}</c> command in LaTeX). This can be used
             to include navigation bars or banners in HTML documents.
@@ -1613,7 +1613,7 @@ return {{Str = expand_hello_world}}
             Set the request header <em>NAME</em> to the value
             <em>VAL</em> when making HTTP requests (for example, when a
             URL is given on the command line, or when resources used in
-            a document must be downloaded). If you’re behind a proxy,
+            a document must be downloaded). If you're behind a proxy,
             you also need to set the environment variable
             <c>http_proxy</c> to <c>http://...</c>.
           </p>
@@ -1645,9 +1645,9 @@ return {{Str = expand_hello_world}}
             in the document. Limitation: resources that are loaded
             dynamically through JavaScript cannot be incorporated; as a
             result, <c>--self-contained</c> does not work with
-            <c>--mathjax</c>, and some advanced features (e.g. zoom or
-            speaker notes) may not work in an offline
-            <q>self-contained</q> <c>reveal.js</c> slide show.
+            <c>--mathjax</c>, and some advanced features
+            (e.g.<nbsp/>zoom or speaker notes) may not work in an
+            offline <q>self-contained</q> <c>reveal.js</c> slide show.
           </p>
         </li>
         <li>
@@ -1678,7 +1678,7 @@ return {{Str = expand_hello_world}}
           </p>
         </li>
         <li>
-          <title><c>--reference-location = block``section``document</c></title>
+          <title><c>--reference-location = block``section``document</c></title>
           <p>
             Specify whether footnotes (and references, if
             <c>reference-links</c> is set) are placed at the end of the
@@ -1726,7 +1726,7 @@ return {{Str = expand_hello_world}}
           </p>
         </li>
         <li>
-          <title><c>--number-offset=</c><em>NUMBER</em>[<c>,</c><em>NUMBER</em><c>,</c><em>…</em>]</title>
+          <title><c>--number-offset=</c><em>NUMBER</em>[<c>,</c><em>NUMBER</em><c>,</c><em><ellipsis/></em>]</title>
           <p>
             Offset for section headings in HTML output (ignored in other
             output formats). The first number is added to the section
@@ -1859,7 +1859,7 @@ return {{Str = expand_hello_world}}
                 <p>
                   To produce a custom <c>reference.docx</c>, first get a
                   copy of the default <c>reference.docx</c>:
-                  <c>pandoc -o custom-reference.docx --print-default-data-file reference.docx</c>.
+                  <c>pandoc -o custom-reference.docx --print-default-data-file reference.docx</c>.
                   Then open <c>custom-reference.docx</c> in Word, modify
                   the styles as you wish, and save the file. For best
                   results, do not make changes to this file other than
@@ -2080,7 +2080,7 @@ return {{Str = expand_hello_world}}
                 <p>
                   To produce a custom <c>reference.odt</c>, first get a
                   copy of the default <c>reference.odt</c>:
-                  <c>pandoc -o custom-reference.odt --print-default-data-file reference.odt</c>.
+                  <c>pandoc -o custom-reference.odt --print-default-data-file reference.odt</c>.
                   Then open <c>custom-reference.odt</c> in LibreOffice,
                   modify the styles as you wish, and save the file.
                 </p>
@@ -2134,7 +2134,7 @@ return {{Str = expand_hello_world}}
                 <p>
                   You can also modify the default <c>reference.pptx</c>:
                   first run
-                  <c>pandoc -o custom-reference.pptx --print-default-data-file reference.pptx</c>,
+                  <c>pandoc -o custom-reference.pptx --print-default-data-file reference.pptx</c>,
                   and then modify <c>custom-reference.pptx</c> in MS
                   PowerPoint (pandoc will use the first four layout
                   slides, as mentioned above).
@@ -2175,7 +2175,7 @@ return {{Str = expand_hello_world}}
             be in <url href="http://www.w3.org/TR/NOTE-datetime">ISO
             8601 format</url>), <c>&lt;dc:language&gt;</c> (from the
             <c>lang</c> variable, or, if is not set, the locale), and
-            <c>&lt;dc:identifier id="BookId"&gt;</c> (a randomly
+            <c>&lt;dc:identifier id="BookId"&gt;</c> (a randomly
             generated UUID). Any of these may be overridden by elements
             in the metadata file.
           </p>
@@ -2278,7 +2278,7 @@ body { font-family: "DejaVuSans"; }
           <p>
             Use the given string as a command-line argument to the
             <c>pdf-engine</c>. For example, to use a persistent
-            directory <c>foo</c> for <c>latexmk</c>’s auxiliary files,
+            directory <c>foo</c> for <c>latexmk</c>'s auxiliary files,
             use <c>--pdf-engine-opt=-outdir=foo</c>. Note that no check
             for duplicate options is done.
           </p>
@@ -2291,14 +2291,14 @@ body { font-family: "DejaVuSans"; }
         <li>
           <title><c>--bibliography=</c><em>FILE</em></title>
           <p>
-            Set the <c>bibliography</c> field in the document’s metadata
+            Set the <c>bibliography</c> field in the document's metadata
             to <em>FILE</em>, overriding any value set in the metadata,
             and process citations using <c>pandoc-citeproc</c>. (This is
             equivalent to
-            <c>--metadata bibliography=FILE --filter pandoc-citeproc</c>.)
+            <c>--metadata bibliography=FILE --filter pandoc-citeproc</c>.)
             If <c>--natbib</c> or <c>--biblatex</c> is also supplied,
             <c>pandoc-citeproc</c> is not used, making this equivalent
-            to <c>--metadata bibliography=FILE</c>. If you supply this
+            to <c>--metadata bibliography=FILE</c>. If you supply this
             argument multiple times, each <em>FILE</em> will be added to
             bibliography.
           </p>
@@ -2306,9 +2306,9 @@ body { font-family: "DejaVuSans"; }
         <li>
           <title><c>--csl=</c><em>FILE</em></title>
           <p>
-            Set the <c>csl</c> field in the document’s metadata to
+            Set the <c>csl</c> field in the document's metadata to
             <em>FILE</em>, overriding any value set in the metadata.
-            (This is equivalent to <c>--metadata csl=FILE</c>.) This
+            (This is equivalent to <c>--metadata csl=FILE</c>.) This
             option is only relevant with <c>pandoc-citeproc</c>.
           </p>
         </li>
@@ -2316,9 +2316,9 @@ body { font-family: "DejaVuSans"; }
           <title><c>--citation-abbreviations=</c><em>FILE</em></title>
           <p>
             Set the <c>citation-abbreviations</c> field in the
-            document’s metadata to <em>FILE</em>, overriding any value
+            document's metadata to <em>FILE</em>, overriding any value
             set in the metadata. (This is equivalent to
-            <c>--metadata citation-abbreviations=FILE</c>.) This option
+            <c>--metadata citation-abbreviations=FILE</c>.) This option
             is only relevant with <c>pandoc-citeproc</c>.
           </p>
         </li>
@@ -2394,11 +2394,11 @@ body { font-family: "DejaVuSans"; }
             an external script that converts formulas to images. The
             formula will be URL-encoded and concatenated with the URL
             provided. For SVG images you can for example use
-            <c>--webtex https://latex.codecogs.com/svg.latex?</c>. If no
+            <c>--webtex https://latex.codecogs.com/svg.latex?</c>. If no
             URL is specified, the CodeCogs URL generating PNGs will be
             used (<c>https://latex.codecogs.com/png.latex?</c>). Note:
             the <c>--webtex</c> option will affect Markdown output as
-            well as HTML, which is useful if you’re targeting a version
+            well as HTML, which is useful if you're targeting a version
             of Markdown without native math support.
           </p>
         </li>
@@ -2509,9 +2509,9 @@ pandoc -D *FORMAT*
           <p>
             For <c>pdf</c> output, customize the <c>default.latex</c>
             template (or the <c>default.context</c> template, if you use
-            <c>-t context</c>, or the <c>default.ms</c> template, if you
-            use <c>-t ms</c>, or the <c>default.html</c> template, if
-            you use <c>-t html</c>).
+            <c>-t context</c>, or the <c>default.ms</c> template, if you
+            use <c>-t ms</c>, or the <c>default.html</c> template, if
+            you use <c>-t html</c>).
           </p>
         </li>
         <li>
@@ -2528,7 +2528,7 @@ pandoc -D *FORMAT*
       inclusion of arbitrary information at any point in the file. They
       may be set at the command line using the <c>-V/--variable</c>
       option. If a variable is not set, pandoc will look for the key in
-      the document’s metadata – which can be set using either
+      the document's metadata <ndash/> which can be set using either
       <xref ref="extension-yaml_metadata_block"/> or with the
       <c>-M/--metadata</c> option.
     </p>
@@ -2790,8 +2790,8 @@ More text in English. ['Zitat auf Deutsch.']{lang=de}
             <c>div</c>s with the <c>dir</c> attribute (value <c>rtl</c>
             or <c>ltr</c>) can be used to override the base direction in
             some output formats. This may not always be necessary if the
-            final renderer (e.g. the browser, when generating HTML)
-            supports the
+            final renderer (e.g.<nbsp/>the browser, when generating
+            HTML) supports the
             <url href="http://www.w3.org/International/articles/inline-bidi-markup/uba-basics">Unicode
             Bidirectional Algorithm</url>.
           </p>
@@ -2931,8 +2931,8 @@ More text in English. ['Zitat auf Deutsch.']{lang=de}
         <li>
           <title><c>classoption</c></title>
           <p>
-            option for document class, e.g. <c>oneside</c>; repeat for
-            multiple options
+            option for document class, e.g.<nbsp/><c>oneside</c>; repeat
+            for multiple options
           </p>
         </li>
         <li>
@@ -2954,7 +2954,8 @@ More text in English. ['Zitat auf Deutsch.']{lang=de}
           <p>
             option for
             <url href="https://ctan.org/pkg/geometry"><c>geometry</c></url>
-            package, e.g. <c>margin=1in</c>; repeat for multiple options
+            package, e.g.<nbsp/><c>margin=1in</c>; repeat for multiple
+            options
           </p>
         </li>
         <li>
@@ -2970,7 +2971,7 @@ More text in English. ['Zitat auf Deutsch.']{lang=de}
           <p>
             adjusts line spacing using the
             <url href="https://ctan.org/pkg/setspace"><c>setspace</c></url>
-            package, e.g. <c>1.25</c>, <c>1.5</c>
+            package, e.g.<nbsp/><c>1.25</c>, <c>1.5</c>
           </p>
         </li>
         <li>
@@ -2993,7 +2994,7 @@ More text in English. ['Zitat auf Deutsch.']{lang=de}
         <li>
           <title><c>papersize</c></title>
           <p>
-            paper size, e.g. <c>letter</c>, <c>a4</c>
+            paper size, e.g.<nbsp/><c>letter</c>, <c>a4</c>
           </p>
         </li>
         <li>
@@ -3223,7 +3224,8 @@ mainfontoptions:
         <li>
           <title><c>fontsize</c></title>
           <p>
-            font size for body text (e.g. <c>10pt</c>, <c>12pt</c>)
+            font size for body text (e.g.<nbsp/><c>10pt</c>,
+            <c>12pt</c>)
           </p>
         </li>
         <li>
@@ -3239,7 +3241,7 @@ mainfontoptions:
           <title><c>indenting</c></title>
           <p>
             controls indentation of paragraphs,
-            e.g. <c>yes,small,next</c> (see
+            e.g.<nbsp/><c>yes,small,next</c> (see
             <url href="https://wiki.contextgarden.net/Indentation">ConTeXt
             Indentation</url>); repeat for multiple options
           </p>
@@ -3247,7 +3249,7 @@ mainfontoptions:
         <li>
           <title><c>interlinespace</c></title>
           <p>
-            adjusts line spacing, e.g. <c>4ex</c> (using
+            adjusts line spacing, e.g.<nbsp/><c>4ex</c> (using
             <url href="https://wiki.contextgarden.net/Command/setupinterlinespace"><c>setupinterlinespace</c></url>);
             repeat for multiple options
           </p>
@@ -3263,8 +3265,8 @@ mainfontoptions:
         <li>
           <title><c>linkcolor</c>, <c>contrastcolor</c></title>
           <p>
-            color for links outside and inside a page, e.g. <c>red</c>,
-            <c>blue</c> (see
+            color for links outside and inside a page,
+            e.g.<nbsp/><c>red</c>, <c>blue</c> (see
             <url href="https://wiki.contextgarden.net/Color">ConTeXt
             Color</url>)
           </p>
@@ -3272,9 +3274,9 @@ mainfontoptions:
         <li>
           <title><c>linkstyle</c></title>
           <p>
-            typeface style for links, e.g. <c>normal</c>, <c>bold</c>,
-            <c>slanted</c>, <c>boldslanted</c>, <c>type</c>, <c>cap</c>,
-            <c>small</c>
+            typeface style for links, e.g.<nbsp/><c>normal</c>,
+            <c>bold</c>, <c>slanted</c>, <c>boldslanted</c>,
+            <c>type</c>, <c>cap</c>, <c>small</c>
           </p>
         </li>
         <li>
@@ -3311,8 +3313,8 @@ mainfontoptions:
         <li>
           <title><c>papersize</c></title>
           <p>
-            paper size, e.g. <c>letter</c>, <c>A4</c>, <c>landscape</c>
-            (see
+            paper size, e.g.<nbsp/><c>letter</c>, <c>A4</c>,
+            <c>landscape</c> (see
             <url href="https://wiki.contextgarden.net/PaperSetup">ConTeXt
             Paper Setup</url>); repeat for multiple options
           </p>
@@ -3341,8 +3343,8 @@ mainfontoptions:
         <li>
           <title><c>whitespace</c></title>
           <p>
-            spacing between paragraphs, e.g. <c>none</c>, <c>small</c>
-            (using
+            spacing between paragraphs, e.g.<nbsp/><c>none</c>,
+            <c>small</c> (using
             <url href="https://wiki.contextgarden.net/Command/setupwhitespace"><c>setupwhitespace</c></url>)
           </p>
         </li>
@@ -3420,25 +3422,25 @@ mainfontoptions:
         <li>
           <title><c>fontfamily</c></title>
           <p>
-            font family (e.g. <c>T</c> or <c>P</c>)
+            font family (e.g.<nbsp/><c>T</c> or <c>P</c>)
           </p>
         </li>
         <li>
           <title><c>indent</c></title>
           <p>
-            paragraph indent (e.g. <c>2m</c>)
+            paragraph indent (e.g.<nbsp/><c>2m</c>)
           </p>
         </li>
         <li>
           <title><c>lineheight</c></title>
           <p>
-            line height (e.g. <c>12p</c>)
+            line height (e.g.<nbsp/><c>12p</c>)
           </p>
         </li>
         <li>
           <title><c>pointsize</c></title>
           <p>
-            point size (e.g. <c>10p</c>)
+            point size (e.g.<nbsp/><c>10p</c>)
           </p>
         </li>
       </dl>
@@ -3467,10 +3469,10 @@ mainfontoptions:
             html4, html5, revealjs, s5, slideous, slidy). The recognized
             formats for <c>date</c> are: <c>mm/dd/yyyy</c>,
             <c>mm/dd/yy</c>, <c>yyyy-mm-dd</c> (ISO 8601),
-            <c>dd MM yyyy</c> (e.g. either <c>02 Apr 2018</c> or
-            <c>02 April 2018</c>), <c>MM dd, yyyy</c>
-            (e.g. <c>Apr. 02, 2018</c> or
-            <c>April 02, 2018),</c>yyyy[mm[dd]]]<c>(e.g.</c>20180402,
+            <c>dd MM yyyy</c> (e.g.<nbsp/>either <c>02 Apr 2018</c> or
+            <c>02 April 2018</c>), <c>MM dd, yyyy</c>
+            (e.g.<nbsp/><c>Apr. 02, 2018</c> or
+            <c>April 02, 2018),</c>yyyy[mm[dd]]]<c>(e.g.</c>20180402,
             <c>201804</c> or <c>2018</c>).
           </p>
         </li>
@@ -3498,7 +3500,7 @@ mainfontoptions:
         <li>
           <title><c>meta-json</c></title>
           <p>
-            JSON representation of all of the document’s metadata. Field
+            JSON representation of all of the document's metadata. Field
             values are transformed to the selected output format.
           </p>
         </li>
@@ -3615,7 +3617,7 @@ $endif$
             value using YAML metadata or the <c>--metadata</c> flag, use
             <c>true</c>, <c>True</c>, or <c>TRUE</c>; with the
             <c>--variable</c> flag, simply omit a value for the
-            variable, e.g. <c>--variable draft</c>).
+            variable, e.g.<nbsp/><c>--variable draft</c>).
           </p>
         </li>
       </ul>
@@ -3695,9 +3697,9 @@ $author.name$ ($author.affiliation$)
     <p>
       An extension can be enabled by adding <c>+EXTENSION</c> to the
       format name and disabled by adding <c>-EXTENSION</c>. For example,
-      <c>--from markdown_strict+footnotes</c> is strict Markdown with
+      <c>--from markdown_strict+footnotes</c> is strict Markdown with
       footnotes enabled, while
-      <c>--from markdown-footnotes-pipe_tables</c> is pandoc’s Markdown
+      <c>--from markdown-footnotes-pipe_tables</c> is pandoc's Markdown
       without footnotes or pipe tables.
     </p>
 
@@ -3971,23 +3973,23 @@ $author.name$ ($author.affiliation$)
         <cell>Identifier</cell>
       </row>
       <row>
-        <cell><c>Header identifiers in HTML</c></cell>
+        <cell><c>Header identifiers in HTML</c></cell>
         <cell><c>header-identifiers-in-html</c></cell>
       </row>
       <row>
-        <cell><c>Maître dhôtel</c></cell>
+        <cell><c>Maître dhôtel</c></cell>
         <cell><c>maître-dhôtel</c></cell>
       </row>
       <row>
-        <cell><c>*Dogs*?--in my* house?</c></cell>
+        <cell><c>*Dogs*?--in my* house?</c></cell>
         <cell><c>dogs--in-my-house</c></cell>
       </row>
       <row>
-        <cell><c>[HTML], [S5], or [RTF]?</c></cell>
+        <cell><c>[HTML], [S5], or [RTF]?</c></cell>
         <cell><c>html-s5-or-rtf</c></cell>
       </row>
       <row>
-        <cell><c>3. Applications</c></cell>
+        <cell><c>3. Applications</c></cell>
         <cell><c>applications</c></cell>
       </row>
       <row>
@@ -4045,7 +4047,7 @@ See the section on
 
     <p>
       Changes the algorithm used by <c>auto_identifiers</c> to conform
-      to GitHub’s method. Spaces are converted to dashes (<c>-</c>),
+      to GitHub's method. Spaces are converted to dashes (<c>-</c>),
       uppercase characters to lowercase characters, and punctuation
       characters other than <c>-</c> and <c>_</c> are removed.
     </p>
@@ -4054,7 +4056,7 @@ See the section on
       The extensions <xref ref="extension-tex_math_dollars"/>,
       <xref ref="extension-tex_math_single_backslash"/>, and
       <xref ref="extension-tex_math_double_backslash"/> are described in
-      the section about Pandoc’s Markdown.
+      the section about Pandoc's Markdown.
     </p>
 
     <p>
@@ -4083,7 +4085,7 @@ See the section on
 
     <p>
       When converting from HTML, parse elements to raw HTML which are
-      not representable in pandoc’s AST. By default, this is disabled
+      not representable in pandoc's AST. By default, this is disabled
       for HTML input.
     </p>
 
@@ -4135,7 +4137,7 @@ See the section on
       <c>ipynb</c> reader attempts to preserve the richest possible
       outputs when several options are given, you will get best results
       if you disable <c>raw_html</c> and <c>raw_tex</c> when converting
-      to formats like <c>docx</c> which don’t allow raw <c>html</c> or
+      to formats like <c>docx</c> which don't allow raw <c>html</c> or
       <c>tex</c>.
     </p>
 
@@ -4156,7 +4158,7 @@ See the section on
       This extension is enabled by default for HTML input. This means
       that <c>div</c>s are parsed to pandoc native elements.
       (Alternatively, you can parse them to raw HTML using
-      <c>-f html-native_divs+raw_html</c>.)
+      <c>-f html-native_divs+raw_html</c>.)
     </p>
 
     <p>
@@ -4297,7 +4299,7 @@ pandoc -f markdown+lhs -t html+lhs
 
     <p>
       Note that GHC expects the bird tracks in the first column, so
-      indented literate code blocks (e.g. inside an itemized
+      indented literate code blocks (e.g.<nbsp/>inside an itemized
       environment) will not be picked up by the Haskell compiler.
     </p>
 
@@ -4393,12 +4395,12 @@ pandoc -f markdown+lhs -t html+lhs
 </section>
 
 <section xml:id="pandocs-markdown">
-  <title>Pandoc’s Markdown</title>
+  <title>Pandoc's Markdown</title>
 
   <introduction>
     <p>
       Pandoc understands an extended and slightly revised version of
-      John Gruber’s
+      John Gruber's
       <url href="http://daringfireball.net/projects/markdown/">Markdown</url>
       syntax. This document explains the syntax, noting differences from
       standard Markdown. Except where noted, these differences can be
@@ -5183,20 +5185,20 @@ pandoc -f markdown+lhs -t html+lhs
     <blockquote>
       <p>
         A Markdown-formatted document should be publishable as-is, as
-        plain text, without looking like it’s been marked up with tags
-        or formatting instructions. –
+        plain text, without looking like it's been marked up with tags
+        or formatting instructions. <ndash/>
         <url href="http://daringfireball.net/projects/markdown/syntax#philosophy">John
         Gruber</url>
       </p>
     </blockquote>
 
     <p>
-      This principle has guided pandoc’s decisions in finding syntax for
+      This principle has guided pandoc's decisions in finding syntax for
       tables, footnotes, and other extensions.
     </p>
 
     <p>
-      There is, however, one respect in which pandoc’s aims are
+      There is, however, one respect in which pandoc's aims are
       different from the original aims of Markdown. Whereas Markdown was
       originally designed with HTML generation in mind, pandoc is
       designed for multiple output formats. Thus, while pandoc allows
@@ -5280,7 +5282,7 @@ I like several of their flavors of ice cream:
     <p>
       Many Markdown implementations do not require a space between the
       opening <c>#</c>s of an ATX header and the header text, so that
-      <c>#5 bolt</c> and <c>#hashtag</c> count as headers. With this
+      <c>#5 bolt</c> and <c>#hashtag</c> count as headers. With this
       extension, pandoc does require the space.
     </p>
 
@@ -5319,7 +5321,7 @@ My other header   {#foo}
 
     <p>
       Note that although this syntax allows assignment of classes and
-      key/value attributes, writers generally don’t use all of this
+      key/value attributes, writers generally don't use all of this
       information. Identifiers, classes, and key/value attributes are
       used in HTML and HTML-based formats such as EPUB and slidy.
       Identifiers are used for labels and link anchors in the LaTeX,
@@ -5565,7 +5567,7 @@ qsort (x:xs) = qsort (filter (&lt; x) xs) ++ [x] ++
       PowerPoint. If highlighting is supported for your output format
       and language, then the code block above will appear highlighted,
       with numbered lines. (To see which languages are supported, type
-      <c>pandoc --list-highlight-languages</c>.) Otherwise, the code
+      <c>pandoc --list-highlight-languages</c>.) Otherwise, the code
       block above will appear as follows:
     </p>
 
@@ -5812,7 +5814,7 @@ list item.
       They must be separated from the text that follows by at least one
       space, and, if the list marker is a capital letter with a period,
       by at least two spaces.<fn>The point of this rule is to ensure
-      that normal paragraphs starting with people’s initials, like
+      that normal paragraphs starting with people's initials, like
       <c>B. Russell was an English philosopher.</c> do not get treated
       as list items. This rule will not prevent
       <c>(C) 2007 Joe Smith</c> from being interpreted as a list item.
@@ -6019,7 +6021,7 @@ As (@good) illustrates, ...
       the blank space around <q>Third</q>. Pandoc follows a simple rule:
       if the text is followed by a blank line, it is treated as a
       paragraph. Since <q>Second</q> is followed by a list, and not a
-      blank line, it isn’t treated as a paragraph. The fact that the
+      blank line, it isn't treated as a paragraph. The fact that the
       list is followed by a blank line is irrelevant. (Note: Pandoc
       works this way even when the <c>markdown_strict</c> format is
       specified. This behavior is consistent with the official Markdown
@@ -6040,13 +6042,13 @@ As (@good) illustrates, ...
 
     <p>
       Trouble! Here pandoc (like other Markdown implementations) will
-      treat <c>{ my code block }</c> as the second paragraph of item
+      treat <c>{ my code block }</c> as the second paragraph of item
       two, and not as a code block.
     </p>
 
     <p>
       To <q>cut off</q> the list after item two, you can insert some
-      non-indented content, like an HTML comment, which won’t produce
+      non-indented content, like an HTML comment, which won't produce
       visible output in any format:
     </p>
 
@@ -6378,7 +6380,7 @@ orange|3.09
 
     <p>
       Note: pandoc also recognizes pipe tables of the following form, as
-      can be produced by Emacs’ orgtbl-mode:
+      can be produced by Emacs' orgtbl-mode:
     </p>
 
     <pre>
@@ -6391,7 +6393,7 @@ orange|3.09
     <p>
       The difference is that <c>+</c> is used instead of ``. Other
       orgtbl features are not supported. In particular, to get
-      non-default column alignment, you’ll need to add colons as above.
+      non-default column alignment, you'll need to add colons as above.
     </p>
 
     <p>
@@ -6461,11 +6463,11 @@ orange|3.09
       Title blocks will always be parsed, but they will affect the
       output only when the <c>--standalone</c> (<c>-s</c>) option is
       chosen. In HTML output, titles will appear twice: once in the
-      document head – this is the title that will appear at the top of
-      the window in a browser – and once at the beginning of the
-      document body. The title in the document head can have an optional
-      prefix attached (<c>--title-prefix</c> or <c>-T</c> option). The
-      title in the body appears as an H1 element with class
+      document head <ndash/> this is the title that will appear at the
+      top of the window in a browser <ndash/> and once at the beginning
+      of the document body. The title in the document head can have an
+      optional prefix attached (<c>--title-prefix</c> or <c>-T</c>
+      option). The title in the body appears as an H1 element with class
       <q>title</q>, so it can be suppressed or reformatted with CSS. If
       a title prefix is specified with <c>-T</c> and no title block
       appears in the document, the title prefix will be used by itself
@@ -6550,7 +6552,7 @@ pandoc chap1.md chap2.md chap3.md metadata.yaml -s -o book.html
     </p>
 
     <p>
-      When pandoc is used with <c>-t markdown</c> to create a Markdown
+      When pandoc is used with <c>-t markdown</c> to create a Markdown
       document, a YAML metadata block will be produced only if the
       <c>-s/--standalone</c> option is used. All of the metadata will
       appear in a single block at the beginning of the document.
@@ -6627,7 +6629,7 @@ $endfor$
     </pre>
 
     <p>
-      Raw content to include in the document’s header may be specified
+      Raw content to include in the document's header may be specified
       using <c>header-includes</c>; however, it is important to mark up
       this content as raw code for a particular output format, using the
       <xref ref="extension-raw_attribute"/>), or it will be interpreted
@@ -6671,7 +6673,7 @@ header-includes:
     </pre>
 
     <p>
-      This rule is easier to remember than standard Markdown’s rule,
+      This rule is easier to remember than standard Markdown's rule,
       which allows only the following characters to be
       backslash-escaped:
     </p>
@@ -6692,11 +6694,11 @@ header-includes:
     </p>
 
     <p>
-      A backslash-escaped newline (i.e. a backslash occurring at the end
-      of a line) is parsed as a hard line break. It will appear in TeX
-      output as <c>\\</c> and in HTML as <c>&lt;br /&gt;</c>. This is a
-      nice alternative to Markdown’s <q>invisible</q> way of indicating
-      hard line breaks using two trailing spaces on a line.
+      A backslash-escaped newline (i.e.<nbsp/>a backslash occurring at
+      the end of a line) is parsed as a hard line break. It will appear
+      in TeX output as <c>\\</c> and in HTML as <c>&lt;br /&gt;</c>.
+      This is a nice alternative to Markdown's <q>invisible</q> way of
+      indicating hard line breaks using two trailing spaces on a line.
     </p>
 
     <p>
@@ -6765,8 +6767,8 @@ H~2~O is a liquid.  2^10^ is 1024.
       spaces must be escaped with backslashes. (This is to prevent
       accidental superscripting and subscripting through the ordinary
       use of <c>~</c> and <c>^</c>.) Thus, if you want the letter P with
-      <sq>a cat</sq> in subscripts, use <c>P~a\ cat~</c>, not
-      <c>P~a cat~</c>.
+      <sq>a cat</sq> in subscripts, use <c>P~a\ cat~</c>, not
+      <c>P~a cat~</c>.
     </p>
 
     <p>
@@ -6849,10 +6851,10 @@ This is a backslash followed by an asterisk: `\*`.
       math. The opening <c>$</c> must have a non-space character
       immediately to its right, while the closing <c>$</c> must have a
       non-space character immediately to its left, and must not be
-      followed immediately by a digit. Thus, <c>$20,000 and $30,000</c>
-      won’t parse as math. If for some reason you need to enclose text
+      followed immediately by a digit. Thus, <c>$20,000 and $30,000</c>
+      won't parse as math. If for some reason you need to enclose text
       in literal <c>$</c> characters, backslash-escape them and they
-      won’t be treated as math delimiters.
+      won't be treated as math delimiters.
     </p>
 
     <p>
@@ -6887,11 +6889,11 @@ This is a backslash followed by an asterisk: `\*`.
         <li>
           <title>AsciiDoc</title>
           <p>
-            For AsciiDoc output format (<c>-t asciidoc</c>) it will
+            For AsciiDoc output format (<c>-t asciidoc</c>) it will
             appear verbatim surrounded by <c>latexmath:[$...$]</c> (for
             inline math) or <c>[latexmath]++++\[...\]+++</c> (for
             display math). For AsciiDoctor output format
-            (<c>-t asciidoctor</c>) the LaTex delimiters (<c>$..$</c>
+            (<c>-t asciidoctor</c>) the LaTex delimiters (<c>$..$</c>
             and <c>\[..\]</c>) are omitted.
           </p>
         </li>
@@ -6904,7 +6906,7 @@ This is a backslash followed by an asterisk: `\*`.
         <li>
           <title>roff man</title>
           <p>
-            It will be rendered verbatim without <c>$</c>’s.
+            It will be rendered verbatim without <c>$</c>'s.
           </p>
         </li>
         <li>
@@ -6916,7 +6918,7 @@ This is a backslash followed by an asterisk: `\*`.
         <li>
           <title>Textile</title>
           <p>
-            It will be rendered inside <c>&lt;span class="math"&gt;</c>
+            It will be rendered inside <c>&lt;span class="math"&gt;</c>
             tags.
           </p>
         </li>
@@ -7179,7 +7181,7 @@ This is `&lt;a&gt;html&lt;/a&gt;`{=html}
 
     <p>
       This can be useful to insert raw xml into <c>docx</c> documents,
-      e.g. a pagebreak:
+      e.g.<nbsp/>a pagebreak:
     </p>
 
     <pre>
@@ -7195,7 +7197,7 @@ This is `&lt;a&gt;html&lt;/a&gt;`{=html}
     <p>
       The format name should match the target format name (see
       <c>-t/--to</c>, above, for a list, or use
-      <c>pandoc --list-output-formats</c>). Use <c>openxml</c> for
+      <c>pandoc --list-output-formats</c>). Use <c>openxml</c> for
       <c>docx</c> output, <c>opendocument</c> for <c>odt</c> output,
       <c>html5</c> for <c>epub3</c> output, <c>html4</c> for
       <c>epub2</c> output, and <c>latex</c>, <c>beamer</c>, <c>ms</c>,
@@ -7402,7 +7404,7 @@ See the [Introduction].
 
     <p>
       A link immediately preceded by a <c>!</c> will be treated as an
-      image. The link text will be used as the image’s alt text:
+      image. The link text will be used as the image's alt text:
     </p>
 
     <pre>
@@ -7416,7 +7418,7 @@ See the [Introduction].
     <p>
       An image with nonempty alt text, occurring by itself in a
       paragraph, will be rendered as a figure with a caption. The
-      image’s alt text will be used as the caption.
+      image's alt text will be used as the caption.
     </p>
 
     <pre>
@@ -7425,9 +7427,9 @@ See the [Introduction].
 
     <p>
       How this is rendered depends on the output format. Some output
-      formats (e.g. RTF) do not yet support figures. In those formats,
-      you’ll just get an image in a paragraph by itself, with no
-      caption.
+      formats (e.g.<nbsp/>RTF) do not yet support figures. In those
+      formats, you'll just get an image in a paragraph by itself, with
+      no caption.
     </p>
 
     <p>
@@ -7506,14 +7508,14 @@ and a reference ![image][ref] with attributes.
               <li>
                 <p>
                   HTML:
-                  <c>&lt;img href="file.jpg" style="width: 50%;" /&gt;</c>
+                  <c>&lt;img href="file.jpg" style="width: 50%;" /&gt;</c>
                 </p>
               </li>
               <li>
                 <p>
                   LaTeX:
                   <c>\includegraphics[width=0.5\textwidth,height=\textheight]{file.jpg}</c>
-                  (If you’re using a custom template, you need to
+                  (If you're using a custom template, you need to
                   configure <c>graphicx</c> as in the default template.)
                 </p>
               </li>
@@ -7612,7 +7614,7 @@ This is a warning within a warning.
     </pre>
 
     <p>
-      Pandoc’s Markdown allows footnotes, using the following syntax:
+      Pandoc's Markdown allows footnotes, using the following syntax:
     </p>
 
     <pre>
@@ -7758,8 +7760,8 @@ pandoc --filter pandoc-citeproc myinput.txt
     </p>
 
     <p>
-      Note that <c>pandoc-citeproc --bib2json</c> and
-      <c>pandoc-citeproc --bib2yaml</c> can produce <c>.json</c> and
+      Note that <c>pandoc-citeproc --bib2json</c> and
+      <c>pandoc-citeproc --bib2yaml</c> can produce <c>.json</c> and
       <c>.yaml</c> files from any of the supported formats.
     </p>
 
@@ -7786,7 +7788,7 @@ pandoc --filter pandoc-citeproc myinput.txt
           </p>
         </li>
         <li>
-          <title><c>&lt;span style="font-variant:small-caps;"&gt;...&lt;/span&gt;</c>
+          <title><c>&lt;span style="font-variant:small-caps;"&gt;...&lt;/span&gt;</c>
           or <c>&lt;sc&gt;...&lt;/sc&gt;</c></title>
           <p>
             small capitals
@@ -7805,7 +7807,7 @@ pandoc --filter pandoc-citeproc myinput.txt
           </p>
         </li>
         <li>
-          <title><c>&lt;span class="nocase"&gt;...&lt;/span&gt;</c></title>
+          <title><c>&lt;span class="nocase"&gt;...&lt;/span&gt;</c></title>
           <p>
             prevent a phrase from being capitalized as title case
           </p>
@@ -7814,7 +7816,7 @@ pandoc --filter pandoc-citeproc myinput.txt
     </p>
 
     <p>
-      <c>pandoc-citeproc -j</c> and <c>-y</c> interconvert the CSL JSON
+      <c>pandoc-citeproc -j</c> and <c>-y</c> interconvert the CSL JSON
       and CSL YAML formats as far as possible.
     </p>
 
@@ -7822,7 +7824,7 @@ pandoc --filter pandoc-citeproc myinput.txt
       As an alternative to specifying a bibliography file using
       <c>--bibliography</c> or the YAML metadata field
       <c>bibliography</c>, you can include the citation data directly in
-      the <c>references</c> field of the document’s YAML metadata. The
+      the <c>references</c> field of the document's YAML metadata. The
       field should contain an array of YAML-encoded references, for
       example:
     </p>
@@ -7856,7 +7858,7 @@ references:
     </pre>
 
     <p>
-      (<c>pandoc-citeproc --bib2yaml</c> can produce these from a
+      (<c>pandoc-citeproc --bib2yaml</c> can produce these from a
       bibliography file in one of the supported formats.)
     </p>
 
@@ -7877,7 +7879,7 @@ references:
 
     <p>
       To make your citations hyperlinks to the corresponding
-      bibliography entries, add <c>link-citations: true</c> to your YAML
+      bibliography entries, add <c>link-citations: true</c> to your YAML
       metadata.
     </p>
 
@@ -7914,7 +7916,7 @@ Blah blah [@smith04; @doe99].
       <c>op.</c>/<c>opp.</c>; <c>page</c>, <c>p.</c>/<c>pp.</c>;
       <c>paragraph</c>, <c>para.</c>/<c>paras.</c>; <c>part</c>,
       <c>pt.</c>/<c>pts.</c>; <c>section</c>, <c>sec.</c>/<c>secs.</c>;
-      <c>sub verbo</c>, <c>s.v.</c>/<c>s.vv.</c>; <c>verse</c>,
+      <c>sub verbo</c>, <c>s.v.</c>/<c>s.vv.</c>; <c>verse</c>,
       <c>v.</c>/<c>vv.</c>; <c>volume</c>, <c>vol.</c>/<c>vols.</c>;
       <c>¶</c>/<c>¶¶</c>; <c>§</c>/<c>§§</c>. If no locator term is
       used, <q>page</q> is assumed.
@@ -7965,7 +7967,7 @@ Smith says blah [-@smith04].
     <p>
       Otherwise, it will be placed at the end of the document.
       Generation of the bibliography can be suppressed by setting
-      <c>suppress-bibliography: true</c> in the YAML metadata.
+      <c>suppress-bibliography: true</c> in the YAML metadata.
     </p>
 
     <p>
@@ -8055,7 +8057,7 @@ nocite: |
     <p>
       Allow <c>&lt;</c> and <c>&gt;</c> to be backslash-escaped, as they
       can be in GitHub flavored Markdown but not original Markdown. This
-      is implied by pandoc’s default <c>all_symbols_escapable</c>.
+      is implied by pandoc's default <c>all_symbols_escapable</c>.
     </p>
 
     <p>
@@ -8222,7 +8224,7 @@ This is a reference ![image][ref] with multimarkdown attributes.
     </p>
 
     <p>
-      In addition to pandoc’s extended Markdown, the following Markdown
+      In addition to pandoc's extended Markdown, the following Markdown
       variants are supported:
     </p>
 
@@ -8337,7 +8339,7 @@ This is a reference ![image][ref] with multimarkdown attributes.
     </p>
 
     <p>
-      Here’s the Markdown source for a simple slide show,
+      Here's the Markdown source for a simple slide show,
       <c>habits.txt</c>:
     </p>
 
@@ -8533,7 +8535,7 @@ pandoc habits.txt -o habits.pptx
         <li>
           <p>
             A title page is constructed automatically from the
-            document’s title block, if present. (In the case of beamer,
+            document's title block, if present. (In the case of beamer,
             this can be disabled by commenting out some lines in the
             default template.)
           </p>
@@ -8543,7 +8545,7 @@ pandoc habits.txt -o habits.pptx
 
     <p>
       These rules are designed to support many different styles of slide
-      show. If you don’t care about structuring your slides into
+      show. If you don't care about structuring your slides into
       sections and subsections, you can just use level 1 headers for all
       each slide. (In that case, level 1 will be the slide level.) But
       you can also structure the slide show into sections, as in the
@@ -8564,7 +8566,7 @@ pandoc habits.txt -o habits.pptx
       item at a time), use the <c>-i</c> option. If you want a
       particular list to depart from the default, put it in a <c>div</c>
       block with class <c>incremental</c> or <c>nonincremental</c>. So,
-      for example, using the <c>fenced div</c> syntax, the following
+      for example, using the <c>fenced div</c> syntax, the following
       would be incremental regardless of the document default:
     </p>
 
@@ -8630,7 +8632,7 @@ content after the pause
       <c>$DATADIR/slidy</c> (for Slidy), or <c>$DATADIR/slideous</c>
       (for Slideous), where <c>$DATADIR</c> is the user data directory
       (see <c>--data-dir</c>, above). The originals may be found in
-      pandoc’s system data directory (generally
+      pandoc's system data directory (generally
       <c>$CABALDIR/pandoc-VERSION/s5/default</c>). Pandoc will look
       there for any files it does not find in the user data directory.
     </p>
@@ -8739,7 +8741,7 @@ contents...
     <p>
       All of the other frame attributes described in Section 8.1 of the
       <url href="http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf">Beamer
-      User’s Guide</url> may also be used: <c>allowdisplaybreaks</c>,
+      User's Guide</url> may also be used: <c>allowdisplaybreaks</c>,
       <c>allowframebreaks</c>, <c>b</c>, <c>c</c>, <c>t</c>,
       <c>environment</c>, <c>label</c>, <c>plain</c>, <c>shrink</c>,
       <c>standout</c>, <c>noframenumbering</c>.
@@ -8772,7 +8774,7 @@ contents...
     </p>
 
     <p>
-      In reveal.js’s overview mode, the parallaxBackgroundImage will
+      In reveal.js's overview mode, the parallaxBackgroundImage will
       show up only on the first slide.
     </p>
 
@@ -8877,7 +8879,7 @@ ibooks:
             and <c>scheme</c>. Valid values for <c>scheme</c> are
             <c>ISBN-10</c>, <c>GTIN-13</c>, <c>UPC</c>, <c>ISMN-10</c>,
             <c>DOI</c>, <c>LCCN</c>, <c>GTIN-14</c>, <c>ISBN-13</c>,
-            <c>Legal deposit number</c>, <c>URN</c>, <c>OCLC</c>,
+            <c>Legal deposit number</c>, <c>URN</c>, <c>OCLC</c>,
             <c>ISMN-13</c>, <c>ISBN-A</c>, <c>JP</c>, <c>OLCC</c>.
           </p>
         </li>
@@ -9061,7 +9063,7 @@ ibooks:
     </pre>
 
     <p>
-      Pandoc will output <c>&lt;body epub:type="bodymatter"&gt;</c>,
+      Pandoc will output <c>&lt;body epub:type="bodymatter"&gt;</c>,
       unless you use one of the following values, in which case either
       <c>frontmatter</c> or <c>backmatter</c> will be output.
     </p>
@@ -9296,7 +9298,7 @@ hello
     used for highlighting. Currently highlighting is supported only for
     HTML, EPUB, Docx, Ms, and LaTeX/PDF output. To see a list of
     language names that pandoc will recognize, type
-    <c>pandoc --list-highlight-languages</c>.
+    <c>pandoc --list-highlight-languages</c>.
   </p>
 
   <p>
@@ -9304,7 +9306,7 @@ hello
     option. The default color scheme is <c>pygments</c>, which imitates
     the default color scheme used by the Python library pygments (though
     pygments is not actually used to do the highlighting). To see a list
-    of highlight styles, type <c>pandoc --list-highlight-styles</c>.
+    of highlight styles, type <c>pandoc --list-highlight-styles</c>.
   </p>
 
   <p>
@@ -9329,11 +9331,11 @@ pandoc --highlight-style my.theme
 
   <p>
     If you are not satisfied with the built-in highlighting, or you want
-    highlight a language that isn’t supported, you can use the
+    highlight a language that isn't supported, you can use the
     <c>--syntax-definition</c> option to load a
     <url href="https://docs.kde.org/stable5/en/applications/katepart/highlight.html">KDE-style
     XML syntax definition file</url>. Before writing your own, have a
-    look at KDE’s
+    look at KDE's
     <url href="https://github.com/KDE/syntax-highlighting/tree/master/data/syntax">repository
     of syntax definitions</url>.
   </p>
@@ -9368,7 +9370,7 @@ pandoc --highlight-style my.theme
 
   <conclusion>
     <p>
-      By default, pandoc’s docx and ICML output applies a predefined set
+      By default, pandoc's docx and ICML output applies a predefined set
       of styles for blocks such as paragraphs and block quotes, and uses
       largely default formatting (italics, bold) for inlines. This will
       work for most purposes, especially alongside a
@@ -9428,19 +9430,19 @@ Dickinson starts the poem simply:
     </p>
 
     <p>
-      For docx output, you don’t need to enable any extensions for
+      For docx output, you don't need to enable any extensions for
       custom styles to work.
     </p>
 
     <p>
       The docx reader, by default, only reads those styles that it can
       convert into pandoc elements, either by direct conversion or
-      interpreting the derivation of the input document’s styles.
+      interpreting the derivation of the input document's styles.
     </p>
 
     <p>
       By enabling the <xref ref="ext-styles"/> in the docx reader
-      (<c>-f docx+styles</c>), you can produce output that maintains the
+      (<c>-f docx+styles</c>), you can produce output that maintains the
       styles of the input document, using the <c>custom-style</c> class.
       Paragraph styles are interpreted as divs, while character styles
       are interpreted as spans.
@@ -9557,11 +9559,11 @@ pandoc --print-default-data-file sample.lua
       </li>
       <li>
         <p>
-          Pandoc’s parsers can exhibit pathological performance on some
+          Pandoc's parsers can exhibit pathological performance on some
           corner cases. It is wise to put any pandoc operations under a
           timeout, to avoid DOS attacks that exploit these issues. If
           you are using the pandoc executable, you can add the command
-          line options <c>+RTS -M512M -RTS</c> (for example) to limit
+          line options <c>+RTS -M512M -RTS</c> (for example) to limit
           the heap size to 512MB.
         </p>
       </li>
@@ -9583,8 +9585,8 @@ pandoc --print-default-data-file sample.lua
   <title>Authors</title>
 
   <p>
-    Copyright 2006–2019 John MacFarlane (jgm@berkeley.edu). Released
-    under the
+    Copyright 2006<ndash/>2019 John MacFarlane (jgm@berkeley.edu).
+    Released under the
     <url href="http://www.gnu.org/copyleft/gpl.html">GPL</url>, version
     2 or greater. This software carries no warranty of any kind. (See
     COPYRIGHT for full copyright and warranty notices.) For a full list
