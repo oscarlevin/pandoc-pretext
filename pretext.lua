@@ -45,35 +45,12 @@ local smallcaps_element = 'alert'
 
 -- Divs whose class appears here become the corresponding PreTeXt block.
 -- Fenced divs in markdown (::: {.theorem #thm-x title="Name"}) and amsthm
--- environments read from LaTeX both arrive as such Divs.  Extend this table
--- with whatever \newtheorem shorthands your documents use.
-local environments = {
-  -- theorem-like
-  theorem = 'theorem', lemma = 'lemma', corollary = 'corollary',
-  proposition = 'proposition', claim = 'claim', fact = 'fact',
-  identity = 'identity', algorithm = 'algorithm',
-  -- axiom-like
-  axiom = 'axiom', principle = 'principle', conjecture = 'conjecture',
-  heuristic = 'heuristic', hypothesis = 'hypothesis', assumption = 'assumption',
-  -- definition-like
-  definition = 'definition',
-  -- remark-like
-  remark = 'remark', convention = 'convention', note = 'note',
-  observation = 'observation', warning = 'warning', insight = 'insight',
-  -- computation-like
-  computation = 'computation', technology = 'technology',
-  -- example-like
-  example = 'example', question = 'question', problem = 'problem',
-  -- project-like and friends
-  exercise = 'exercise', activity = 'activity', exploration = 'exploration',
-  project = 'project', investigation = 'investigation',
-  proof = 'proof', aside = 'aside',
-  -- common LaTeX \newtheorem shorthands
-  thm = 'theorem', lem = 'lemma', cor = 'corollary', prop = 'proposition',
-  defn = 'definition', dfn = 'definition', rem = 'remark',
-  exa = 'example', exmp = 'example', obs = 'observation',
-  conj = 'conjecture', alg = 'algorithm', hyp = 'hypothesis',
-}
+-- environments read from LaTeX both arrive as such Divs.  Shared with
+-- pretext-latex-reader.lua, which pre-declares each of these as a
+-- \newtheorem so plain LaTeX gets full title/label handling too; extend
+-- pretext-environments.lua with whatever shorthands your documents use.
+local script_dir = PANDOC_SCRIPT_FILE:match('(.*[/\\])') or './'
+local environments = dofile(script_dir .. 'pretext-environments.lua')
 
 -- PreTeXt blocks whose content must be wrapped in <statement>.
 local needs_statement = { definition = true }
@@ -641,6 +618,13 @@ local function strip_run_in_header (blks)
   end
   if not stripped then return nil end
 
+  -- when there's no "(Name)" to follow, the number's trailing punctuation
+  -- ("Theorem 2." / "Lemma 1.") is its own Str token; consume it here so it
+  -- doesn't leak into the block body as a stray ". "
+  if ins[i] and ins[i].t == 'Str' and ins[i].text:match('^[%.,]+$') then
+    i = i + 1
+  end
+
   while ins[i] and ins[i].t == 'Space' do i = i + 1 end
 
   -- optional "(Name)." parenthetical becomes the block title
@@ -694,11 +678,64 @@ local function strip_qed (blks)
   end
 end
 
+-- If an amsthm environment name isn't backed by a \newtheorem declaration
+-- pandoc recognizes, no numbered run-in header is synthesized (and any
+-- bracketed name, e.g. \begin{theorem}[Lagrange], is lost entirely — pandoc
+-- keeps no record of it).  A \label right after \begin{env} still comes
+-- through, but as an empty, identifier-bearing Span at the very start of
+-- the first paragraph instead of becoming the Div's own identifier.
+local function extract_leading_label (blks)
+  if #blks == 0 then return nil end
+  local first = blks[1]
+  if first.t ~= 'Para' and first.t ~= 'Plain' then return nil end
+  local ins = first.content
+  if #ins == 0 or ins[1].t ~= 'Span' then return nil end
+  local span = ins[1]
+  if #span.content > 0 or span.identifier == '' then return nil end
+  ins:remove(1)
+  while #ins > 0 and (ins[1].t == 'Space' or ins[1].t == 'SoftBreak') do
+    ins:remove(1)
+  end
+  if #ins == 0 then
+    blks:remove(1)
+  end
+  return span.identifier
+end
+
+-- With the `raw_tex` reader extension enabled, \label doesn't become a Span
+-- at all: it survives as a raw "\label{id}" chunk of LaTeX source, wrapped
+-- inside the same Emph as the theorem statement.  It only surfaces as the
+-- first inline of the first paragraph once strip_run_in_header has already
+-- unwrapped that Emph, so this must run after strip_run_in_header, whereas
+-- extract_leading_label above must run before it (its Span, when present,
+-- has no run-in header in front of it to unwrap).
+local function extract_raw_label (blks)
+  if #blks == 0 then return nil end
+  local first = blks[1]
+  if first.t ~= 'Para' and first.t ~= 'Plain' then return nil end
+  local ins = first.content
+  if #ins == 0 or ins[1].t ~= 'RawInline' then return nil end
+  local raw = ins[1]
+  if raw.format ~= 'latex' and raw.format ~= 'tex' then return nil end
+  local id = raw.text:match('^\\label{(.-)}$')
+  if not id then return nil end
+  ins:remove(1)
+  while #ins > 0 and (ins[1].t == 'Space' or ins[1].t == 'SoftBreak') do
+    ins:remove(1)
+  end
+  if #ins == 0 then
+    blks:remove(1)
+  end
+  return id
+end
+
 local function render_environment (name, div)
   local content = pandoc.Blocks{}
   for _, b in ipairs(div.content) do content:insert(b) end
 
+  local leading_id = extract_leading_label(content)
   local extracted = strip_run_in_header(content)
+  leading_id = leading_id or extract_raw_label(content)
   if name == 'proof' then strip_qed(content) end
 
   local title = div.attributes.title and escape(div.attributes.title)
@@ -711,7 +748,11 @@ local function render_environment (name, div)
   if title then
     inner = concat{ inline_el('title', title), blankline, inner }
   end
-  return block_el(name, inner, id_attr(div))
+  local attrs = id_attr(div)
+  if #attrs == 0 and leading_id then
+    attrs = {{'xml:id', leading_id}}
+  end
+  return block_el(name, inner, attrs)
 end
 
 -- Is this a Div created by pandoc.structure.make_sections?
@@ -832,8 +873,11 @@ Writer.Block.Div = function (div)
     return structured_blocks(unwrap_sections(pandoc.Blocks{div}))
   end
   for _, class in ipairs(div.classes) do
-    if environments[class] then
-      return render_environment(environments[class], div)
+    -- amsthm's starred/unnumbered variants (\newtheorem*{remark*}{Remark})
+    -- come through as a div class with a literal trailing "*"
+    local base = class:gsub('%*$', '')
+    if environments[base] then
+      return render_environment(environments[base], div)
     end
   end
   -- unknown div: keep the content, note the wrapper for manual attention

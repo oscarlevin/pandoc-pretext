@@ -26,7 +26,7 @@
       This subsection contains a theorem:
     </p>
 
-    <theorem>
+    <theorem xml:id="thm-1">
       <p>
         Statement of theorem
       </p>
@@ -44,8 +44,8 @@
   <title>A second, unnumbered section</title>
 
   <p>
-    This section is shorter than <xref ref="sec_1"/>. But it is a lot
-    longer than <xref ref="test-cite"/>.
+    This section is shorter than . But it is a lot longer than
+    <xref ref="test-cite"/>.
   </p>
 
   <p>
